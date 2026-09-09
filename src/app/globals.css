@@ -1,0 +1,377 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Colour — CLAUDE.md §5.1, verbatim. Do not edit without updating the spec.
+   --------------------------------------------------------------------------- */
+@theme {
+  /* Brand Signature Accent — Sneha Magenta (from official logo 'SNEHA') */
+  --color-brand-50:  #FDF2F8;
+  --color-brand-100: #FCE7F3;
+  --color-brand-200: #FBCFE8;
+  --color-brand-300: #F472B6;
+  --color-brand-400: #E11D7B;
+  --color-brand-500: #CE1C73;   /* PRIMARY brand accent from logo */
+  --color-brand-600: #B81564;   /* hover / pressed */
+  --color-brand-700: #9B1153;
+  --color-brand-900: #52082A;
+
+  /* Backward compatibility for oxide tokens -> mapped to Sneha Magenta */
+  --color-oxide-50:  #FDF2F8;
+  --color-oxide-100: #FCE7F3;
+  --color-oxide-300: #F472B6;
+  --color-oxide-500: #CE1C73;   /* PRIMARY accent */
+  --color-oxide-600: #B81564;   /* hover / pressed */
+  --color-oxide-700: #9B1153;
+  --color-oxide-900: #52082A;
+
+  /* Architectural Dark Surface — Sneha Midnight Navy (from official logo roof/key) */
+  --color-ink-950: #031424;     /* deepest midnight architectural navy */
+  --color-ink-900: #06233D;     /* primary dark section */
+  --color-ink-800: #08365F;     /* exact logo navy */
+  --color-ink-700: #0C4678;     /* raised cards on dark */
+  --color-ink-600: #185994;     /* hairlines on dark */
+
+  /* Architectural Accent — Sneha Teal (from official logo window panes) */
+  --color-brand-teal: #165F64;
+  --color-teal-500:   #165F64;
+  --color-teal-400:   #14B8A6;
+
+  /* Light surface — pristine architect plaster */
+  --color-plaster-50:  #FAFCFF;
+  --color-plaster-100: #F4F7FB;  /* PRIMARY light section */
+  --color-plaster-200: #E2E8F0;  /* hairlines on light */
+  --color-plaster-300: #CBD5E1;
+
+  /* Text */
+  --color-slate-900: #0F172A;   /* body text on light */
+  --color-slate-600: #475569;   /* secondary text */
+  --color-slate-400: #94A3B8;   /* tertiary / meta */
+
+  /* Support */
+  --color-brass-500: #CE1C73;   /* brand accent */
+  --color-success:   #10B981;
+  --color-danger:    #E11D48;
+}
+
+/* ---------------------------------------------------------------------------
+   Radius hierarchy and elevation — §5.3.
+   --------------------------------------------------------------------------- */
+@theme {
+  /* Radius hierarchy carries meaning — see §5.3. 2px covers inputs, small
+     chips and tags; there is one token for that whole tier. */
+  --radius-hairline: 0px;
+  --radius-input: 2px;
+  --radius-button: 6px;
+  --radius-card: 12px;
+
+  --shadow-lift: 0 12px 32px -8px rgb(19 26 36 / 0.14);
+  --shadow-sticky: 0 1px 0 0 rgb(19 26 36 / 0.08);
+
+  /* §5.1 has no dark-surface danger value. --color-danger on ink-900 measures
+     2.0:1 and fails AA, so error text on ink uses this instead (6.0:1).
+     Confirm the hue with the client. */
+  --color-danger-300: #e8776b;
+}
+
+/* Font families resolve to the next/font variables set on <html> in layout.tsx. */
+@theme inline {
+  /* Primary — Space Grotesk. Headlines and main reading text, per the client's
+     direction. It is both the display face and the default body face. */
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+
+  /* Secondary — DM Sans. The supporting UI layer only: meta labels, captions,
+     buttons, form labels, nav. Keeping it off body copy is what makes the two
+     faces read as a deliberate pair rather than as an accident. */
+  --font-secondary: var(--font-dm-sans), system-ui, sans-serif;
+
+  --font-kannada: var(--font-noto-kannada), var(--font-dm-sans), system-ui, sans-serif;
+  --font-cormorant: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-cinzel: var(--font-cinzel), Cinzel, Trajan Pro, serif;
+}
+
+@utility font-cormorant {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+}
+
+@utility font-cinzel {
+  font-family: var(--font-cinzel), Cinzel, Trajan Pro, serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Type scale — §5.2, one utility per row of the table.
+
+   These are @utility rather than --text-* theme tokens because a theme token
+   can only carry size, leading, tracking and weight. The scale also pins a
+   family and, on the display tiers, a wdth axis value — so each row has to be
+   a real rule set.
+   --------------------------------------------------------------------------- */
+
+/* Space Grotesk is a single-axis (wght 300–700) variable font, so font-weight
+   alone drives it and there is no font-variation-settings here. The previous
+   display face carried a wdth axis that these rows pinned; naming that axis
+   against a file which does not have it would be silently ignored. */
+
+@utility text-display-1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6vw, 5.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+@utility text-display-2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+@utility text-heading-3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@utility text-heading-4 {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@utility text-body-lg {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+@utility text-body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+@utility text-body-sm {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+@utility text-meta {
+  font-family: var(--font-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+@utility text-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* §6 — the hero load sequence.
+   CSS rather than Motion, for two measured reasons. A JS-driven animation
+   cannot start until Framer hydrates, which on a throttled mobile is roughly a
+   second after first paint; and importing Motion put a 52KB chunk on the home
+   route, against §13's 130KB first-load budget. These are fire-once,
+   non-interactive mount animations with no state — exactly what keyframes are
+   for. The [data-motion] rule below switches them off for reduced motion.
+
+   The headline is deliberately absent: it is the LCP element and renders in its
+   final position on first paint. See the note in Hero.tsx. */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Support paragraph and buttons, together at 240ms. */
+@utility animate-hero-support {
+  animation: hero-fade-in 220ms cubic-bezier(0.22, 1, 0.36, 1) 240ms both;
+}
+
+/* Overlapping cards from 320ms, 80ms apart. --hero-card-index is set per card;
+   transform and opacity only, so a settling card cannot contribute to CLS. */
+@utility animate-hero-card {
+  animation: hero-card-rise 240ms cubic-bezier(0.22, 1, 0.36, 1)
+    calc(320ms + var(--hero-card-index, 0) * 80ms) both;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee-scroll 25s linear infinite;
+}
+
+@utility animate-marquee-buildings {
+  animation: marquee-scroll 45s linear infinite;
+}
+
+@keyframes hero-badge-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.95);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes pulse-glow-magenta {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(206, 28, 115, 0.25), 0 12px 24px -6px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(206, 28, 115, 0.55), 0 16px 32px -6px rgba(0, 0, 0, 0.65);
+  }
+}
+
+@utility animate-hero-badge {
+  animation: hero-badge-entrance 900ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both, pulse-glow-magenta 3.5s ease-in-out 1.2s infinite;
+}
+
+/* §8.5 — the process timeline's connecting rule.
+   pathLength="1" on the <line> normalises its length to 1 unit, so a dasharray
+   of 1 with an offset of 1 hides it and an offset of 0 reveals it. This is what
+   Motion's pathLength does internally; ProcessLine.tsx explains why it is done
+   here instead. The drawn state is set once, by an IntersectionObserver that
+   then disconnects. */
+@keyframes process-rule-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.process-rule {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.process-rule[data-drawn] {
+  animation: process-rule-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* §5.3 blueprint linework — the 96px-pitch grid, used behind the process
+   timeline and nowhere else ("never more than one instance per section").
+   1px lines in ink-600, held faint so it reads as drawing paper rather than
+   as a table. Always applied to an aria-hidden decorative layer. */
+@utility bg-blueprint-grid {
+  background-image:
+    repeating-linear-gradient(to right, var(--color-ink-600) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(to bottom, var(--color-ink-600) 0 1px, transparent 1px 96px);
+  opacity: 0.4;
+}
+
+/* Marks an element as sitting on a dark surface. Applied to a section, it
+   retints the focus ring for everything inside; applied to a single control,
+   it retints just that one. §13. */
+@utility on-ink {
+  --focus-ring: var(--color-oxide-300);
+}
+
+@layer base {
+  :root {
+    --focus-ring: var(--color-oxide-600);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  /* §5.2: figures must not jitter while the estimator animates. */
+  .tabular,
+  [data-numeral] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* §13: visible focus ring on every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-oxide-600);
+    color: #fff;
+  }
+
+  /* §6. The server cannot read a media query, so motion components ship their
+     hidden initial state in the pre-hydration HTML. This is what guarantees a
+     reduced-motion visitor sees that markup in its final position before any
+     JavaScript runs. !important is required to beat Motion's inline styles. */
+  @media (prefers-reduced-motion: reduce) {
+    [data-motion] {
+      animation: none !important;
+      clip-path: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+
+      /* Motion draws a pathLength animation as stroke-dasharray/dashoffset, so
+         the timeline's connecting rule needs these two as well — without them
+         the server-rendered initial state leaves the line invisible until
+         hydration for a reduced-motion visitor. */
+      stroke-dasharray: none !important;
+      stroke-dashoffset: 0 !important;
+    }
+  }
+}
