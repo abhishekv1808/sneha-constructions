@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, ArrowUpRight, CheckCircle2, Play, X } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Play, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -14,6 +14,7 @@ import avatar4 from '@/assets/hero/avatars/avatar-4.jpg'
 import avatar5 from '@/assets/hero/avatars/avatar-5.jpg'
 import { Container } from '@/components/ui'
 import { useQuoteModal } from '@/components/providers/QuoteModalProvider'
+import { serviceAreas } from '@/content'
 
 export function Hero() {
   const { openQuoteModal } = useQuoteModal()
@@ -59,14 +60,15 @@ export function Hero() {
         {/* Main Hero Copy Stack */}
         <Container className="relative z-10 pt-28 pb-36 sm:pt-32 sm:pb-40 lg:pt-36 lg:pb-44">
           <div className="max-w-4xl lg:max-w-[48rem]">
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-pink-400/40 bg-pink-950/50 px-3.5 py-1 font-secondary text-xs font-bold tracking-[0.14em] text-[#FF65A8] uppercase shadow-xs backdrop-blur-md sm:text-[0.8125rem]">
-              <span
-                aria-hidden="true"
-                className="inline-block h-2 w-2 rounded-full bg-[#FF65A8]"
-              />
-              WHERE CREATIVITY MEETS STRUCTURAL MASTERY
-            </div>
+            {/* Eyebrow — §4: sentence case, and only where it adds information.
+                The service area is that information: it is the strongest trust
+                signal for this audience (§2) and it earns the local-SEO terms
+                at the same time. Read from content so it cannot drift from the
+                footer and the area pages. */}
+            <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-brand-300/30 bg-ink-950/45 px-3.5 py-1.5 font-secondary text-xs font-semibold text-brand-300 backdrop-blur-md sm:text-[0.8125rem]">
+              <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rounded-full bg-brand-300" />
+              {serviceAreas.map((area) => area.name).join(' · ')}
+            </p>
 
             {/* Display Headline */}
             <h1 className="mt-4 max-w-[36ch] font-display text-[1.75rem] leading-[1.2] font-bold tracking-tight text-white drop-shadow-sm sm:text-[2.25rem] lg:text-[2.65rem]">

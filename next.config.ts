@@ -34,6 +34,7 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ['image/avif', 'image/webp'],
+    qualities: [75, 80, 90],
     remotePatterns: supabaseUrl
       ? [
           {
