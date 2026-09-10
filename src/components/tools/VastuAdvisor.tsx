@@ -215,7 +215,7 @@ export function VastuAdvisor() {
   const { openQuoteModal } = useQuoteModal()
   const [selectedDirection, setSelectedDirection] = useState<string>('East')
 
-  const currentDir = DIRECTIONS[selectedDirection] || DIRECTIONS.East!
+  const currentDir = (DIRECTIONS[selectedDirection] ?? DIRECTIONS['East']) as DirectionConfig
 
   const handleClaimVastuPlan = () => {
     openQuoteModal({
@@ -401,7 +401,7 @@ Can you share a free 2D sample floor plan layout compliant with Vastu Shastra fo
               Get a Customized 2D Vastu Floor Plan for Your Plot
             </h5>
             <p className="text-xs text-slate-500">
-              Drafted by Sneha's senior licensed architects in Tumkur · 100% Free · No obligation
+              Drafted by Sneha&apos;s senior licensed architects in Tumkur · 100% Free · No obligation
             </p>
           </div>
 

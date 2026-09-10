@@ -129,8 +129,9 @@ Please share the detailed BOQ breakdown and schedule a free site consultation.`
             OUR FEATURES &amp; ESTIMATOR
           </div>
 
-          <h2 className="mt-4 font-display text-3xl leading-[1.18] font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            Driven by passion for quality, we build spaces that reflect lasting value
+          <h2 className="mt-4 font-display text-3xl leading-[1.18] font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+            Driven by passion for quality, we build spaces that reflect{' '}
+            <span className="font-playfair italic">lasting value</span>
           </h2>
 
           <p className="mt-4 text-base text-slate-600 sm:text-lg">
@@ -151,7 +152,7 @@ Please share the detailed BOQ breakdown and schedule a free site consultation.`
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#CE1C73] text-white shadow-md">
                   <Icon size={24} strokeWidth={2.2} />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-slate-900">{item.title}</h3>
+                <h3 className="mt-5 font-display text-lg font-semibold text-slate-900">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
               </div>
             )
@@ -168,7 +169,7 @@ Please share the detailed BOQ breakdown and schedule a free site consultation.`
                   <Calculator size={20} strokeWidth={2.4} />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold text-slate-900">
+                  <h3 className="font-display text-xl font-semibold text-slate-900">
                     Instant Build Cost Calculator
                   </h3>
                   <p className="text-xs text-slate-500">
@@ -183,7 +184,7 @@ Please share the detailed BOQ breakdown and schedule a free site consultation.`
                   <label htmlFor="area-slider" className="text-sm font-medium text-slate-700">
                     Built-up Area:
                   </label>
-                  <span className="font-display text-2xl font-bold text-[#CE1C73]">
+                  <span className="font-display text-2xl font-semibold text-[#CE1C73]">
                     {area.toLocaleString('en-IN')} <span className="text-sm text-slate-600">sq ft</span>
                   </span>
                 </div>
@@ -224,8 +225,8 @@ Please share the detailed BOQ breakdown and schedule a free site consultation.`
                           Popular
                         </span>
                       )}
-                      <p className="font-display text-sm font-bold text-slate-900">{tier.name}</p>
-                      <p className="mt-1 font-display text-lg font-bold text-[#CE1C73]">
+                      <p className="font-display text-sm font-semibold text-slate-900">{tier.name}</p>
+                      <p className="mt-1 font-display text-lg font-semibold text-[#CE1C73]">
                         ₹{tier.rate.toLocaleString('en-IN')}{' '}
                         <span className="text-xs font-normal text-slate-500">/ sq ft</span>
                       </p>
@@ -240,7 +241,7 @@ Please share the detailed BOQ breakdown and schedule a free site consultation.`
               <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
                 Estimated Construction Cost
               </p>
-              <p className="mt-3 font-display text-4xl font-extrabold text-slate-900">
+              <p className="mt-3 font-display text-4xl font-bold text-slate-900">
                 {formatINR(totalEstimate)}
               </p>
               <p className="mt-1 text-xs font-semibold text-[#CE1C73]">
@@ -324,7 +325,7 @@ Please share the detailed BOQ breakdown and schedule a free site consultation.`
               )}
 
               <div>
-                <h3 className="font-display text-xl font-bold text-slate-900">
+                <h3 className="font-display text-xl font-semibold text-slate-900">
                   {tier.name}
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-slate-600">
@@ -332,7 +333,7 @@ Please share the detailed BOQ breakdown and schedule a free site consultation.`
                 </p>
 
                 <div className="mt-6 flex items-baseline gap-1">
-                  <span className="font-display text-4xl font-extrabold text-slate-900">
+                  <span className="font-display text-4xl font-bold text-slate-900">
                     ₹{tier.rate.toLocaleString('en-IN')}
                   </span>
                   <span className="text-sm text-slate-500">

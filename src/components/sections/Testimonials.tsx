@@ -190,8 +190,9 @@ export function Testimonials() {
             OUR TESTIMONIALS
           </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            Real feedback from those who built their dreams
+          <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+            Real feedback from those who{' '}
+            <span className="font-playfair italic">built their dreams</span>
           </h2>
 
           <p className="mt-4 text-base text-slate-600 sm:text-lg">
@@ -211,7 +212,7 @@ export function Testimonials() {
 
               <div>
                 <div className="flex items-center justify-center sm:justify-start gap-2.5">
-                  <span className="font-display text-3xl sm:text-4xl font-black text-slate-900 leading-none">
+                  <span className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 leading-none">
                     4.9
                   </span>
                   <div className="flex items-center gap-0.5 text-[#FBBC05]">
@@ -296,7 +297,7 @@ export function Testimonials() {
                       />
                     </div>
                     <div>
-                      <h3 className="font-display text-sm font-bold text-slate-900 leading-snug">
+                      <h3 className="font-display text-sm font-semibold text-slate-900 leading-snug">
                         {rev.author}
                       </h3>
                       <p className="text-[0.6875rem] font-medium text-slate-500">

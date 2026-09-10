@@ -69,9 +69,10 @@ export function Hero() {
             </div>
 
             {/* Display Headline */}
-            <h1 className="mt-4 max-w-[36ch] font-display text-[1.75rem] leading-[1.2] font-extrabold tracking-tight text-white drop-shadow-sm sm:text-[2.25rem] lg:text-[2.65rem]">
-              Where innovative design meets precision construction to create spaces that inspire and
-              endure
+            <h1 className="mt-4 max-w-[36ch] font-display text-[1.75rem] leading-[1.2] font-bold tracking-tight text-white drop-shadow-sm sm:text-[2.25rem] lg:text-[2.65rem]">
+              Where innovative design meets precision construction to{' '}
+              <span className="font-playfair italic">create spaces that inspire and
+              endure</span>
             </h1>
 
             {/* Supporting Lead */}
@@ -146,7 +147,7 @@ export function Hero() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-4 text-white">
-              <h3 className="font-display text-lg font-bold">
+              <h3 className="font-display text-lg font-semibold">
                 Sneha Construction Architectural Showcase
               </h3>
               <button
@@ -254,10 +255,10 @@ function RateCard() {
         </p>
 
         <div className="mt-1 flex items-baseline gap-1.5">
-          <span className="font-display text-3xl leading-none font-black tracking-tight text-[#CE1C73] sm:text-4xl">
-            ₹1,875
+          <span className="font-display text-3xl leading-none font-extrabold tracking-tight text-[#CE1C73] sm:text-4xl">
+            <span className="font-playfair italic">₹</span>1,875
           </span>
-          <span className="font-display text-sm font-bold text-slate-700 sm:text-base">
+          <span className="font-display text-sm font-semibold text-slate-700 sm:text-base">
             / sq.ft.
           </span>
         </div>
@@ -376,8 +377,8 @@ function StatCard() {
         <p className="font-secondary text-[0.8125rem] font-medium tracking-wide text-slate-500">
           Happy Satisfied Customers
         </p>
-        <p className="mt-1 font-display text-[2.75rem] leading-none font-extrabold tracking-tight text-slate-900">
-          15K+
+        <p className="mt-1 font-display text-[2.75rem] leading-none font-bold tracking-tight text-slate-900">
+          <span className="font-playfair italic">15K</span>+
         </p>
       </div>
     </div>

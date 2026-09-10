@@ -29,7 +29,7 @@ export function About() {
                 <Award size={24} strokeWidth={2.2} />
               </div>
               <div>
-                <p className="font-display text-2xl font-bold leading-none text-slate-900">25+ Years</p>
+                <p className="font-display text-2xl font-semibold leading-none text-slate-900">25+ Years</p>
                 <p className="mt-1 text-xs text-slate-500 font-medium">Of Proven Construction Mastery</p>
               </div>
             </div>
@@ -47,8 +47,9 @@ export function About() {
             </div>
 
             {/* Heading */}
-            <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-              Redefining the future of construction through design excellence
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+              Redefining the future of construction through{' '}
+              <span className="font-playfair italic">design excellence</span>
             </h2>
 
             {/* Lead Narrative */}
@@ -65,7 +66,7 @@ export function About() {
                   <CheckCircle2 size={18} className="text-[#CE1C73]" />
                 </div>
                 <div>
-                  <h4 className="font-display text-base font-bold text-slate-900">
+                  <h4 className="font-display text-base font-semibold text-slate-900">
                     Architectural Precision &amp; 3D Modeling
                   </h4>
                   <p className="text-sm text-slate-600">
@@ -80,7 +81,7 @@ export function About() {
                   <ShieldCheck size={18} className="text-[#CE1C73]" />
                 </div>
                 <div>
-                  <h4 className="font-display text-base font-bold text-slate-900">
+                  <h4 className="font-display text-base font-semibold text-slate-900">
                     Premium Sourced Construction Materials
                   </h4>
                   <p className="text-sm text-slate-600">
@@ -95,7 +96,7 @@ export function About() {
                   <Users size={18} className="text-[#CE1C73]" />
                 </div>
                 <div>
-                  <h4 className="font-display text-base font-bold text-slate-900">
+                  <h4 className="font-display text-base font-semibold text-slate-900">
                     Transparent Turnkey Execution
                   </h4>
                   <p className="text-sm text-slate-600">
@@ -120,7 +121,7 @@ export function About() {
 
               <div className="flex items-center gap-3 border-l border-slate-200 pl-6">
                 <div>
-                  <p className="font-display text-2xl font-bold text-slate-900">250+</p>
+                  <p className="font-display text-2xl font-semibold text-slate-900">250+</p>
                   <p className="text-xs font-medium text-slate-500">Completed Builds</p>
                 </div>
               </div>

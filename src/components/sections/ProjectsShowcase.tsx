@@ -109,8 +109,9 @@ export function ProjectsShowcase() {
               />
               OUR PROJECTS
             </div>
-            <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-              A showcase of architecture that inspires and endures
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+              A showcase of architecture that{' '}
+              <span className="font-playfair italic">inspires and endures</span>
             </h2>
           </div>
 
@@ -159,7 +160,7 @@ export function ProjectsShowcase() {
               {/* Card Meta */}
               <div className="flex flex-1 items-center justify-between p-6">
                 <div>
-                  <h3 className="font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-[#CE1C73]">
+                  <h3 className="font-display text-lg font-semibold text-slate-900 transition-colors group-hover:text-[#CE1C73]">
                     {project.title}
                   </h3>
                   <p className="mt-1 text-xs text-slate-500">

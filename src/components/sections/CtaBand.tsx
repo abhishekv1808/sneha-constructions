@@ -31,8 +31,9 @@ export function CtaBand() {
             CONTACT US TODAY!
           </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            Partner with us to design and build the home you envision
+          <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+            Partner with us to design and build{' '}
+            <span className="font-playfair italic">the home you envision</span>
           </h2>
 
           <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">

@@ -75,17 +75,19 @@
 
 /* Font families resolve to the next/font variables set on <html> in layout.tsx. */
 @theme inline {
-  /* Primary — Space Grotesk. Headlines and main reading text, per the client's
-     direction. It is both the display face and the default body face. */
-  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
-  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+  /* Primary — Outfit. Clean geometric variable sans for headlines and body. */
+  --font-display: var(--font-outfit), system-ui, sans-serif;
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
 
-  /* Secondary — DM Sans. The supporting UI layer only: meta labels, captions,
-     buttons, form labels, nav. Keeping it off body copy is what makes the two
-     faces read as a deliberate pair rather than as an accident. */
-  --font-secondary: var(--font-dm-sans), system-ui, sans-serif;
+  /* Secondary — Plus Jakarta Sans. Warm geometric for UI labels, captions,
+     buttons, form labels, nav. */
+  --font-secondary: var(--font-plus-jakarta), system-ui, sans-serif;
 
-  --font-kannada: var(--font-noto-kannada), var(--font-dm-sans), system-ui, sans-serif;
+  /* Italic accent — Playfair Display. High-contrast transitional serif for
+     decorative headlines, pull quotes, and editorial flourishes. */
+  --font-playfair: var(--font-playfair), 'Playfair Display', Georgia, serif;
+
+  --font-kannada: var(--font-noto-kannada), var(--font-plus-jakarta), system-ui, sans-serif;
   --font-cormorant: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
   --font-cinzel: var(--font-cinzel), Cinzel, Trajan Pro, serif;
 }
@@ -98,6 +100,10 @@
   font-family: var(--font-cinzel), Cinzel, Trajan Pro, serif;
 }
 
+@utility font-playfair {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+}
+
 /* ---------------------------------------------------------------------------
    Type scale — §5.2, one utility per row of the table.
 
@@ -107,15 +113,13 @@
    a real rule set.
    --------------------------------------------------------------------------- */
 
-/* Space Grotesk is a single-axis (wght 300–700) variable font, so font-weight
-   alone drives it and there is no font-variation-settings here. The previous
-   display face carried a wdth axis that these rows pinned; naming that axis
-   against a file which does not have it would be silently ignored. */
+/* Outfit is a variable font (wght 100–900), so font-weight alone drives it
+   and there is no font-variation-settings here. */
 
 @utility text-display-1 {
   font-family: var(--font-display);
   font-size: clamp(2.75rem, 6vw, 5.25rem);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 0.95;
 }
@@ -123,7 +127,7 @@
 @utility text-display-2 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3.25rem);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.05;
 }
@@ -131,14 +135,14 @@
 @utility text-heading-3 {
   font-family: var(--font-display);
   font-size: clamp(1.375rem, 2vw, 1.75rem);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
 }
 
 @utility text-heading-4 {
   font-family: var(--font-sans);
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.4;
 }
 
@@ -174,7 +178,7 @@
 @utility text-numeral {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }

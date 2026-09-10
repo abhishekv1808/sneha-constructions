@@ -43,8 +43,9 @@ export function VideoBand() {
           </div>
 
           {/* Heading */}
-          <h2 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            Tailored architectural and construction solutions for every budget
+          <h2 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+            Tailored architectural and construction solutions{' '}
+            <span className="font-playfair italic">for every budget</span>
           </h2>
 
           {/* Centered Circular Play Button with Rotating Text Ring */}
@@ -82,7 +83,7 @@ export function VideoBand() {
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-8 border-t border-slate-200 pt-12 sm:grid-cols-4">
             {statsData.map((stat, i) => (
               <div key={i} className="text-center">
-                <p className="font-display text-3xl font-black text-slate-900 sm:text-4xl lg:text-5xl">
+                <p className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl lg:text-5xl">
                   {stat.value}
                 </p>
                 <p className="mt-2 text-xs font-medium text-slate-600 sm:text-sm">
@@ -107,7 +108,7 @@ export function VideoBand() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-4 text-white">
-              <h3 className="font-display text-base font-bold">
+              <h3 className="font-display text-base font-semibold">
                 Sneha Construction — Quality &amp; Precision in Tumkur
               </h3>
               <button

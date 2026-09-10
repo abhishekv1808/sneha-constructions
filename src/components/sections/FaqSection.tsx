@@ -58,8 +58,9 @@ export function FaqSection() {
             FREQUENTLY ASKED QUESTIONS
           </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            We&apos;re here to provide clear and helpful answers
+          <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+            We&apos;re here to provide{' '}
+            <span className="font-playfair italic">clear and helpful answers</span>
           </h2>
           <p className="mt-4 text-base text-slate-600 sm:text-lg">
             Everything you need to know about building your home with Sneha Construction in Tumkur.
@@ -81,7 +82,7 @@ export function FaqSection() {
                   className="flex w-full items-center justify-between p-6 text-left focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-display text-base font-bold text-slate-900 sm:text-lg">
+                  <span className="font-display text-base font-semibold text-slate-900 sm:text-lg">
                     {faq.question}
                   </span>
                   <span

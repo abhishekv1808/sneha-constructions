@@ -75,8 +75,9 @@ export function Services() {
             OUR SERVICES
           </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            Architecture &amp; construction solutions designed for excellence
+          <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+            Architecture &amp; construction solutions{' '}
+            <span className="font-playfair italic">designed for excellence</span>
           </h2>
           <p className="mt-4 text-base text-slate-600 sm:text-lg">
             High-performance engineering, turnkey craftsmanship, and complete peace of mind for
@@ -96,10 +97,10 @@ export function Services() {
               <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
                 <div>
                   <div className="flex items-baseline justify-between gap-2">
-                    <h3 className="font-display text-[1.0625rem] font-bold text-slate-900 leading-snug transition-colors group-hover:text-[#CE1C73]">
+                    <h3 className="font-display text-[1.0625rem] font-semibold text-slate-900 leading-snug transition-colors group-hover:text-[#CE1C73]">
                       {item.title}
                     </h3>
-                    <span className="font-display text-xl font-bold text-slate-300 transition-colors group-hover:text-[#CE1C73]">
+                    <span className="font-display text-xl font-semibold text-slate-300 transition-colors group-hover:text-[#CE1C73]">
                       {item.number}
                     </span>
                   </div>

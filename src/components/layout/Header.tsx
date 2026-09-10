@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, ChevronDown, Menu, Phone } from 'lucide-react'
+import { ArrowRight, Menu, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -34,36 +34,36 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // White text is only used when at the top of pages with a dark hero (the home page)
+  const isDarkHero = pathname === '/' && !scrolled
+
   return (
     <>
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-40 text-white transition-all duration-300 ease-out"
+        className={cn(
+          'fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-out',
+          scrolled
+            ? 'bg-white/45 backdrop-blur-md border-b border-white/40 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]'
+            : isDarkHero
+              ? 'bg-transparent border-b border-transparent'
+              : 'bg-white/45 backdrop-blur-md border-b border-white/40 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]',
+        )}
       >
-        {/* Full Glassmorphic Backdrop Surface */}
-        <div
-          aria-hidden="true"
-          className={cn(
-            'pointer-events-none absolute inset-0 transition-all duration-300 ease-out',
-            'border-b border-white/15 backdrop-blur-2xl backdrop-saturate-180',
-            scrolled
-              ? 'bg-slate-950/40 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]'
-              : 'bg-slate-950/25 shadow-[0_4px_24px_0_rgba(0,0,0,0.15)]',
-          )}
-        />
-        {/* Subtle Specular Highlight Rim along the top */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-linear-to-r from-transparent via-white/25 to-transparent"
-        />
-
-        <Container className="relative flex h-20 items-center justify-between gap-6 lg:h-22">
-          {/* Brand Logo in clean card pill */}
-          <Logo />
+        <Container className="relative flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
+          {/* Brand Logo — switch tone based on scroll state */}
+          <Logo tone={isDarkHero ? 'dark' : 'light'} />
 
           {/* Desktop Nav Items */}
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] p-1.5 shadow-inner backdrop-blur-md">
+            <ul
+              className={cn(
+                'flex items-center gap-1 rounded-full p-1 transition-all duration-300',
+                isDarkHero
+                  ? 'border border-white/15 bg-white/[0.08]'
+                  : 'border border-slate-200/60 bg-white/50 backdrop-blur-sm shadow-xs',
+              )}
+            >
               {primaryNav.map((item) => {
                 const active = isActiveRoute(pathname, item.href)
 
@@ -75,6 +75,7 @@ export function Header() {
                         label={item.label}
                         items={item.children}
                         isActive={active}
+                        scrolled={!isDarkHero}
                       />
                     ) : (
                       <Link
@@ -82,15 +83,16 @@ export function Header() {
                         aria-current={active ? 'page' : undefined}
                         className={cn(
                           'inline-flex items-center gap-1 rounded-full px-4 py-2 font-secondary text-[0.9375rem] transition-all duration-200 ease-out',
-                          active
-                            ? 'border border-white/20 bg-white/20 font-bold text-white shadow-xs backdrop-blur-md'
-                            : 'font-medium text-white/90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] hover:bg-white/10 hover:text-white',
+                          isDarkHero
+                            ? active
+                              ? 'bg-white/20 font-semibold text-white shadow-xs'
+                              : 'font-medium text-white/90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:text-white'
+                            : active
+                              ? 'bg-white font-semibold text-[#CE1C73] shadow-xs ring-1 ring-slate-200/80'
+                              : 'font-medium text-slate-800 hover:bg-white/60 hover:text-slate-950',
                         )}
                       >
                         {item.label}
-                        {item.label === 'Home' && (
-                          <ChevronDown size={14} strokeWidth={2.2} className="text-[#CE1C73]" />
-                        )}
                       </Link>
                     )}
                   </li>
@@ -100,7 +102,7 @@ export function Header() {
           </nav>
 
           {/* Right Action Group */}
-          <div className="flex items-center gap-3 lg:gap-5">
+          <div className="flex items-center gap-3 lg:gap-4">
             {/* Mobile Call Icon */}
             <a
               href={contact.phoneHref}
@@ -113,7 +115,7 @@ export function Header() {
             {/* Desktop Primary CTA Button */}
             <Link
               href="/contact"
-              className="group hidden lg:inline-flex items-center rounded-full border border-pink-400/30 bg-[#CE1C73] pl-5 pr-1.5 py-1.5 text-[0.875rem] font-bold text-white shadow-lg shadow-[#CE1C73]/30 transition-all duration-200 hover:bg-[#B81564] hover:shadow-xl hover:shadow-[#CE1C73]/40"
+              className="group hidden lg:inline-flex items-center rounded-full bg-[#CE1C73] pl-5 pr-1.5 py-1.5 text-[0.875rem] font-bold text-white shadow-md shadow-[#CE1C73]/20 transition-all duration-200 hover:bg-[#B81564] hover:shadow-lg hover:shadow-[#CE1C73]/30"
             >
               <span>Get In Touch</span>
               <span className="ml-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#CE1C73] shadow-sm transition-transform duration-200 group-hover:translate-x-0.5">
@@ -128,7 +130,12 @@ export function Header() {
               onClick={() => setDrawerOpen(true)}
               aria-label="Open menu"
               aria-expanded={drawerOpen}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition-all duration-150 ease-out hover:bg-white/20 lg:hidden"
+              className={cn(
+                'flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 ease-out lg:hidden',
+                isDarkHero
+                  ? 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
+                  : 'border border-slate-200/80 bg-white/60 text-slate-800 hover:bg-white',
+              )}
             >
               <Menu size={20} strokeWidth={1.8} aria-hidden="true" />
             </button>
