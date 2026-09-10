@@ -1,106 +1,165 @@
 'use client'
 
-import React, { useState } from 'react'
-import {
-  MessageCircle,
-  Phone,
-  Calculator,
-  PencilRuler,
-  X,
-  Sparkles,
-  ChevronUp,
-} from 'lucide-react'
+import { MessageCircle, PencilRuler, Phone, Plus, X } from 'lucide-react'
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
+
 import { useQuoteModal } from '@/components/providers/QuoteModalProvider'
 import { contact, site, whatsappUrl } from '@/content'
 
+/**
+ * Minimalist desktop quick-contact float.
+ *
+ * Collapsed it is a single 56px circle rather than the ~370px pill this
+ * replaced, which was permanently occluding the bottom-right of every page and
+ * duplicating the header's primary CTA. Opening it is now the only thing the
+ * closed state does — the quote action lives inside, so there is one primary
+ * CTA per viewport (§6) instead of two competing ones.
+ *
+ * Also brings the component onto spec: tokens instead of raw hex (§9), the two
+ * sanctioned shadows instead of shadow-xl/2xl (§5.3), and colour-only hover
+ * transitions — the previous `hover:scale-105` on every row is exactly the tell
+ * §6 rules out. The old `animate-in` classes were inert anyway; no such plugin
+ * is installed.
+ */
 export function FloatingActionWidget() {
   const { openQuoteModal } = useQuoteModal()
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [open, setOpen] = useState(false)
+  const rootRef = useRef<HTMLElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+
+  // Escape closes and returns focus to the trigger; a click outside just closes.
+  useEffect(() => {
+    if (!open) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        triggerRef.current?.focus()
+      }
+    }
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('pointerdown', onPointerDown)
+    }
+  }, [open])
 
   return (
     <aside
-      aria-label="Quick contact and quote options"
-      className="fixed bottom-6 right-6 z-40 hidden md:flex flex-col items-end gap-3 print:hidden"
+      ref={rootRef}
+      aria-label="Quick contact"
+      className="fixed right-6 bottom-6 z-40 hidden flex-col items-end gap-2.5 md:flex print:hidden"
     >
-      {/* Expanded Quick Options Menu */}
-      {isExpanded && (
-        <div className="flex flex-col items-end gap-2.5 animate-in fade-in slide-in-from-bottom-3 duration-200">
-          {/* Option 1: Cost Estimator Hub */}
-          <Link
-            href="/estimate"
-            onClick={() => setIsExpanded(false)}
-            className="flex items-center gap-3 rounded-full border border-slate-200 bg-white py-2.5 pr-4 pl-3.5 text-xs font-bold text-slate-800 shadow-xl transition-all hover:border-[#CE1C73] hover:bg-slate-50 hover:scale-105"
-          >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-pink-100 text-[#CE1C73]">
-              <Calculator size={16} />
-            </span>
-            <span>Cost &amp; Vastu Tools</span>
-          </Link>
-
-          {/* Option 2: 1-Click WhatsApp */}
-          <a
-            href={whatsappUrl(`Hi ${site.shortName}, I want to discuss a construction project in Tumkur.`)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsExpanded(false)}
-            className="flex items-center gap-3 rounded-full border border-emerald-200 bg-white py-2.5 pr-4 pl-3.5 text-xs font-bold text-slate-800 shadow-xl transition-all hover:border-emerald-500 hover:bg-emerald-50/50 hover:scale-105"
-          >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-              <MessageCircle size={16} />
-            </span>
-            <span>Chat on WhatsApp</span>
-          </a>
-
-          {/* Option 3: Direct Phone Call */}
-          <a
-            href={contact.phoneHref}
-            onClick={() => setIsExpanded(false)}
-            className="flex items-center gap-3 rounded-full border border-slate-200 bg-white py-2.5 pr-4 pl-3.5 text-xs font-bold text-slate-800 shadow-xl transition-all hover:border-[#CE1C73] hover:bg-slate-50 hover:scale-105"
-          >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700">
-              <Phone size={16} />
-            </span>
-            <span>Call: {contact.phoneDisplay}</span>
-          </a>
-        </div>
-      )}
-
-      {/* Main Floating Trigger Pill */}
-      <div className="flex items-center gap-2">
-        {/* Quick Quote Button */}
-        <button
-          type="button"
+      {/* Actions. Kept mounted so the transition has something to animate, and
+          hidden from the tree entirely while closed. */}
+      <div
+        data-motion
+        inert={!open}
+        aria-hidden={!open}
+        className={`flex flex-col items-end gap-2 transition-[opacity,transform] duration-200 ease-out ${
+          open
+            ? 'pointer-events-auto translate-y-0 opacity-100'
+            : 'pointer-events-none translate-y-2 opacity-0'
+        }`}
+      >
+        <ActionRow
+          as="button"
+          icon={<PencilRuler size={15} strokeWidth={2.2} />}
+          label="Get a free quote"
           onClick={() => {
-            setIsExpanded(false)
-            openQuoteModal({ source: 'Floating Action Widget' })
+            setOpen(false)
+            openQuoteModal({ source: 'Floating quick contact' })
           }}
-          className="group flex items-center gap-2.5 rounded-full bg-[#CE1C73] py-3 pr-5 pl-4 text-xs font-bold text-white shadow-xl shadow-[#CE1C73]/30 transition-all hover:bg-[#B81564] hover:shadow-2xl hover:scale-105"
-        >
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white">
-            <PencilRuler size={14} strokeWidth={2.4} />
-          </span>
-          <span>Get Free Estimate</span>
-          <span className="hidden lg:inline-block rounded-full bg-white/25 px-2 py-0.5 text-[10px] font-black text-white uppercase">
-            30-Min Call
-          </span>
-        </button>
+        />
 
-        {/* Toggle Expand / Close Button */}
-        <button
-          type="button"
-          onClick={() => setIsExpanded(!isExpanded)}
-          aria-expanded={isExpanded}
-          aria-label={isExpanded ? 'Close quick menu' : 'Open quick contact options'}
-          className={`flex h-12 w-12 items-center justify-center rounded-full border transition-all shadow-lg ${
-            isExpanded
-              ? 'border-slate-300 bg-slate-800 text-white hover:bg-slate-900'
-              : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-        >
-          {isExpanded ? <X size={18} /> : <ChevronUp size={20} className="animate-pulse" />}
-        </button>
+        <ActionRow
+          as="a"
+          href={whatsappUrl(
+            `Hi ${site.shortName}, I want to discuss a construction project in Tumkur.`,
+          )}
+          external
+          icon={<MessageCircle size={15} strokeWidth={2.2} />}
+          label="WhatsApp"
+          onClick={() => setOpen(false)}
+        />
+
+        <ActionRow
+          as="a"
+          href={contact.phoneHref}
+          icon={<Phone size={15} strokeWidth={2.2} />}
+          label={contact.phoneDisplay}
+          onClick={() => setOpen(false)}
+        />
       </div>
+
+      {/* Trigger — 56px, the only thing visible at rest. */}
+      <button
+        ref={triggerRef}
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        aria-label={open ? 'Close quick contact' : 'Open quick contact'}
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-500 text-white shadow-lift transition-colors duration-150 hover:bg-brand-600"
+      >
+        {open ? <X size={20} strokeWidth={2.2} /> : <Plus size={22} strokeWidth={2.2} />}
+      </button>
     </aside>
+  )
+}
+
+type ActionRowProps = {
+  icon: React.ReactNode
+  label: string
+  onClick: () => void
+} & ({ as: 'button'; href?: never; external?: never } | { as: 'a'; href: string; external?: boolean })
+
+function ActionRow({ icon, label, onClick, ...rest }: ActionRowProps) {
+  const className =
+    'flex items-center gap-2.5 rounded-full border border-plaster-200 bg-white py-2 pr-4 pl-2.5 font-secondary text-xs font-bold whitespace-nowrap text-slate-900 shadow-lift transition-colors duration-150 hover:border-brand-500 hover:text-brand-500'
+
+  const inner = (
+    <>
+      <span
+        aria-hidden
+        className="flex h-7 w-7 items-center justify-center rounded-full bg-plaster-100 text-brand-500"
+      >
+        {icon}
+      </span>
+      <span>{label}</span>
+    </>
+  )
+
+  if (rest.as === 'a') {
+    const external = rest.external
+      ? { target: '_blank', rel: 'noopener noreferrer' as const }
+      : {}
+
+    // Internal hrefs go through Link; tel: and wa.me must not.
+    if (rest.href.startsWith('/')) {
+      return (
+        <Link href={rest.href} onClick={onClick} className={className}>
+          {inner}
+        </Link>
+      )
+    }
+
+    return (
+      <a href={rest.href} onClick={onClick} className={className} {...external}>
+        {inner}
+      </a>
+    )
+  }
+
+  return (
+    <button type="button" onClick={onClick} className={className}>
+      {inner}
+    </button>
   )
 }

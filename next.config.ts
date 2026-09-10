@@ -19,6 +19,13 @@ const legacyRoutes: ReadonlyArray<readonly [from: string, to: string]> = [
   ['/interiors-finishing', '/materials/interiors-finishing'],
   ['/roofing-waterproofing', '/materials/roofing-waterproofing'],
   ['/contact-us', '/contact'],
+
+  // Each service has its own bespoke route now; the legacy '-construction'
+  // aliases fold into the canonical URLs so no page is reachable at two
+  // addresses. The /services/[slug] segment they used to resolve through is gone.
+  ['/services/residential-construction', '/services/residential'],
+  ['/services/commercial-construction', '/services/commercial'],
+  ['/services/turnkey-construction', '/services/turnkey'],
 ]
 
 const nextConfig: NextConfig = {

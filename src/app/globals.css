@@ -379,3 +379,80 @@
     }
   }
 }
+
+/* ---------------------------------------------------------------------------
+   /services/residential — the hero gallery's advance indicator and the
+   packages area slider. Both are page-local but live here because Tailwind
+   cannot express a ::-webkit-slider-thumb or a keyframe.
+   --------------------------------------------------------------------------- */
+
+/* The bar under the active thumbnail, sweeping across one auto-advance cycle.
+   The component removes the element entirely under reduced motion and while
+   the rail is hovered or focused, so there is no animation left to suppress. */
+@keyframes residential-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Range input. --fill is set inline from React so the track shows progress in
+   both engines; appearance:none means every part is ours to draw. */
+.residential-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-brand-500) 0%,
+    var(--color-brand-500) var(--fill, 0%),
+    var(--color-plaster-300) var(--fill, 0%),
+    var(--color-plaster-300) 100%
+  );
+  cursor: pointer;
+}
+
+/* §13: touch targets ≥ 44px. The thumb is drawn at 22px and given its hit area
+   by a transparent border, which the box-sizing keeps outside the visible dot. */
+.residential-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 999px;
+  background: var(--color-brand-500);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 6px rgb(3 20 36 / 0.28);
+}
+
+.residential-slider::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 999px;
+  background: var(--color-brand-500);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 6px rgb(3 20 36 / 0.28);
+}
+
+.residential-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+/* /services/commercial — a floor plate rising as the storey count grows.
+   Transform and opacity only, on an SVG path inside a fixed viewBox, so it
+   cannot contribute to CLS. [data-motion] switches it off for reduced motion. */
+@keyframes commercial-plate-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

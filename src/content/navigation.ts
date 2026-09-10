@@ -18,7 +18,7 @@ export const primaryNav: readonly NavItem[] = [
   { href: '/blog', label: 'Blog' },
   {
     href: '/materials',
-    label: 'Pages',
+    label: 'Materials',
     children: materials.map((material) => ({
       href: `/materials/${material.slug}`,
       label: material.name,
@@ -44,4 +44,4 @@ export const legalLinks: readonly NavChild[] = [
 // Routes whose first section is a full-bleed photograph the header floats over
 // (§8.1, §8.2). Everywhere else the header is opaque from the first pixel and
 // the layout reserves its height.
-export const heroRoutes: ReadonlySet<string> = new Set(['/'])
+export const heroRoutes: ReadonlySet<string> = new Set(['/', '/services/residential'])

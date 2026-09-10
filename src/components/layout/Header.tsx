@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 import { Container } from '@/components/ui'
-import { contact, primaryNav } from '@/content'
+import { contact, heroRoutes, primaryNav } from '@/content'
 import { cn } from '@/lib/utils/cn'
 
 import { Logo } from './Logo'
@@ -34,8 +34,9 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // White text is only used when at the top of pages with a dark hero (the home page)
-  const isDarkHero = pathname === '/' && !scrolled
+  // White text is only used at the top of routes whose first section is a
+  // full-bleed dark photograph the header floats over — heroRoutes, §8.1.
+  const isDarkHero = heroRoutes.has(pathname) && !scrolled
 
   return (
     <>
@@ -44,26 +45,19 @@ export function Header() {
         className={cn(
           'fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-out',
           scrolled
-            ? 'bg-white/45 backdrop-blur-md border-b border-white/40 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]'
+            ? 'bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] py-1.5 sm:py-2'
             : isDarkHero
-              ? 'bg-transparent border-b border-transparent'
-              : 'bg-white/45 backdrop-blur-md border-b border-white/40 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]',
+              ? 'bg-transparent border-b border-transparent pt-2.5 sm:pt-3 lg:pt-3.5 pb-1'
+              : 'bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] pt-2.5 sm:pt-3 lg:pt-3.5 pb-1.5',
         )}
       >
-        <Container className="relative flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
+        <Container className="relative flex h-14 items-center justify-between gap-6 lg:h-16">
           {/* Brand Logo — switch tone based on scroll state */}
           <Logo tone={isDarkHero ? 'dark' : 'light'} />
 
           {/* Desktop Nav Items */}
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul
-              className={cn(
-                'flex items-center gap-1 rounded-full p-1 transition-all duration-300',
-                isDarkHero
-                  ? 'border border-white/15 bg-white/[0.08]'
-                  : 'border border-slate-200/60 bg-white/50 backdrop-blur-sm shadow-xs',
-              )}
-            >
+            <ul className="flex items-center gap-1 transition-all duration-300">
               {primaryNav.map((item) => {
                 const active = isActiveRoute(pathname, item.href)
 
@@ -82,7 +76,7 @@ export function Header() {
                         href={item.href}
                         aria-current={active ? 'page' : undefined}
                         className={cn(
-                          'inline-flex items-center gap-1 rounded-full px-4 py-2 font-secondary text-[0.9375rem] transition-all duration-200 ease-out',
+                          'inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 font-secondary text-[0.8125rem] transition-all duration-200 ease-out',
                           isDarkHero
                             ? active
                               ? 'bg-white/20 font-semibold text-white shadow-xs'

@@ -21,7 +21,7 @@ export function Hero() {
 
   return (
     <>
-      <section className="relative isolate min-h-[38rem] overflow-hidden bg-slate-50 sm:min-h-[42rem] lg:min-h-[46rem]">
+      <section className="relative isolate overflow-hidden bg-slate-50">
         {/* Full-bleed Indian Duplex Architectural Background Image (Daylight) */}
         <Image
           src={heroIndianDuplex}
@@ -57,7 +57,7 @@ export function Hero() {
         </div>
 
         {/* Main Hero Copy Stack */}
-        <Container className="relative z-10 pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28">
+        <Container className="relative z-10 pt-28 pb-36 sm:pt-32 sm:pb-40 lg:pt-36 lg:pb-44">
           <div className="max-w-4xl lg:max-w-[48rem]">
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 rounded-full border border-pink-400/40 bg-pink-950/50 px-3.5 py-1 font-secondary text-xs font-bold tracking-[0.14em] text-[#FF65A8] uppercase shadow-xs backdrop-blur-md sm:text-[0.8125rem]">
@@ -112,8 +112,8 @@ export function Hero() {
         </Container>
       </section>
 
-      {/* Three Cards with comfortable breathing space below Hero */}
-      <div className="relative z-20 mt-8 sm:mt-12 lg:mt-14">
+      {/* Three Feature Cards: Half inside Hero section, half outside on white background */}
+      <div className="relative z-20 -mt-24 sm:-mt-28 lg:-mt-32">
         <Container>
           <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-12">
             {/* Card 1: Turnkey Construction Rate Card Starting From ₹1,875/sq.ft */}

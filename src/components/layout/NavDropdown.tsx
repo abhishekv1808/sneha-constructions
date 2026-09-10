@@ -64,7 +64,7 @@ export function NavDropdown({
       >
         <Link
           href={href}
-          className="py-2 pl-4 pr-1 font-secondary text-[0.9375rem] transition-colors"
+          className="py-1.5 pl-3.5 pr-1 font-secondary text-[0.8125rem] transition-colors"
         >
           {label}
         </Link>
@@ -75,14 +75,14 @@ export function NavDropdown({
           aria-label={`${label} menu`}
           onClick={() => setOpen((value) => !value)}
           className={cn(
-            'flex h-9 w-7 items-center justify-center pr-2.5 transition-colors',
+            'flex h-8 w-6 items-center justify-center pr-2 transition-colors',
             scrolled
               ? 'text-slate-500 hover:text-slate-900'
               : 'text-white/80 hover:text-white',
           )}
         >
           <ChevronDown
-            size={14}
+            size={13}
             strokeWidth={2.2}
             aria-hidden="true"
             className={cn(
