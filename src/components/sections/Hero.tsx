@@ -15,6 +15,7 @@ import avatar5 from '@/assets/hero/avatars/avatar-5.jpg'
 import { Container } from '@/components/ui'
 import { useQuoteModal } from '@/components/providers/QuoteModalProvider'
 import { serviceAreas } from '@/content'
+import { HeroMultiStepEstimator } from './HeroMultiStepEstimator'
 
 export function Hero() {
   const { openQuoteModal } = useQuoteModal()
@@ -57,58 +58,85 @@ export function Hero() {
           <RotatingExperienceBadge />
         </div>
 
-        {/* Main Hero Copy Stack */}
-        <Container className="relative z-10 pt-28 pb-36 sm:pt-32 sm:pb-40 lg:pt-36 lg:pb-44">
-          <div className="max-w-4xl lg:max-w-[48rem]">
-            {/* Eyebrow — §4: sentence case, and only where it adds information.
-                The service area is that information: it is the strongest trust
-                signal for this audience (§2) and it earns the local-SEO terms
-                at the same time. Read from content so it cannot drift from the
-                footer and the area pages. */}
-            <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-brand-300/30 bg-ink-950/45 px-3.5 py-1.5 font-secondary text-xs font-semibold text-brand-300 backdrop-blur-md sm:text-[0.8125rem]">
-              <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rounded-full bg-brand-300" />
-              {serviceAreas.map((area) => area.name).join(' · ')}
-            </p>
+        {/* Main Hero Copy Stack & Interactive Quick Estimator */}
+        <Container className="relative z-10 pt-28 pb-36 sm:pt-32 sm:pb-40 lg:pt-34 lg:pb-40">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
+            {/* Left: Brand Headline, Proof Spine & Key Metrics */}
+            <div className="lg:col-span-7">
+              {/* Eyebrow */}
+              <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-brand-300/30 bg-ink-950/45 px-3.5 py-1.5 font-secondary text-xs font-semibold text-brand-300 backdrop-blur-md sm:text-[0.8125rem]">
+                <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rounded-full bg-brand-300" />
+                {serviceAreas.map((area) => area.name).join(' · ')}
+              </p>
 
-            {/* Display Headline */}
-            <h1 className="mt-4 max-w-[36ch] font-display text-[1.75rem] leading-[1.2] font-bold tracking-tight text-white drop-shadow-sm sm:text-[2.25rem] lg:text-[2.65rem]">
-              Where innovative design meets precision construction to{' '}
-              <span className="font-playfair italic">create spaces that inspire and
-              endure</span>
-            </h1>
+              {/* Display Headline */}
+              <h1 className="mt-4 max-w-[36ch] font-display text-[1.85rem] leading-[1.18] font-bold tracking-tight text-white drop-shadow-sm sm:text-[2.35rem] lg:text-[2.65rem]">
+                Where innovative design meets precision construction to{' '}
+                <span className="font-playfair italic">create spaces that inspire and
+                endure</span>
+              </h1>
 
-            {/* Supporting Lead */}
-            <p className="mt-5 max-w-[50ch] font-secondary text-[0.9375rem] leading-relaxed font-normal text-slate-200 sm:text-base">
-              Over 25 years designing and constructing landmark duplexes, contemporary family homes,
-              and commercial structures across Tumkur district. Built with earthquake-resistant
-              structural mastery and 100% Vastu compliance.
-            </p>
+              {/* Supporting Lead */}
+              <p className="mt-4 max-w-[48ch] font-secondary text-[0.9375rem] leading-relaxed font-normal text-slate-200 sm:text-base">
+                Over 25 years designing and constructing landmark duplexes, contemporary family homes,
+                and commercial structures across Tumkur district. Built with earthquake-resistant
+                structural mastery and 100% Vastu compliance.
+              </p>
 
-            {/* Action Row */}
-            <div className="mt-8 flex flex-wrap items-center gap-5 sm:gap-7">
-              {/* Primary Signature CTA Button */}
-              <button
-                type="button"
-                onClick={() => openQuoteModal({ source: 'Hero Main CTA' })}
-                className="group inline-flex items-center rounded-full bg-[#CE1C73] py-2 pr-2 pl-6 text-[0.875rem] font-bold text-white shadow-lg shadow-[#CE1C73]/25 transition-all duration-200 hover:bg-[#B81564] hover:shadow-xl sm:text-[0.9375rem]"
-              >
-                <span>Get Free Estimate</span>
-                <span className="ml-3.5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#CE1C73] transition-transform duration-200 group-hover:translate-x-1 sm:h-10 sm:w-10">
-                  <ArrowRight size={17} strokeWidth={2.5} />
-                </span>
-              </button>
+              {/* Action Buttons Row */}
+              <div className="mt-7 flex flex-wrap items-center gap-4 sm:gap-6">
+                {/* Primary Signature CTA Button */}
+                <button
+                  type="button"
+                  onClick={() => openQuoteModal({ source: 'Hero Main CTA' })}
+                  className="group inline-flex items-center rounded-full bg-[#CE1C73] py-2 pr-2 pl-6 text-[0.875rem] font-bold text-white shadow-lg shadow-[#CE1C73]/25 transition-all duration-200 hover:bg-[#B81564] hover:shadow-xl sm:text-[0.9375rem]"
+                >
+                  <span>Book Free Consultation</span>
+                  <span className="ml-3.5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#CE1C73] transition-transform duration-200 group-hover:translate-x-1 sm:h-10 sm:w-10">
+                    <ArrowRight size={17} strokeWidth={2.5} />
+                  </span>
+                </button>
 
-              {/* Secondary Video Button */}
-              <button
-                type="button"
-                onClick={() => setVideoOpen(true)}
-                className="group inline-flex items-center gap-3 text-[0.875rem] font-semibold text-white transition-[color] duration-150 hover:text-[#FF65A8] sm:text-[0.9375rem]"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-all duration-200 group-hover:scale-105 group-hover:border-[#CE1C73] group-hover:bg-[#CE1C73] group-hover:text-white sm:h-12 sm:w-12">
-                  <Play size={16} className="ml-0.5 fill-current" />
-                </span>
-                <span>Watch Our Video</span>
-              </button>
+                {/* Secondary Video Button */}
+                <button
+                  type="button"
+                  onClick={() => setVideoOpen(true)}
+                  className="group inline-flex items-center gap-3 text-[0.875rem] font-semibold text-white transition-[color] duration-150 hover:text-[#FF65A8] sm:text-[0.9375rem]"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-all duration-200 group-hover:scale-105 group-hover:border-[#CE1C73] group-hover:bg-[#CE1C73] group-hover:text-white sm:h-12 sm:w-12">
+                    <Play size={16} className="ml-0.5 fill-current" />
+                  </span>
+                  <span>Watch Our Story</span>
+                </button>
+              </div>
+
+              {/* Trust Metric Stats Strip */}
+              <div className="mt-8 flex flex-wrap items-center gap-6 border-t border-white/15 pt-6 text-xs text-slate-300">
+                <div>
+                  <div className="font-display text-xl font-extrabold text-white">250+</div>
+                  <div className="text-[11px] text-slate-300">Homes Delivered</div>
+                </div>
+                <div className="h-7 w-px bg-white/20" />
+                <div>
+                  <div className="font-display text-xl font-extrabold text-[#FFCC00]">4.9 ★</div>
+                  <div className="text-[11px] text-slate-300">Google Verified</div>
+                </div>
+                <div className="h-7 w-px bg-white/20" />
+                <div>
+                  <div className="font-display text-xl font-extrabold text-white">25+ Yrs</div>
+                  <div className="text-[11px] text-slate-300">Tumkur Leadership</div>
+                </div>
+                <div className="h-7 w-px bg-white/20 hidden sm:block" />
+                <div className="hidden sm:block">
+                  <div className="font-display text-xl font-extrabold text-emerald-400">100%</div>
+                  <div className="text-[11px] text-slate-300">Vastu Approved</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: High-Converting Multi-Step Quick Estimator */}
+            <div className="lg:col-span-5" id="hero-quick-estimator">
+              <HeroMultiStepEstimator />
             </div>
           </div>
         </Container>

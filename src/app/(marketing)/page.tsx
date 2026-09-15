@@ -7,8 +7,10 @@ import {
   FeaturesEstimator,
   Hero,
   Marquee,
+  PackageComparison,
   ProjectsShowcase,
   Services,
+  SiteShortsCarousel,
   Testimonials,
   VideoBand,
 } from '@/components/sections'
@@ -16,10 +18,10 @@ import {
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero Section with 3 Overlapping Feature Cards */}
+      {/* 1. Hero Section with Interactive Multi-Step Quick Estimator */}
       <Hero />
 
-      {/* 2. First of all: User watches the real projects built by the company */}
+      {/* 2. Real Completed Projects Carousel */}
       <div className="pt-12 sm:pt-16 lg:pt-20">
         <BuildingCarousel />
       </div>
@@ -30,28 +32,34 @@ export default function HomePage() {
       {/* 4. Services 4-Card Numbered Grid */}
       <Services />
 
-      {/* 4. Infinite Horizontal Scrolling Marquee */}
+      {/* 5. "In 60 Seconds" Tumkur Site Video Reels / Shorts Carousel */}
+      <SiteShortsCarousel />
+
+      {/* 6. Infinite Horizontal Scrolling Material Brands Marquee */}
       <Marquee />
 
-      {/* 5. Scroll-Driven 4K Time-Lapse: 2D Blueprint to Real Luxury Duplex Villa */}
+      {/* 7. Scroll-Driven 4K Time-Lapse: 2D Blueprint to Real Luxury Duplex Villa */}
       <ArchitecturalEvolution />
 
-      {/* 6. Watch Our Story Video Band with Milestones */}
-      <VideoBand />
-
-      {/* 6. Features & Interactive Build Cost Estimator with Pricing Tiers */}
+      {/* 8. Interactive Plot-to-House Cost Estimator with Teaser Gate & BOQ */}
       <FeaturesEstimator />
 
-      {/* 7. Filterable Projects Showcase Portfolio */}
+      {/* 9. Comprehensive Package Comparison & Material Specifications Matrix */}
+      <PackageComparison />
+
+      {/* 10. Watch Our Story Video Band with Milestones */}
+      <VideoBand />
+
+      {/* 11. Filterable Projects Showcase Portfolio */}
       <ProjectsShowcase />
 
-      {/* 8. Verified Homeowner Testimonials */}
+      {/* 12. Verified Homeowner Testimonials */}
       <Testimonials />
 
-      {/* 9. Frequently Asked Questions Accordion */}
+      {/* 13. Frequently Asked Questions Accordion */}
       <FaqSection />
 
-      {/* 10. High-Impact Call to Action Banner */}
+      {/* 14. High-Impact Call to Action Banner */}
       <CtaBand />
     </>
   )
