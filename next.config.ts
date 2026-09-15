@@ -54,6 +54,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
 
+      // Legal alias redirects
+      { source: '/privacy', destination: '/privacy-policy', permanent: true },
+      { source: '/terms-and-conditions', destination: '/terms', permanent: true },
+      { source: '/terms-of-service', destination: '/terms', permanent: true },
+      { source: '/terms-of-use', destination: '/terms', permanent: true },
+
       // WordPress 404 noise — §7.
       { source: '/wp-content/:path*', destination: '/', permanent: true },
       { source: '/wp-admin/:path*', destination: '/', permanent: true },

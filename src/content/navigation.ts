@@ -37,8 +37,8 @@ export const quickLinks: readonly NavChild[] = [
 ]
 
 export const legalLinks: readonly NavChild[] = [
-  { href: '/privacy-policy', label: 'Privacy policy' },
-  { href: '/terms', label: 'Terms' },
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms & Conditions' },
 ]
 
 // Routes whose first section is a full-bleed photograph the header floats over
