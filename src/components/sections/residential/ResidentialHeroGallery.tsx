@@ -68,7 +68,7 @@ export function ResidentialHeroGallery() {
               alt={`${home.name}, a ${home.typologyLabel.toLowerCase()} completed at ${home.town}`}
               fill
               priority={index === 0}
-              quality={88}
+              quality={90}
               sizes="100vw"
               className="object-cover object-center"
             />

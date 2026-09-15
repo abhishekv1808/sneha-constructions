@@ -45,15 +45,20 @@ export function Header() {
         className={cn(
           'fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-out',
           scrolled
-            ? 'bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] py-1.5 sm:py-2'
+            ? 'bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] py-1.5'
             : isDarkHero
-              ? 'bg-transparent border-b border-transparent pt-2.5 sm:pt-3 lg:pt-3.5 pb-1'
-              : 'bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] pt-2.5 sm:pt-3 lg:pt-3.5 pb-1.5',
+              ? 'bg-transparent border-b border-transparent pt-3 sm:pt-4 lg:pt-4 pb-2'
+              : 'bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] pt-3 sm:pt-4 lg:pt-4 pb-2',
         )}
       >
-        <Container className="relative flex h-14 items-center justify-between gap-6 lg:h-16">
-          {/* Brand Logo — switch tone based on scroll state */}
-          <Logo tone={isDarkHero ? 'dark' : 'light'} />
+        <Container
+          className={cn(
+            'relative flex items-center justify-between gap-6 transition-all duration-300',
+            scrolled ? 'h-16 lg:h-18' : 'h-18 sm:h-20 lg:h-22',
+          )}
+        >
+          {/* Brand Logo — switch tone and responsive scale based on scroll state */}
+          <Logo tone={isDarkHero ? 'dark' : 'light'} size={scrolled ? 'md' : 'lg'} />
 
           {/* Desktop Nav Items */}
           <nav aria-label="Primary" className="hidden lg:block">

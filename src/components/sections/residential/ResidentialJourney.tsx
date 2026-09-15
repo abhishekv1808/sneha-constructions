@@ -39,7 +39,7 @@ export function ResidentialJourney() {
                   src={item.frame}
                   alt={item.alt}
                   fill
-                  quality={85}
+                  quality={80}
                   sizes="(min-width: 1024px) 62vw, 100vw"
                   aria-hidden={index !== stage}
                   className={`object-cover transition-opacity duration-500 ease-out ${
