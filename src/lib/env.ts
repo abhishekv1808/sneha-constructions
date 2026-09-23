@@ -8,6 +8,12 @@ const envSchema = z.object({
   LEAD_NOTIFY_EMAIL: z.email(),
   REVALIDATE_SECRET: z.string().min(16),
   NEXT_PUBLIC_SITE_URL: z.url(),
+  // Optional: GA4 is off (no script, no events) until this is set. The format
+  // check also makes it safe to interpolate into the inline gtag snippet.
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: z
+    .string()
+    .regex(/^G-[A-Z0-9]+$/, 'must look like G-XXXXXXXXXX')
+    .optional(),
 })
 
 // Next inlines NEXT_PUBLIC_* by literal reference only, so process.env cannot be
@@ -20,6 +26,7 @@ const parsed = envSchema.safeParse({
   LEAD_NOTIFY_EMAIL: process.env.LEAD_NOTIFY_EMAIL,
   REVALIDATE_SECRET: process.env.REVALIDATE_SECRET,
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || undefined,
 })
 
 if (!parsed.success) {

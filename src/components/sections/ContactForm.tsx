@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form'
 import { Button, Input, Select, Textarea } from '@/components/ui'
 import { contact, whatsappUrl } from '@/content'
 import { leadFormSchema, SERVICE_TYPES, type LeadFormInput } from '@/lib/validation'
+import { recordLeadConversion } from '@/lib/analytics'
 
 /**
  * §11 — the contact form. This is one of the few client components in the
@@ -51,7 +52,7 @@ export function ContactForm() {
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, source: 'Contact Form' }),
       })
 
       const result = await response.json()
@@ -65,6 +66,7 @@ export function ContactForm() {
         return
       }
 
+      recordLeadConversion('Contact Form')
       setStatus('success')
       reset()
     } catch {

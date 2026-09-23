@@ -225,6 +225,21 @@
     calc(320ms + var(--hero-card-index, 0) * 80ms) both;
 }
 
+/* Hero slideshow timer. The bar's animationend advances the slide, so pausing
+   the animation (hover, focus) pauses the slideshow with no JS timer. */
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@utility animate-hero-progress {
+  animation: hero-progress 6500ms linear both;
+}
+
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
@@ -249,6 +264,15 @@
 
 @utility animate-marquee {
   animation: marquee-scroll 25s linear infinite;
+}
+
+@utility animate-marquee-brands {
+  animation: marquee-scroll 60s linear infinite;
+}
+
+/* Second brand row runs the other way for a woven, two-lane feel. */
+@utility animate-marquee-brands-reverse {
+  animation: marquee-scroll 60s linear infinite reverse;
 }
 
 @utility animate-marquee-buildings {

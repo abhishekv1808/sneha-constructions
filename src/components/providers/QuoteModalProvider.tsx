@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
 
+import { AnalyticsEvent, trackEvent } from '@/lib/analytics'
+
 export interface QuoteModalInitialData {
   serviceType?: string
   plotDimensions?: string
@@ -31,6 +33,7 @@ export function QuoteModalProvider({ children }: { children: ReactNode }) {
   const openQuoteModal = useCallback((data?: QuoteModalInitialData) => {
     setInitialData(data || {})
     setIsOpen(true)
+    trackEvent(AnalyticsEvent.QuoteFormOpen, { form_source: data?.source ?? 'unknown' })
   }, [])
 
   const closeQuoteModal = useCallback(() => {

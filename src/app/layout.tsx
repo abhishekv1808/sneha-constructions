@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cinzel, Cormorant_Garamond, Noto_Sans_Kannada, Outfit, Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google'
 
+import { Analytics } from '@/components/analytics/Analytics'
 import { SmoothScroll } from '@/components/layout'
 import { env } from '@/lib/env'
 
@@ -95,6 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </a>
           {children}
         </SmoothScroll>
+        <Analytics measurementId={env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       </body>
     </html>
   )

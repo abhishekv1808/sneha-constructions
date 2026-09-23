@@ -12,6 +12,7 @@ export {
   pillars,
   processSteps,
   serviceAreas,
+  trustStats,
   services,
   site,
   socialLinks,

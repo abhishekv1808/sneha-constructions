@@ -18,6 +18,7 @@ import {
 } from 'lucide-react'
 import { useQuoteModal } from '@/components/providers/QuoteModalProvider'
 import { contact, site, whatsappUrl } from '@/content'
+import { recordLeadConversion } from '@/lib/analytics'
 
 const PROJECT_TYPES = [
   { id: 'Duplex Villa', label: 'Duplex Villa', icon: Home, desc: 'G+1 modern architectural home' },
@@ -172,6 +173,7 @@ export function QuickQuoteModal() {
         throw new Error(result.error || 'Failed to submit enquiry. Please try again.')
       }
 
+      recordLeadConversion(initialData.source || 'Quick Quote Modal')
       setIsSuccess(true)
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Network error. Please try again or call us directly.'

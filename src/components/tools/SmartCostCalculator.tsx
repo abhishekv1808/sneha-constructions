@@ -23,6 +23,7 @@ import {
 import { formatINR } from '@/lib/utils/format'
 import { useQuoteModal } from '@/components/providers/QuoteModalProvider'
 import { site, whatsappUrl } from '@/content'
+import { recordLeadConversion } from '@/lib/analytics'
 
 interface PlotPreset {
   id: string
@@ -211,6 +212,7 @@ Please send me the itemized BOQ (Bill of Quantities) PDF and schedule a free sit
       }
 
       // Success
+      recordLeadConversion('Cost Calculator Teaser Gate')
       setIsUnlocked(true)
       try {
         localStorage.setItem('sneha_estimate_unlocked', 'true')

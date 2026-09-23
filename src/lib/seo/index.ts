@@ -1,2 +1,1 @@
-// metadata.ts, jsonld.ts — Phase 6.
-export {}
+export { localBusinessJsonLd, serializeJsonLd } from './jsonld'

@@ -47,6 +47,22 @@ export function whatsappUrl(message?: string): string {
   return message ? `${base}?text=${encodeURIComponent(message)}` : base
 }
 
+/**
+ * Hero trust figures. Only claims the site already makes elsewhere, or facts we
+ * can count ourselves — no invented statistics (CLAUDE.md §14).
+ *   - 250+ homes: repeated in About, VideoBand and services copy — CONFIRM with client.
+ *   - 5-year structural warranty: from the package comparison — CONFIRM with client.
+ *   - 5 towns: the service-area list below.
+ *   - 12 brands: the logos in public/brands.
+ * Years in business is deliberately absent: the site says both 15+ and 25+.
+ */
+export const trustStats = [
+  { value: 250, suffix: '+', label: 'Homes delivered' },
+  { value: 5, suffix: '-yr', label: 'Structural warranty' },
+  { value: 5, suffix: '', label: 'Towns served' },
+  { value: 12, suffix: '', label: 'Trusted material brands' },
+] as const
+
 export const serviceAreas = [
   { slug: 'tumkur', name: 'Tumkur' },
   { slug: 'gubbi', name: 'Gubbi' },

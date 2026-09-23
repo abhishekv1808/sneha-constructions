@@ -45,16 +45,16 @@ export function Header() {
         className={cn(
           'fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-out',
           scrolled
-            ? 'bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] py-1.5'
+            ? 'border-b border-slate-200/60 bg-white/70 py-1 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] backdrop-blur-md'
             : isDarkHero
-              ? 'bg-transparent border-b border-transparent pt-3 sm:pt-4 lg:pt-4 pb-2'
-              : 'bg-white/70 backdrop-blur-md border-b border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] pt-3 sm:pt-4 lg:pt-4 pb-2',
+              ? 'border-b border-transparent bg-transparent py-1.5'
+              : 'border-b border-slate-200/60 bg-white/70 py-1.5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] backdrop-blur-md',
         )}
       >
         <Container
           className={cn(
             'relative flex items-center justify-between gap-6 transition-all duration-300',
-            scrolled ? 'h-16 lg:h-18' : 'h-18 sm:h-20 lg:h-22',
+            scrolled ? 'h-14 lg:h-16' : 'h-16 sm:h-18 lg:h-20',
           )}
         >
           {/* Brand Logo — switch tone and responsive scale based on scroll state */}
@@ -114,7 +114,7 @@ export function Header() {
             {/* Desktop Primary CTA Button */}
             <Link
               href="/contact"
-              className="group hidden lg:inline-flex items-center rounded-full bg-[#CE1C73] pl-5 pr-1.5 py-1.5 text-[0.875rem] font-bold text-white shadow-md shadow-[#CE1C73]/20 transition-all duration-200 hover:bg-[#B81564] hover:shadow-lg hover:shadow-[#CE1C73]/30"
+              className="group hidden items-center rounded-full bg-[#CE1C73] py-1.5 pr-1.5 pl-5 text-[0.875rem] font-bold text-white shadow-md shadow-[#CE1C73]/20 transition-all duration-200 hover:bg-[#B81564] hover:shadow-lg hover:shadow-[#CE1C73]/30 lg:inline-flex"
             >
               <span>Get In Touch</span>
               <span className="ml-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#CE1C73] shadow-sm transition-transform duration-200 group-hover:translate-x-0.5">
@@ -143,10 +143,7 @@ export function Header() {
       </header>
 
       {drawerOpen && (
-        <MobileDrawer
-          onClose={() => setDrawerOpen(false)}
-          triggerRef={menuButtonRef}
-        />
+        <MobileDrawer onClose={() => setDrawerOpen(false)} triggerRef={menuButtonRef} />
       )}
     </>
   )

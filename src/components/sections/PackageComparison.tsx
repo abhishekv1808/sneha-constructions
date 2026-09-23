@@ -47,11 +47,14 @@ const PACKAGES: PackageData[] = [
     completionTime: '8 – 10 Months',
     specs: {
       steelCement: 'JSW / Kamdhenu FE-550D TMT rebar + Ultratech / ACC 53-Grade OPC cement',
-      doorsWindows: 'Honne wood main frame, flush internal doors, 2-track aluminium sliding windows',
+      doorsWindows:
+        'Honne wood main frame, flush internal doors, 2-track aluminium sliding windows',
       flooring: 'Double-charged 2×2 vitrified tiles (₹60/sqft allowance) + anti-skid ceramic baths',
       plumbingSanitary: 'Astral CPVC piping, Cera / Parryware sanitary fixtures with chrome taps',
-      electrical: 'Finolex / Anchor fire-retardant wiring, Roma modular switches, separate AC points',
-      paintingWaterproofing: 'Birla White putty + Asian Paints Tractor Emulsion inside, Apex exterior coat',
+      electrical:
+        'Finolex / Anchor fire-retardant wiring, Roma modular switches, separate AC points',
+      paintingWaterproofing:
+        'Birla White putty + Asian Paints Tractor Emulsion inside, Apex exterior coat',
     },
   },
   {
@@ -64,11 +67,16 @@ const PACKAGES: PackageData[] = [
     completionTime: '10 – 12 Months',
     specs: {
       steelCement: '100% Primary Tata Tiscon FE-550D Super Ductile + Ultratech 53-Grade OPC',
-      doorsWindows: '1st-Quality Burma Teakwood main door (5×3 frame), 3-track soundproof UPVC windows with mosquito mesh',
-      flooring: 'Large format 4×2 vitrified tiles by Kajaria / Somany (₹95/sqft) + designer tile bathrooms',
-      plumbingSanitary: 'Astral SDR-11 CPVC, Jaquar / Kohler concealed diverters & wall-hung commodes',
-      electrical: 'Polycab FR-LSH wiring, Legrand / Schneider modular switches, EV car charger conduit',
-      paintingWaterproofing: 'Asian Paints Royale Luxury interior emulsion, Apex Ultima exterior weather barrier + Dr. Fixit waterproofing',
+      doorsWindows:
+        '1st-Quality Burma Teakwood main door (5×3 frame), 3-track soundproof UPVC windows with mosquito mesh',
+      flooring:
+        'Large format 4×2 vitrified tiles by Kajaria / Somany (₹95/sqft) + designer tile bathrooms',
+      plumbingSanitary:
+        'Astral SDR-11 CPVC, Jaquar / Kohler concealed diverters & wall-hung commodes',
+      electrical:
+        'Polycab FR-LSH wiring, Legrand / Schneider modular switches, EV car charger conduit',
+      paintingWaterproofing:
+        'Asian Paints Royale Luxury interior emulsion, Apex Ultima exterior weather barrier + Dr. Fixit waterproofing',
     },
   },
   {
@@ -80,11 +88,16 @@ const PACKAGES: PackageData[] = [
     completionTime: '12 – 14 Months',
     specs: {
       steelCement: 'Tata Tiscon FE-550D + Ultratech WeatherPlus water-repellent cement',
-      doorsWindows: 'Custom 8ft carved Burma Teak pivoting main door, German soundproof UPVC / Aluminium acoustic systems',
-      flooring: 'Imported Italian Marble in living/dining or 6×4 slab tiles (₹175/sqft allowance) + wooden laminate master bedroom',
-      plumbingSanitary: 'Grohe / Kohler premium sensor faucets, freestanding bathtub provision, pressurized pump system',
-      electrical: 'Smart automation ready wiring, Schneider digital touch switches, automated gate conduit',
-      paintingWaterproofing: 'Asian Paints Royale Aspire / PU wood polish, Apex Ultima Protek with 10-Year warranty + membrane waterproofing',
+      doorsWindows:
+        'Custom 8ft carved Burma Teak pivoting main door, German soundproof UPVC / Aluminium acoustic systems',
+      flooring:
+        'Imported Italian Marble in living/dining or 6×4 slab tiles (₹175/sqft allowance) + wooden laminate master bedroom',
+      plumbingSanitary:
+        'Grohe / Kohler premium sensor faucets, freestanding bathtub provision, pressurized pump system',
+      electrical:
+        'Smart automation ready wiring, Schneider digital touch switches, automated gate conduit',
+      paintingWaterproofing:
+        'Asian Paints Royale Aspire / PU wood polish, Apex Ultima Protek with 10-Year warranty + membrane waterproofing',
     },
   },
 ]
@@ -123,8 +136,9 @@ export function PackageComparison() {
           <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Compare Our Construction Packages
           </h2>
-          <p className="mt-3 text-sm text-slate-600 sm:text-base leading-relaxed">
-            Every material brand is contractually itemized before you sign. Zero hidden extras, zero surprise rate hikes during construction.
+          <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+            Every material brand is contractually itemized before you sign. Zero hidden extras, zero
+            surprise rate hikes during construction.
           </p>
 
           {/* Toggle view between Cards and Detailed Matrix */}
@@ -174,16 +188,14 @@ export function PackageComparison() {
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <h3 className="font-display text-xl font-bold text-slate-900">
-                      {pkg.name}
-                    </h3>
+                    <h3 className="font-display text-xl font-bold text-slate-900">{pkg.name}</h3>
                     <span className="flex items-center gap-1 text-[11px] font-semibold text-slate-500">
                       <Clock size={13} />
                       {pkg.completionTime}
                     </span>
                   </div>
 
-                  <p className="mt-2 text-xs text-slate-500 leading-relaxed min-h-[36px]">
+                  <p className="mt-2 min-h-[36px] text-xs leading-relaxed text-slate-500">
                     {pkg.tagline}
                   </p>
 
@@ -202,36 +214,46 @@ export function PackageComparison() {
 
                   {/* Highlights */}
                   <div className="mt-6 space-y-3">
-                    <p className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                    <p className="text-xs font-bold tracking-wider text-slate-800 uppercase">
                       Key Inclusions:
                     </p>
                     <ul className="space-y-2.5 text-xs text-slate-600">
                       <li className="flex items-start gap-2.5">
-                        <Check size={16} className="shrink-0 text-[#CE1C73] mt-0.5" />
-                        <span><strong>Steel &amp; Cement:</strong> {pkg.specs.steelCement.split('+')[0]}</span>
+                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                        <span>
+                          <strong>Steel &amp; Cement:</strong> {pkg.specs.steelCement.split('+')[0]}
+                        </span>
                       </li>
                       <li className="flex items-start gap-2.5">
-                        <Check size={16} className="shrink-0 text-[#CE1C73] mt-0.5" />
-                        <span><strong>Main Door:</strong> {pkg.specs.doorsWindows.split(',')[0]}</span>
+                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                        <span>
+                          <strong>Main Door:</strong> {pkg.specs.doorsWindows.split(',')[0]}
+                        </span>
                       </li>
                       <li className="flex items-start gap-2.5">
-                        <Check size={16} className="shrink-0 text-[#CE1C73] mt-0.5" />
-                        <span><strong>Flooring:</strong> {pkg.specs.flooring.split('+')[0]}</span>
+                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                        <span>
+                          <strong>Flooring:</strong> {pkg.specs.flooring.split('+')[0]}
+                        </span>
                       </li>
                       <li className="flex items-start gap-2.5">
-                        <Check size={16} className="shrink-0 text-[#CE1C73] mt-0.5" />
-                        <span><strong>Plumbing:</strong> {pkg.specs.plumbingSanitary.split(',')[0]}</span>
+                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                        <span>
+                          <strong>Plumbing:</strong> {pkg.specs.plumbingSanitary.split(',')[0]}
+                        </span>
                       </li>
                       <li className="flex items-start gap-2.5">
-                        <Check size={16} className="shrink-0 text-[#CE1C73] mt-0.5" />
-                        <span><strong>Electrical:</strong> {pkg.specs.electrical.split(',')[0]}</span>
+                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                        <span>
+                          <strong>Electrical:</strong> {pkg.specs.electrical.split(',')[0]}
+                        </span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
                 {/* Card Actions */}
-                <div className="mt-8 space-y-2.5 pt-4 border-t border-slate-100">
+                <div className="mt-8 space-y-2.5 border-t border-slate-100 pt-4">
                   <Link
                     href={`/estimate?pkg=${pkg.id}`}
                     className={`flex w-full items-center justify-center gap-2 rounded-full py-3 text-xs font-bold transition-all ${
@@ -247,7 +269,7 @@ export function PackageComparison() {
                   <button
                     type="button"
                     onClick={() => handleBookConsultation(pkg)}
-                    className="w-full text-center text-xs font-semibold text-slate-500 hover:text-[#CE1C73] transition-colors py-1"
+                    className="w-full py-1 text-center text-xs font-semibold text-slate-500 transition-colors hover:text-[#CE1C73]"
                   >
                     Request Detailed Material BOQ →
                   </button>
@@ -263,9 +285,11 @@ export function PackageComparison() {
             <table className="w-full min-w-[700px] border-collapse text-left text-xs">
               <thead>
                 <tr className="border-b border-slate-200 bg-slate-50/80">
-                  <th className="p-4 sm:p-5 font-bold text-slate-700 w-1/4">Specification Component</th>
+                  <th className="w-1/4 p-4 font-bold text-slate-700 sm:p-5">
+                    Specification Component
+                  </th>
                   {PACKAGES.map((pkg) => (
-                    <th key={pkg.id} className="p-4 sm:p-5 font-bold text-slate-900 w-1/4">
+                    <th key={pkg.id} className="w-1/4 p-4 font-bold text-slate-900 sm:p-5">
                       <div className="flex items-center justify-between">
                         <span>{pkg.name}</span>
                         <span className="font-display text-sm font-extrabold text-[#CE1C73]">
@@ -278,24 +302,24 @@ export function PackageComparison() {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {COMPARISON_ROWS.map((row) => (
-                  <tr key={row.key} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="p-4 sm:p-5 font-bold text-slate-800 bg-slate-50/30">
+                  <tr key={row.key} className="transition-colors hover:bg-slate-50/50">
+                    <td className="bg-slate-50/30 p-4 font-bold text-slate-800 sm:p-5">
                       {row.label}
                     </td>
                     {PACKAGES.map((pkg) => (
-                      <td key={pkg.id} className="p-4 sm:p-5 text-slate-600 leading-relaxed">
+                      <td key={pkg.id} className="p-4 leading-relaxed text-slate-600 sm:p-5">
                         {pkg.specs[row.key]}
                       </td>
                     ))}
                   </tr>
                 ))}
                 <tr className="bg-slate-50/60">
-                  <td className="p-4 sm:p-5 font-bold text-slate-800">Action</td>
+                  <td className="p-4 font-bold text-slate-800 sm:p-5">Action</td>
                   {PACKAGES.map((pkg) => (
                     <td key={pkg.id} className="p-4 sm:p-5">
                       <Link
                         href={`/estimate?pkg=${pkg.id}`}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-[#CE1C73] px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-[#B81564] transition-all"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-[#CE1C73] px-4 py-2 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#B81564]"
                       >
                         <Calculator size={13} />
                         <span>Estimate {pkg.name}</span>
@@ -320,14 +344,15 @@ export function PackageComparison() {
                   5-Year Structural RCC Warranty + 3-Year Free Maintenance
                 </h4>
                 <p className="mt-1 text-xs text-slate-300">
-                  Legally drafted into your agreement. We stand behind every pillar, beam, and waterproofing coat we build.
+                  Legally drafted into your agreement. We stand behind every pillar, beam, and
+                  waterproofing coat we build.
                 </p>
               </div>
             </div>
 
             <Link
               href="/estimate"
-              className="group flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3 text-xs font-bold text-slate-900 shadow-md hover:bg-slate-100 transition-all"
+              className="group flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3 text-xs font-bold text-slate-900 shadow-md transition-all hover:bg-slate-100"
             >
               <span>Calculate Your Build Cost Now</span>
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />

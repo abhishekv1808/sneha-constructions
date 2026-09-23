@@ -52,10 +52,9 @@ export function Logo({
       <div
         className={cn(
           'flex items-center transition-all duration-200 group-hover:scale-[1.02]',
-          currentSize.container,
           tone === 'dark'
-            ? 'bg-white shadow-md ring-1 ring-white/20 group-hover:bg-white group-hover:shadow-lg'
-            : 'bg-white shadow-sm ring-1 ring-slate-200/80 group-hover:shadow-md',
+            ? cn('bg-white', currentSize.container)
+            : 'bg-transparent',
           containerClassName,
         )}
       >

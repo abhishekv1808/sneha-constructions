@@ -3,7 +3,8 @@ import type { Metadata } from 'next'
 
 import { ContactForm } from '@/components/sections/ContactForm'
 import { Container, Rule } from '@/components/ui'
-import { contact, serviceAreas, site } from '@/content'
+import { contact, serviceAreas } from '@/content'
+import { localBusinessJsonLd, serializeJsonLd } from '@/lib/seo'
 
 // §12: unique title and description. Title pattern matches the root template.
 export const metadata: Metadata = {
@@ -29,36 +30,7 @@ export default function ContactPage() {
       {/* JSON-LD — §12: LocalBusiness on the contact page with full NAP. */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': ['LocalBusiness', 'GeneralContractor'],
-            name: site.name,
-            description: site.positioning,
-            telephone: contact.phoneDisplay,
-            email: contact.email,
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: contact.address.street,
-              addressLocality: contact.address.locality,
-              addressRegion: contact.address.region,
-              postalCode: contact.address.postalCode,
-              addressCountry: contact.address.country,
-            },
-            geo: {
-              '@type': 'GeoCoordinates',
-              latitude: 13.3379,
-              longitude: 77.1173,
-            },
-            openingHours: 'Mo-Sa 09:00-21:00',
-            areaServed: serviceAreas.map((area) => ({
-              '@type': 'City',
-              name: area.name,
-            })),
-            priceRange: `From ₹${site.baseRateSqft}/sq ft`,
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(localBusinessJsonLd()) }}
       />
 
       <section className="bg-plaster-100 py-24 md:py-32 lg:py-40">

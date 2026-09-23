@@ -7,16 +7,10 @@ import {
   Check,
   CheckCircle2,
   ChevronRight,
-  HelpCircle,
-  Home,
   Layers,
-  Lock,
   MapPin,
   MessageCircle,
-  Phone,
   Ruler,
-  ShieldCheck,
-  Sparkles,
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -174,16 +168,10 @@ Please confirm engineer site visit availability and send the itemized material s
     <div className="w-full max-w-md mx-auto lg:max-w-none rounded-3xl border border-white/20 bg-slate-950/80 p-5 sm:p-6 backdrop-blur-xl shadow-2xl text-white">
       {/* 1. Header & Urgency Badge */}
       <div className="flex items-center justify-between border-b border-white/10 pb-4">
-        <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#CE1C73]/20 border border-[#CE1C73]/40 px-2.5 py-0.5 text-[11px] font-semibold text-[#FF65A8] uppercase tracking-wider">
-            <Sparkles className="h-3 w-3" />
-            <span>Instant Cost Calculator</span>
-          </div>
-          <h2 className="mt-1 font-display text-lg sm:text-xl font-bold text-white tracking-tight">
-            Estimate Your Dream Home
-          </h2>
-        </div>
-        <div className="text-right hidden sm:block">
+        <h2 className="font-display text-lg sm:text-xl font-bold text-white tracking-tight">
+          Estimate your build cost
+        </h2>
+        <div className="text-right">
           <span className="text-[10px] text-slate-400 block uppercase tracking-wider">Starting at</span>
           <span className="font-display text-base font-extrabold text-[#FFCC00]">
             ₹{site.baseRateSqft}
@@ -239,7 +227,7 @@ Please confirm engineer site visit availability and send the itemized material s
       )}
 
       {/* 3. Stepper Content */}
-      <div className="mt-5 min-h-[220px]">
+      <div className="mt-5 min-h-[180px]">
         {!isSubmitted ? (
           <>
             {/* STEP 1: Locality Selection */}
@@ -261,16 +249,6 @@ Please confirm engineer site visit availability and send the itemized material s
                       </option>
                     ))}
                   </select>
-                  <p className="mt-2 text-[11px] text-slate-400">
-                    We construct turnkey homes with full municipal plan approvals across Tumkur district.
-                  </p>
-                </div>
-
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-xs text-slate-300 flex items-start gap-2.5">
-                  <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>
-                    Fixed price contracts backed by original brand batch invoices (Tata Tiscon &amp; Ultratech).
-                  </span>
                 </div>
 
                 <button
@@ -574,15 +552,6 @@ Please confirm engineer site visit availability and send the itemized material s
             </div>
           </div>
         )}
-      </div>
-
-      {/* 4. Footer Trust Guarantee */}
-      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
-        <span className="flex items-center gap-1">
-          <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-          <span>100% Transparent Billing</span>
-        </span>
-        <span>Tumkur&apos;s #1 Builder</span>
       </div>
     </div>
   )

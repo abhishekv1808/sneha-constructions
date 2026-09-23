@@ -44,4 +44,5 @@ export const legalLinks: readonly NavChild[] = [
 // Routes whose first section is a full-bleed photograph the header floats over
 // (§8.1, §8.2). Everywhere else the header is opaque from the first pixel and
 // the layout reserves its height.
-export const heroRoutes: ReadonlySet<string> = new Set(['/', '/services/residential'])
+// The home hero is now a light, framed photograph with dark type — not listed.
+export const heroRoutes: ReadonlySet<string> = new Set(['/services/residential'])

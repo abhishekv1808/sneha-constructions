@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 
 import { Footer, Header, MobileActionBar } from '@/components/layout'
 import { QuoteModalProvider } from '@/components/providers/QuoteModalProvider'
+import { ExitIntentModal } from '@/components/modals/ExitIntentModal'
 import { QuickQuoteModal } from '@/components/modals/QuickQuoteModal'
 import { FloatingActionWidget } from '@/components/ui/FloatingActionWidget'
 
@@ -14,6 +15,7 @@ export default function MarketingLayout({ children }: { children: ReactNode }) {
       <MobileActionBar />
       <FloatingActionWidget />
       <QuickQuoteModal />
+      <ExitIntentModal />
     </QuoteModalProvider>
   )
 }
