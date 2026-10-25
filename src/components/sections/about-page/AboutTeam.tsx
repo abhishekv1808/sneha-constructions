@@ -56,15 +56,12 @@ export function AboutTeam() {
       <Container>
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 font-secondary text-xs sm:text-[0.8125rem] font-bold tracking-[0.18em] text-[#CE1C73] uppercase">
-            <span
-              aria-hidden="true"
-              className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]"
-            />
+          <div className="inline-flex items-center gap-2 font-secondary text-xs font-bold tracking-[0.18em] text-[#CE1C73] uppercase sm:text-[0.8125rem]">
+            <span aria-hidden="true" className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]" />
             OUR LEADERSHIP &amp; ENGINEERS
           </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 font-display text-3xl leading-[1.18] font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             The structural minds dedicated to building your home
           </h2>
 
@@ -101,10 +98,10 @@ export function AboutTeam() {
                   <h3 className="font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-ink-950">
                     {member.name}
                   </h3>
-                  <p className="mt-1 text-xs font-semibold text-[#CE1C73] uppercase tracking-wider">
+                  <p className="mt-1 text-xs font-semibold tracking-wider text-[#CE1C73] uppercase">
                     {member.role}
                   </p>
-                  <p className="mt-1 text-[0.6875rem] text-slate-400 font-mono">
+                  <p className="mt-1 font-mono text-[0.6875rem] text-slate-400">
                     {member.education}
                   </p>
                 </div>
