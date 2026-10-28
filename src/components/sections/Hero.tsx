@@ -1,21 +1,14 @@
 'use client'
 
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BadgeCheck,
-  Home,
-  MapPin,
-  Phone,
-  ShieldCheck,
-} from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { ArrowRight, BadgeCheck, Home, MapPin, Phone, ShieldCheck } from 'lucide-react'
+import { getImageProps } from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import { preload } from 'react-dom'
 
-import heroIndianDuplex from '@/assets/hero/hero-indian-duplex.jpg'
+import heroVilla from '@/assets/hero/hero-villa-clear-sky.webp'
+import heroVillaPortrait from '@/assets/hero/hero-villa-clear-sky-portrait.webp'
 import { useQuoteModal } from '@/components/providers/QuoteModalProvider'
-import { contact, site, trustStats } from '@/content'
+import { contact, serviceAreas, site, trustStats } from '@/content'
 import { cn } from '@/lib/utils/cn'
 
 /**
@@ -66,100 +59,144 @@ function StatNumber({ value }: { value: number }) {
 /** One icon per trust figure, in the order of `trustStats`. */
 const STAT_ICONS = [Home, ShieldCheck, MapPin, BadgeCheck] as const
 
+/**
+ * The sky behind the copy. Deep blue where the white text sits (≥4.5:1, WCAG
+ * AA), easing to #5c87b0 — the photograph's own sky colour along its top edge.
+ * The photo is pulled up underneath this and fades in over that colour, so the
+ * CSS sky and the photographed sky read as one.
+ */
+const SKY = 'bg-[linear-gradient(180deg,#163f6b_0%,#1f4f80_45%,#2a5c8c_100%)]'
+
+const HERO_ALT =
+  '3D front elevation of a modern two-storey villa with wood-panelled bays, glass balconies and a landscaped front garden, designed by Sneha Construction'
+
+/** Breakpoint where the wide (16:9) photo takes over from the portrait (9:16) one. */
+const WIDE_MEDIA = '(min-width: 640px)'
+const PORTRAIT_MEDIA = '(max-width: 639px)'
+
+/*
+ * Art direction: one <img> inside a <picture>, so each device downloads only
+ * its own image — a CSS-hidden second <img> would still be fetched. Computed
+ * once at module level; the inputs are static imports.
+ */
+const imageBase = { alt: HERO_ALT, fill: true, sizes: '100vw', quality: 85 } as const
+const { props: wideImg } = getImageProps({ ...imageBase, src: heroVilla })
+const { props: portraitImg } = getImageProps({
+  ...imageBase,
+  src: heroVillaPortrait,
+  loading: 'eager',
+  fetchPriority: 'high',
+})
+
 export function Hero() {
   const { openQuoteModal } = useQuoteModal()
 
+  // The hero photo is the LCP element. getImageProps emits no preload, so
+  // preload each variant for its own breakpoint only (React hoists these
+  // into <head> during SSR).
+  preload(wideImg.src, {
+    as: 'image',
+    imageSrcSet: wideImg.srcSet,
+    imageSizes: wideImg.sizes,
+    media: WIDE_MEDIA,
+    fetchPriority: 'high',
+  })
+  preload(portraitImg.src, {
+    as: 'image',
+    imageSrcSet: portraitImg.srcSet,
+    imageSizes: portraitImg.sizes,
+    media: PORTRAIT_MEDIA,
+    fetchPriority: 'high',
+  })
+
   return (
-    <section data-track-location="hero" className="bg-plaster-50 px-2.5 pt-[5.5rem] pb-4 sm:px-4 sm:pt-24 lg:px-5 lg:pt-[6.5rem]">
-      {/* ------------------------------------------------------------ Framed photo */}
-      <div className="relative isolate flex flex-col overflow-hidden rounded-[24px] bg-gradient-to-b from-white to-plaster-100 ring-1 ring-plaster-200 sm:rounded-[32px] lg:h-[calc(100svh-7.5rem)] lg:max-h-[880px] lg:min-h-[720px]">
-        {/* Copy — centred on a clean sky, like a caption above the building */}
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-5 pt-12 text-center sm:pt-16 lg:pt-16">
-          <p className="flex items-center gap-3 font-secondary text-xs font-bold tracking-[0.2em] text-brand-500 uppercase sm:text-[0.8125rem]">
-            <span aria-hidden="true" className="hidden h-px w-12 bg-brand-500/40 sm:block" />
-            {site.tagline}
-            <span aria-hidden="true" className="hidden h-px w-12 bg-brand-500/40 sm:block" />
-          </p>
+    <section data-track-location="hero" className="relative isolate overflow-hidden bg-plaster-50">
+      {/* Phones: one full-height frame with the portrait photo behind the copy
+          (the copy sits on the photo's own sky). sm+: the wide photo is pulled
+          up under a CSS sky, see below. */}
+      <div className="relative min-h-[max(760px,100svh)] sm:min-h-0">
+        {/* ── Sky + copy ─────────────────────────────────────────────────── */}
+        {/* Paint order: sky (this wrapper's background, sm+ only) → photo (next
+          sibling) → copy (z-10, above both). */}
+        <div className={cn('relative', 'max-sm:bg-none', SKY)}>
+          <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-5 pt-28 pb-10 text-center sm:pt-36 lg:pt-36 lg:pb-12">
+            <p className="flex items-center gap-2 font-secondary text-[0.8125rem] font-medium text-white/85">
+              <MapPin aria-hidden="true" size={14} className="text-white/70" />
+              {serviceAreas.map((area) => area.name).join(' · ')}
+            </p>
 
-          <h1 className="mt-4 font-display text-[clamp(2.25rem,5.4vw,4.75rem)] leading-[1.02] font-semibold tracking-[-0.035em] text-slate-900">
-            Your Dream Home,
-            <br />
-            Built to Last
-          </h1>
+            <h1 className="mt-5 font-display text-[clamp(2.5rem,5.4vw,4.75rem)] leading-[1.04] font-medium tracking-[-0.035em] text-white">
+              Your dream home,
+              <br />
+              built to last
+            </h1>
 
-          <p className="mt-5 max-w-[46ch] animate-hero-support text-base leading-relaxed text-slate-700 sm:text-lg">
-            Residential, commercial and turnkey construction across Tumkur — premium materials,
-            transparent pricing and on-time handover.
-          </p>
+            <p className="mt-6 max-w-[48ch] animate-hero-support text-base leading-relaxed text-white sm:text-lg">
+              Turnkey construction from{' '}
+              <strong className="font-semibold text-white tabular-nums">
+                ₹{site.baseRateSqft.toLocaleString('en-IN')}/sq ft
+              </strong>{' '}
+              — premium materials, transparent pricing and on-time handover, by one team.
+            </p>
 
-          <div className="mt-8 flex animate-hero-support flex-wrap items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={() => openQuoteModal({ source: 'Hero Main CTA' })}
-              className="inline-flex min-h-12 items-center gap-3 rounded-full bg-brand-500 py-1.5 pr-1.5 pl-6 font-secondary text-[0.9375rem] font-semibold text-white shadow-lg shadow-brand-500/30 transition-colors duration-150 hover:bg-brand-600"
-            >
-              Get a free quote
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand-500">
-                <ArrowRight aria-hidden="true" size={17} strokeWidth={2.25} />
-              </span>
-            </button>
-            <a
-              href={contact.phoneHref}
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-slate-900/15 bg-white/80 px-6 font-secondary text-[0.9375rem] font-semibold text-slate-900 backdrop-blur-md transition-colors duration-150 hover:bg-white"
-            >
-              <Phone aria-hidden="true" size={17} strokeWidth={1.75} />
-              <span className="tabular-nums">{contact.phoneDisplay}</span>
-            </a>
+            <div className="mt-8 flex animate-hero-support flex-wrap items-center justify-center gap-x-6 gap-y-4">
+              <button
+                type="button"
+                onClick={() => openQuoteModal({ source: 'Hero Main CTA' })}
+                className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-ink-950 py-1.5 pr-1.5 pl-6 font-secondary text-[0.9375rem] font-semibold text-white shadow-[0_12px_32px_-8px_rgb(3_20_36/0.55)] transition-colors duration-150 hover:bg-ink-900"
+              >
+                Get a free quote
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 transition-colors duration-150 group-hover:bg-brand-400">
+                  <ArrowRight aria-hidden="true" size={17} strokeWidth={2.25} />
+                </span>
+              </button>
+
+              {/* Hidden on phones: the header call button and the mobile action
+                  bar already put "Call" one tap away, and here it would sit on
+                  the portrait's pale lower sky. */}
+              <a
+                href={contact.phoneHref}
+                className="hidden min-h-12 items-center gap-2 font-secondary text-[0.9375rem] font-semibold text-white underline-offset-4 transition-colors duration-150 hover:underline sm:inline-flex"
+              >
+                <Phone aria-hidden="true" size={17} strokeWidth={1.75} />
+                <span className="tabular-nums">{contact.phoneDisplay}</span>
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* The house: anchored to the bottom, its sky fading into the frame's */}
-        <div className="relative -mt-8 h-[340px] [mask-image:linear-gradient(to_bottom,transparent,black_32%)] sm:-mt-12 sm:h-[440px] lg:-mt-24 lg:h-auto lg:flex-1">
-          <Image
-            src={heroIndianDuplex}
-            alt="Modern duplex house with a garden and pool, built by Sneha Construction in Tumkur"
-            fill
-            priority
-            sizes="100vw"
-            quality={90}
-            placeholder="blur"
-            className="object-cover object-[center_62%]"
+        {/* ── The house ──────────────────────────────────────────────────── */}
+        {/* Phones: fills the frame behind the copy, anchored to the bottom so the
+          sky crops first and the villa (roof at ~60% of the portrait) stays whole.
+          sm+: pulled up under the copy so the roofline lands ~110px below the
+          buttons — the roof is ~42% down the 16:9 photo, i.e. 23.6vw at full
+          width — its top fading in over the matching CSS sky. */}
+        <div className="absolute inset-0 sm:relative sm:inset-auto sm:-mt-[calc(23.6vw-110px)] sm:aspect-video sm:[mask-image:linear-gradient(to_bottom,transparent,black_22%)]">
+          <picture>
+            <source media={WIDE_MEDIA} srcSet={wideImg.srcSet} sizes={wideImg.sizes} />
+            <img
+              {...portraitImg}
+              alt={HERO_ALT}
+              className="object-cover object-[50%_100%] sm:object-[44%_100%]"
+            />
+          </picture>
+          {/* Sky tint: keeps the photo's pale upper sky deep blue behind the copy
+            (white text stays ≥4.5:1), clearing before the roofline. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[58%] bg-[linear-gradient(180deg,rgb(31_79_128)_0%,rgb(42_92_140/0.92)_70%,rgb(42_92_140/0.45)_88%,transparent_100%)] sm:h-[40%] sm:bg-[linear-gradient(180deg,rgb(42_92_140)_0%,rgb(42_92_140/0.95)_60%,rgb(42_92_140/0.55)_85%,transparent_100%)]"
+          />
+          {/* Bottom fade into the page — the house dissolving into the content */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[14%] bg-gradient-to-b from-transparent via-plaster-50/70 to-plaster-50 sm:h-[18%]"
           />
         </div>
-
-        {/* Floating rate card — bottom-right, over the garden */}
-        <Link
-          href="/estimate"
-          className="group absolute right-4 bottom-20 hidden w-64 animate-hero-card items-center gap-4 rounded-2xl bg-white/95 p-4 shadow-2xl shadow-ink-950/25 backdrop-blur-md transition-colors duration-150 hover:bg-white md:flex lg:right-6 lg:bottom-24"
-        >
-          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-50 font-display text-2xl font-bold text-brand-500">
-            ₹
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block font-secondary text-xs font-medium text-slate-600">
-              Turnkey from
-            </span>
-            <span className="block font-display text-2xl leading-tight font-bold text-slate-900 tabular-nums">
-              ₹{site.baseRateSqft.toLocaleString('en-IN')}
-              <span className="ml-1 font-secondary text-xs font-medium text-slate-600">
-                / sq ft
-              </span>
-            </span>
-            <span className="mt-0.5 block font-secondary text-xs font-semibold text-brand-500">
-              Estimate your cost
-            </span>
-          </span>
-          <ArrowUpRight
-            aria-hidden="true"
-            size={18}
-            className="shrink-0 text-slate-400 transition-colors duration-150 group-hover:text-brand-500"
-          />
-        </Link>
       </div>
 
-      {/* --------------------------------------------- Trust bar, overlapping the frame */}
-      <div className="relative z-10 mx-auto -mt-14 max-w-5xl px-3 sm:-mt-16">
-        <ul className="grid animate-hero-card grid-cols-2 overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_-20px_rgb(3_20_36/0.25)] ring-1 ring-plaster-200 md:grid-cols-4">
+      {/* ── Trust figures, rising out of the fade ──────────────────────── */}
+      <div className="relative z-10 mx-auto -mt-10 max-w-5xl px-4 pb-6 sm:-mt-14 lg:-mt-16">
+        <ul className="grid animate-hero-card grid-cols-2 overflow-hidden rounded-2xl bg-white/90 shadow-[0_24px_60px_-24px_rgb(3_20_36/0.3)] ring-1 ring-plaster-200 backdrop-blur-md md:grid-cols-4">
           {trustStats.map((stat, i) => {
             const Icon = STAT_ICONS[i] ?? BadgeCheck
             return (

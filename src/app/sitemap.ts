@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 
 import { materials, services } from '@/content'
 import { posts } from '@/content/blog-data'
+import { frontElevations } from '@/content/front-elevations'
 import { env } from '@/lib/env'
 
 /**
@@ -16,7 +17,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const url = (path: string) => `${env.NEXT_PUBLIC_SITE_URL}${path}`
 
   const pages: MetadataRoute.Sitemap = [
-    { url: url('/'), changeFrequency: 'weekly', priority: 1 },
+    {
+      url: url('/'),
+      changeFrequency: 'weekly',
+      priority: 1,
+      // Image sitemap entries: the home page's front elevation designs, so
+      // Google Images can discover them (image.src is site-relative).
+      images: frontElevations.map((elevation) => url(elevation.image.src)),
+    },
     { url: url('/estimate'), changeFrequency: 'monthly', priority: 0.9 },
     { url: url('/contact'), changeFrequency: 'yearly', priority: 0.9 },
     { url: url('/services'), changeFrequency: 'monthly', priority: 0.8 },

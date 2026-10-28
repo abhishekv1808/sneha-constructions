@@ -76,7 +76,7 @@ export function MobileDrawer({
       aria-label="Site menu"
       className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-white text-slate-900 lg:hidden"
     >
-      <div className="flex h-18 shrink-0 items-center justify-between px-5 border-b border-slate-100">
+      <div className="flex h-18 shrink-0 items-center justify-between border-b border-slate-100 px-5">
         <Logo tone="light" />
         <button
           type="button"
@@ -95,7 +95,7 @@ export function MobileDrawer({
               <Link
                 href={item.href}
                 onClick={onClose}
-                className="block py-4 text-heading-3 text-slate-900 hover:text-[#CE1C73] transition-colors"
+                className="block py-4 text-heading-3 text-slate-900 transition-colors hover:text-[#CE1C73]"
               >
                 {item.label}
               </Link>
@@ -106,7 +106,7 @@ export function MobileDrawer({
                       <Link
                         href={child.href}
                         onClick={onClose}
-                        className="block py-2 text-body-sm text-slate-600 hover:text-[#CE1C73] transition-colors"
+                        className="block py-2 text-body-sm text-slate-600 transition-colors hover:text-[#CE1C73]"
                       >
                         {child.label}
                       </Link>
@@ -118,7 +118,11 @@ export function MobileDrawer({
           ))}
         </ul>
 
-        <Button href="/contact" onClick={onClose} className="mt-8 w-full bg-[#CE1C73] text-white hover:bg-[#B81564]">
+        <Button
+          href="/contact"
+          onClick={onClose}
+          className="mt-8 w-full bg-[#CE1C73] text-white hover:bg-[#B81564]"
+        >
           Get a free quote
         </Button>
       </nav>
@@ -127,14 +131,14 @@ export function MobileDrawer({
       <div className="mt-auto shrink-0 border-t border-slate-200 bg-slate-50 px-5 py-6">
         <a
           href={contact.phoneHref}
-          className="flex items-center gap-3 py-2 text-heading-4 text-slate-900 hover:text-[#CE1C73] transition-colors"
+          className="flex items-center gap-3 py-2 text-heading-4 text-slate-900 transition-colors hover:text-[#CE1C73]"
         >
           <Phone size={20} strokeWidth={1.8} aria-hidden="true" className="text-[#CE1C73]" />
           {contact.phoneDisplay}
         </a>
         <a
           href={contact.emailHref}
-          className="flex items-center gap-3 py-2 text-body-sm text-slate-600 hover:text-[#CE1C73] transition-colors"
+          className="flex items-center gap-3 py-2 text-body-sm text-slate-600 transition-colors hover:text-[#CE1C73]"
         >
           <Mail size={20} strokeWidth={1.8} aria-hidden="true" className="text-[#CE1C73]" />
           {contact.email}

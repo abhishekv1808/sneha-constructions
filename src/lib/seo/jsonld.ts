@@ -3,6 +3,7 @@
 // NAP across pages and against the Google Business Profile).
 
 import { contact, serviceAreas, site, socialLinks } from '@/content'
+import { frontElevations } from '@/content/front-elevations'
 import { env } from '@/lib/env'
 
 /**
@@ -45,6 +46,42 @@ export function localBusinessJsonLd() {
     priceRange: `From ₹${site.baseRateSqft.toLocaleString('en-IN')}/sq ft`,
     // Empty until the client supplies real profiles (§2) — never placeholders.
     ...(socialLinks.length > 0 && { sameAs: socialLinks.map((link) => link.href) }),
+  }
+}
+
+/** Absolute URL for a site-relative path (static image imports are site-relative). */
+const absolute = (path: string) => new URL(path, env.NEXT_PUBLIC_SITE_URL).href
+
+/**
+ * `ImageGallery` of the front elevation designs on the home page. Credits the
+ * business as creator so Google Images can attribute them (and show the
+ * credit line) instead of treating them as anonymous stock.
+ */
+export function frontElevationGalleryJsonLd() {
+  const business = { '@id': `${env.NEXT_PUBLIC_SITE_URL}/#business` }
+  const year = new Date().getFullYear()
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    name: `Front elevation designs by ${site.name}`,
+    description:
+      '3D front elevation designs for duplex, narrow-plot and multi-storey homes, created by the in-house design team at Sneha Construction & Developers, Tumkur.',
+    url: env.NEXT_PUBLIC_SITE_URL,
+    creator: business,
+    associatedMedia: frontElevations.map((elevation) => ({
+      '@type': 'ImageObject',
+      name: elevation.title,
+      description: elevation.alt,
+      contentUrl: absolute(elevation.image.src),
+      width: elevation.image.width,
+      height: elevation.image.height,
+      encodingFormat: 'image/webp',
+      creator: business,
+      creditText: site.name,
+      copyrightHolder: business,
+      copyrightNotice: `© ${year} ${site.name}`,
+    })),
   }
 }
 

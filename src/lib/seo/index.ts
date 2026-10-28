@@ -1,1 +1,1 @@
-export { localBusinessJsonLd, serializeJsonLd } from './jsonld'
+export { frontElevationGalleryJsonLd, localBusinessJsonLd, serializeJsonLd } from './jsonld'
