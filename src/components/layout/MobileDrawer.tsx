@@ -16,6 +16,7 @@ const FOCUSABLE =
  * Full-screen ink drawer — §8.1. Mounted only while open, so the effect
  * teardown is what returns focus to the hamburger (§13).
  */
+
 export function MobileDrawer({
   onClose,
   triggerRef,
@@ -60,7 +61,6 @@ export function MobileDrawer({
     }
 
     document.addEventListener('keydown', onKeyDown)
-
     return () => {
       document.removeEventListener('keydown', onKeyDown)
       document.body.style.overflow = overflow
