@@ -50,7 +50,7 @@ export function whatsappUrl(message?: string): string {
 /**
  * Hero trust figures. Only claims the site already makes elsewhere, or facts we
  * can count ourselves — no invented statistics (CLAUDE.md §14).
- *   - 250+ homes: repeated in About, VideoBand and services copy — CONFIRM with client.
+ *   - 250+ homes: repeated in About and services copy — CONFIRM with client.
  *   - 5-year structural warranty: from the package comparison — CONFIRM with client.
  *   - 5 towns: the service-area list below.
  *   - 12 brands: the logos in public/brands.

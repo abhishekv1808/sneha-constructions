@@ -11,11 +11,9 @@ import {
   Marquee,
   PackageComparison,
   ProjectsShowcase,
-  PromiseVsRealitySlider,
   Services,
   Testimonials,
   TumkurCoverageExplorer,
-  VideoBand,
 } from '@/components/sections'
 import { localBusinessJsonLd, serializeJsonLd } from '@/lib/seo'
 
@@ -66,6 +64,10 @@ export default function HomePage() {
       {/* Breather band — resets attention before social proof */}
       <Marquee />
 
+      {/* Brands the visitor already trusts — borrowed credibility before the
+          testimonials */}
+      <BrandLogos />
+
       {/* People like me, from towns I know, vouch for them */}
       <Testimonials />
 
@@ -76,13 +78,7 @@ export default function HomePage() {
       {/* What each rate actually includes — removes "hidden cost" fear */}
       <PackageComparison />
 
-      {/* Branded materials behind those prices */}
-      <BrandLogos />
-
       {/* ── 5. QUALITY ────────────────────────────────────────────────────── */}
-      {/* "Will it look like the 3D render?" — render vs. real handover */}
-      <PromiseVsRealitySlider />
-
       {/* How a drawing becomes a house — process confidence */}
       <ArchitecturalEvolution />
 
@@ -92,9 +88,6 @@ export default function HomePage() {
       {/* ── 6. SOFT CATCH ─────────────────────────────────────────────────── */}
       {/* Not ready to call? Take the free guide on WhatsApp instead */}
       <ConstructionGuideLeadMagnet />
-
-      {/* Company story for the visitor who reads everything */}
-      <VideoBand />
 
       {/* ── 7. OBJECTIONS ─────────────────────────────────────────────────── */}
       <FaqSection />

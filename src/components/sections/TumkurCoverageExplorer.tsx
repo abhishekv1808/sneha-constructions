@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import {
   MapPin,
-  Compass,
   Layers,
   ShieldCheck,
   CheckCircle2,
@@ -125,11 +124,7 @@ export function TumkurCoverageExplorer() {
       <Container>
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#CE1C73]/20 bg-[#CE1C73]/10 px-3.5 py-1 text-xs font-bold tracking-wider text-[#CE1C73] uppercase">
-            <Compass size={14} />
-            <span>Hyper-Local Civil Expertise · Tumkur District</span>
-          </div>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             We Build Across Tumkur
           </h2>
           <p className="mt-3 text-sm text-slate-600 sm:text-base leading-relaxed">

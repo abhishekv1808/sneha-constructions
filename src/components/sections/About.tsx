@@ -1,131 +1,114 @@
-import { ArrowRight, Award, CheckCircle2, ShieldCheck, Users } from 'lucide-react'
+import { ArrowRight, Clock, HardHat, ReceiptText, ShieldCheck } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import aboutImage from '@/assets/about/about-engineers.jpg'
 import { Container } from '@/components/ui'
+import { site } from '@/content'
+
+/** The four pillars from the brand vision (CLAUDE.md §2), each with one plain line. */
+const PILLARS = [
+  {
+    icon: ShieldCheck,
+    title: 'Premium materials',
+    text: 'Branded cement, steel and fittings, with the bills to show for it.',
+  },
+  {
+    icon: ReceiptText,
+    title: 'Transparent pricing',
+    text: 'An itemised quote before work starts, so there are no surprises later.',
+  },
+  {
+    icon: Clock,
+    title: 'On-time delivery',
+    text: 'Clear milestones from foundation to handover, and updates at every stage.',
+  },
+  {
+    icon: HardHat,
+    title: 'In-house engineers & architects',
+    text: 'Design, structure and site supervision by one team.',
+  },
+] as const
 
 export function About() {
   return (
-    <section id="about" className="relative overflow-hidden bg-white py-24 sm:py-32">
+    <section id="about" aria-labelledby="about-heading" className="bg-white py-24 sm:py-32">
       <Container>
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Left Column: Image Collage & Experience Badge */}
-          <div className="relative lg:col-span-6">
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-[24px] shadow-2xl lg:max-w-none">
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-20">
+          {/* ── Photo ──────────────────────────────────────────────────── */}
+          <div className="relative lg:col-span-5">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl lg:aspect-[4/5] bg-plaster-100">
+              {/* Placeholder: a generic site photo, not Sneha's team. Swap for
+                  real on-site photography when the client supplies it (§2). */}
               <Image
                 src={aboutImage}
-                alt="Sneha Construction engineers reviewing architectural blueprints on site"
+                alt="Two site engineers in hard hats reviewing drawings in front of a two-storey house under construction"
                 fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover transition-transform duration-700 hover:scale-105"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                placeholder="blur"
+                className="object-cover object-[45%_50%]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent" />
             </div>
 
-            {/* Overlapping Floating Stat Badge */}
-            <div className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:right-6 flex items-center gap-4 rounded-[18px] bg-white p-5 text-slate-900 shadow-2xl border border-slate-200/90">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#CE1C73] text-white shadow-md">
-                <Award size={24} strokeWidth={2.2} />
-              </div>
-              <div>
-                <p className="font-display text-2xl font-semibold leading-none text-slate-900">25+ Years</p>
-                <p className="mt-1 text-xs text-slate-500 font-medium">Of Proven Construction Mastery</p>
-              </div>
+            {/* The offer the business runs on, pinned to the photo */}
+            <div className="absolute -bottom-6 left-6 rounded-2xl bg-white px-5 py-4 shadow-[0_12px_32px_-8px_rgb(19_26_36/0.18)] ring-1 ring-plaster-200 sm:left-8">
+              <p className="font-secondary text-xs font-medium text-slate-600">
+                Turnkey homes from
+              </p>
+              <p className="mt-0.5 font-display text-2xl font-semibold text-slate-900 tabular-nums">
+                ₹{site.baseRateSqft.toLocaleString('en-IN')}
+                <span className="text-base font-medium text-slate-600"> / sq ft</span>
+              </p>
             </div>
           </div>
 
-          {/* Right Column: Narrative & Key Value Points */}
-          <div className="lg:col-span-6">
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 font-secondary text-xs sm:text-[0.8125rem] font-bold tracking-[0.16em] text-[#CE1C73] uppercase">
-              <span
-                aria-hidden="true"
-                className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]"
-              />
-              ABOUT US
-            </div>
-
-            {/* Heading */}
-            <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-              Redefining the future of construction through{' '}
-              <span className="font-playfair italic">design excellence</span>
+          {/* ── Story ──────────────────────────────────────────────────── */}
+          <div className="lg:col-span-7">
+            <p className="inline-flex items-center gap-2 font-secondary text-[0.8125rem] font-semibold text-brand-500">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+              About us
+            </p>
+            <h2
+              id="about-heading"
+              className="mt-3 max-w-[20ch] font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.08] font-semibold tracking-[-0.02em] text-slate-900"
+            >
+              A Tumkur builder you can sit across the table from
             </h2>
-
-            {/* Lead Narrative */}
-            <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Based in Tumkur, Sneha Construction &amp; Developers unites visionary residential
-              architecture with rigorous engineering standards. From modern duplexes and sprawling
-              villas to turnkey family estates, we craft homes that stand the test of time.
+            <p className="mt-6 max-w-[58ch] text-base leading-relaxed text-slate-600 sm:text-lg">
+              Every building begins with a dream. From duplexes and villas to schools and offices,
+              our engineers, architects and craftsmen build it with premium materials, honest
+              pricing and a handover date we keep.
             </p>
 
-            {/* 3 Pillars Checkpoints */}
-            <div className="mt-8 space-y-4">
-              <div className="flex items-start gap-3.5">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#CE1C73]/15 text-[#CE1C73]">
-                  <CheckCircle2 size={18} className="text-[#CE1C73]" />
-                </div>
-                <div>
-                  <h4 className="font-display text-base font-semibold text-slate-900">
-                    Architectural Precision &amp; 3D Modeling
-                  </h4>
-                  <p className="text-sm text-slate-600">
-                    Comprehensive site planning, vastu-compliant layouts, and realistic 3D
-                    visualizations before breaking ground.
-                  </p>
-                </div>
-              </div>
+            <ul className="mt-10 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+              {PILLARS.map(({ icon: Icon, title, text }) => (
+                <li key={title} className="flex gap-4 border-t border-plaster-200 py-5">
+                  <Icon
+                    aria-hidden="true"
+                    size={22}
+                    strokeWidth={1.5}
+                    className="mt-0.5 shrink-0 text-brand-500"
+                  />
+                  <div>
+                    <h3 className="font-display text-base font-semibold text-slate-900">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{text}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
-              <div className="flex items-start gap-3.5">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#CE1C73]/15 text-[#CE1C73]">
-                  <ShieldCheck size={18} className="text-[#CE1C73]" />
-                </div>
-                <div>
-                  <h4 className="font-display text-base font-semibold text-slate-900">
-                    Premium Sourced Construction Materials
-                  </h4>
-                  <p className="text-sm text-slate-600">
-                    Only certified high-grade cement, FE-550D TMT steel, and kiln-burned bricks for
-                    uncompromising load safety.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3.5">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#CE1C73]/15 text-[#CE1C73]">
-                  <Users size={18} className="text-[#CE1C73]" />
-                </div>
-                <div>
-                  <h4 className="font-display text-base font-semibold text-slate-900">
-                    Transparent Turnkey Execution
-                  </h4>
-                  <p className="text-sm text-slate-600">
-                    Clear milestones from foundation to key handover with zero surprise costs and
-                    guaranteed timelines.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTAs and Metrics Row */}
-            <div className="mt-10 flex flex-wrap items-center gap-6">
-              <Link
-                href="/about"
-                className="group inline-flex items-center rounded-full bg-[#CE1C73] pl-6 pr-2 py-1.5 text-[0.9375rem] font-bold text-white shadow-md shadow-[#CE1C73]/20 transition-all duration-200 hover:bg-[#B81564] hover:shadow-lg"
-              >
-                <span>Learn More About Us</span>
-                <span className="ml-3.5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#CE1C73] transition-transform duration-200 group-hover:translate-x-1">
-                  <ArrowRight size={16} strokeWidth={2.5} />
-                </span>
-              </Link>
-
-              <div className="flex items-center gap-3 border-l border-slate-200 pl-6">
-                <div>
-                  <p className="font-display text-2xl font-semibold text-slate-900">250+</p>
-                  <p className="text-xs font-medium text-slate-500">Completed Builds</p>
-                </div>
-              </div>
-            </div>
+            <Link
+              href="/about"
+              className="group mt-8 inline-flex min-h-11 items-center gap-2 font-secondary text-[0.9375rem] font-semibold text-slate-900 underline-offset-4 hover:underline"
+            >
+              More about us
+              <ArrowRight
+                aria-hidden="true"
+                size={17}
+                strokeWidth={2}
+                className="text-brand-500 transition-transform duration-150 group-hover:translate-x-0.5"
+              />
+            </Link>
           </div>
         </div>
       </Container>

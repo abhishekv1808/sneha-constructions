@@ -240,6 +240,32 @@
   animation: hero-progress 6500ms linear both;
 }
 
+/* Testimonials autoplay: one bar per review fills while it is highlighted, and
+   its animationend advances to the next — pausing the animation pauses the
+   rotation, with no JS timer. */
+@utility animate-testimonial-timer {
+  animation: hero-progress 5000ms linear both;
+}
+
+/* Stars on the highlighted review pop in one after another. */
+@keyframes star-pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@utility animate-star-pop {
+  animation: star-pop 360ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--star-index, 0) * 60ms) both;
+}
+
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
