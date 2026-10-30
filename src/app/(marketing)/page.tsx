@@ -12,8 +12,8 @@ import {
   PackageComparison,
   ProjectsShowcase,
   Services,
+  SiteProgress,
   Testimonials,
-  TumkurCoverageExplorer,
 } from '@/components/sections'
 import { localBusinessJsonLd, serializeJsonLd } from '@/lib/seo'
 
@@ -58,8 +58,8 @@ export default function HomePage() {
       {/* Who they are: a real company with engineers and a way of working */}
       <About />
 
-      {/* "They build near me" — the strongest trust signal for this audience */}
-      <TumkurCoverageExplorer />
+      {/* Real sites mid-build — proof the work is theirs, not renders */}
+      <SiteProgress />
 
       {/* Breather band — resets attention before social proof */}
       <Marquee />
