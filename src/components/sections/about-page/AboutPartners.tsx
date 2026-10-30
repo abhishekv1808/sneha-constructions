@@ -45,7 +45,7 @@ const partners = [
 
 export function AboutPartners() {
   return (
-    <section className="relative bg-white py-24 text-slate-900 sm:py-32 border-t border-slate-200">
+    <section className="relative bg-white py-16 text-slate-900 sm:py-24 lg:py-32 border-t border-slate-200">
       <Container>
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
@@ -54,11 +54,11 @@ export function AboutPartners() {
             CERTIFIED MATERIAL PARTNERS
           </div>
 
-          <h2 className="mt-4 font-display text-3xl leading-[1.18] font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 font-display text-[1.625rem] leading-[1.18] font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Built with India’s most trusted structural brands
           </h2>
 
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-4 text-[0.9375rem] text-slate-600 sm:text-lg">
             We never cut corners with unbranded or commercial-grade substitutes. Every consignment
             is inspected on arrival with manufacturer test certificates.
           </p>

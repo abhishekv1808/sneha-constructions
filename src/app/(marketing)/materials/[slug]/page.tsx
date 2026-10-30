@@ -95,7 +95,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
             <span className="truncate text-brand-500">{material.name}</span>
           </nav>
 
-          <h1 className="mt-7 max-w-[16ch] font-display text-4xl leading-[1.08] font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          <h1 className="mt-7 max-w-[16ch] font-display text-[2rem] leading-[1.08] font-semibold tracking-tight text-slate-900 sm:text-5xl">
             {material.name}
           </h1>
 

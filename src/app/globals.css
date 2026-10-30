@@ -126,7 +126,7 @@
 
 @utility text-display-2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.05;
@@ -504,5 +504,17 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Phones: iOS Safari zooms the whole page into any form field whose text is
+   under 16px, and does not zoom back out. Many forms here use text-xs/text-sm,
+   so every text field is held at 16px below sm. Unlayered on purpose — it has
+   to beat Tailwind's utilities layer. */
+@media (max-width: 639px) {
+  input:not([type='range'], [type='checkbox'], [type='radio'], [type='button'], [type='submit']),
+  select,
+  textarea {
+    font-size: 16px;
   }
 }

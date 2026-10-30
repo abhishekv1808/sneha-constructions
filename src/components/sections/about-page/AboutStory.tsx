@@ -6,7 +6,7 @@ import { Container } from '@/components/ui'
 
 export function AboutStory() {
   return (
-    <section className="relative bg-white py-24 sm:py-32">
+    <section className="relative bg-white py-16 sm:py-24 lg:py-32">
       <Container>
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Visual Asset & Floating Badges */}
@@ -50,11 +50,11 @@ export function AboutStory() {
               OUR STORY &amp; PHILOSOPHY
             </div>
 
-            <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem]">
+            <h2 className="mt-4 font-display text-[1.625rem] font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem]">
               Rooted in Tumkur, engineered to inspire and endure
             </h2>
 
-            <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mt-6 text-[0.9375rem] leading-relaxed text-slate-600 sm:text-lg">
               Founded over 25 years ago in Tumkur, Sneha Construction &amp; Developers began with a
               clear conviction: home construction should be a celebrated milestone, not an agonizing
               journey plagued by hidden escalation, sub-par concrete, or fragmented contractor delays.

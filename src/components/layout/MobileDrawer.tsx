@@ -88,25 +88,25 @@ export function MobileDrawer({
         </button>
       </div>
 
-      <nav aria-label="Site" className="flex-1 px-5 pb-12">
+      <nav aria-label="Site" className="flex-1 px-5 pb-6">
         <ul className="flex flex-col">
           {primaryNav.map((item) => (
             <li key={item.href} className="border-b border-slate-200">
               <Link
                 href={item.href}
                 onClick={onClose}
-                className="block py-4 text-heading-3 text-slate-900 transition-colors hover:text-[#CE1C73]"
+                className="flex min-h-12 items-center py-2 font-display text-lg font-semibold text-slate-900 transition-colors hover:text-[#CE1C73]"
               >
                 {item.label}
               </Link>
               {item.children ? (
-                <ul className="flex flex-col gap-1 pb-4">
+                <ul className="grid grid-cols-2 gap-x-4 pb-3">
                   {item.children.map((child) => (
                     <li key={child.href}>
                       <Link
                         href={child.href}
                         onClick={onClose}
-                        className="block py-2 text-body-sm text-slate-600 transition-colors hover:text-[#CE1C73]"
+                        className="flex min-h-11 items-center text-sm leading-snug text-slate-600 transition-colors hover:text-[#CE1C73]"
                       >
                         {child.label}
                       </Link>
@@ -121,14 +121,14 @@ export function MobileDrawer({
         <Button
           href="/contact"
           onClick={onClose}
-          className="mt-8 w-full bg-[#CE1C73] text-white hover:bg-[#B81564]"
+          className="mt-6 w-full bg-[#CE1C73] text-white hover:bg-[#B81564]"
         >
           Get a free quote
         </Button>
       </nav>
 
       {/* Phone and address pinned to the bottom of the drawer */}
-      <div className="mt-auto shrink-0 border-t border-slate-200 bg-slate-50 px-5 py-6">
+      <div className="mt-auto shrink-0 border-t border-slate-200 bg-slate-50 px-5 py-4">
         <a
           href={contact.phoneHref}
           className="flex items-center gap-3 py-2 text-heading-4 text-slate-900 transition-colors hover:text-[#CE1C73]"

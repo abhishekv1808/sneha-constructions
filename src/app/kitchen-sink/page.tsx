@@ -30,7 +30,7 @@ export default function KitchenSinkPage() {
       {/* ---------------------------------------------------------------- */}
       {/* Light surface — plaster                                          */}
       {/* ---------------------------------------------------------------- */}
-      <section className="bg-plaster-100 py-24">
+      <section className="bg-plaster-100 py-16 sm:py-24">
         <Container>
           <p className="text-meta text-slate-600">Sneha Construction &amp; Developers</p>
           <h1 className="mt-2 text-display-2">UI primitives</h1>
@@ -218,7 +218,7 @@ export default function KitchenSinkPage() {
       {/* ---------------------------------------------------------------- */}
       {/* Dark surface — ink                                               */}
       {/* ---------------------------------------------------------------- */}
-      <section className="bg-ink-900 py-24 on-ink">
+      <section className="bg-ink-900 py-16 sm:py-24 on-ink">
         <Container>
           <h2 className="text-display-2 text-white">On ink</h2>
           <p className="mt-4 max-w-[68ch] text-body-lg text-slate-400">

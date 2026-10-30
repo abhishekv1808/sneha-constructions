@@ -74,7 +74,7 @@ export default function BlogIndexPage() {
             <span aria-hidden className="inline-block h-2 w-2 rounded-[2px] bg-brand-500" />
             Guides
           </p>
-          <h1 className="mt-4 max-w-[20ch] font-display text-4xl leading-[1.06] font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          <h1 className="mt-4 max-w-[20ch] font-display text-[2rem] leading-[1.06] font-semibold tracking-tight text-slate-900 sm:text-5xl">
             Straight answers <span className="font-playfair italic">before you build</span>
           </h1>
           <p className="mt-5 max-w-xl font-secondary text-base leading-relaxed text-slate-600">
@@ -106,7 +106,7 @@ export default function BlogIndexPage() {
                   <span className="text-slate-500">{readingMinutes(featured)} min read</span>
                 </p>
 
-                <h2 className="mt-5 max-w-[20ch] font-display text-3xl leading-[1.1] font-semibold tracking-tight text-white sm:text-4xl">
+                <h2 className="mt-5 max-w-[20ch] font-display text-[1.625rem] leading-[1.1] font-semibold tracking-tight text-white sm:text-4xl">
                   {featured.title}
                 </h2>
 

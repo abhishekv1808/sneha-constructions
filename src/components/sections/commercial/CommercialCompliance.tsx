@@ -10,7 +10,7 @@ import { complianceSteps } from './commercial-data'
  */
 export function CommercialCompliance() {
   return (
-    <section className="relative bg-ink-950 py-20 sm:py-28">
+    <section className="relative bg-ink-950 py-14 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading
           tone="dark"

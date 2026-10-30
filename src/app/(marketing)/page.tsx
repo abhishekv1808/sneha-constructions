@@ -1,12 +1,10 @@
 import {
   About,
-  ArchitecturalEvolution,
   BrandLogos,
+  BuildBenefits,
   BuildingCarousel,
-  ConstructionGuideLeadMagnet,
   CtaBand,
   FaqSection,
-  FeaturesEstimator,
   Hero,
   Marquee,
   PackageComparison,
@@ -61,6 +59,9 @@ export default function HomePage() {
       {/* Real sites mid-build — proof the work is theirs, not renders */}
       <SiteProgress />
 
+      {/* Staged payments, one site engineer, WhatsApp updates — the day-to-day fears */}
+      <BuildBenefits />
+
       {/* Breather band — resets attention before social proof */}
       <Marquee />
 
@@ -72,22 +73,13 @@ export default function HomePage() {
       <Testimonials />
 
       {/* ── 4. COST ───────────────────────────────────────────────────────── */}
-      {/* Main lead capture: the visitor's own number, gated by contact details */}
-      <FeaturesEstimator />
-
-      {/* What each rate actually includes — removes "hidden cost" fear */}
+      {/* What each rate actually includes — removes "hidden cost" fear. Its
+          buttons lead to the full calculator on /estimate. */}
       <PackageComparison />
 
       {/* ── 5. QUALITY ────────────────────────────────────────────────────── */}
-      {/* How a drawing becomes a house — process confidence */}
-      <ArchitecturalEvolution />
-
       {/* More finished work, filterable by type, for the visitor still evaluating */}
       <ProjectsShowcase />
-
-      {/* ── 6. SOFT CATCH ─────────────────────────────────────────────────── */}
-      {/* Not ready to call? Take the free guide on WhatsApp instead */}
-      <ConstructionGuideLeadMagnet />
 
       {/* ── 7. OBJECTIONS ─────────────────────────────────────────────────── */}
       <FaqSection />

@@ -33,7 +33,7 @@ export function TurnkeyRateHero() {
             Turnkey · one contract
           </p>
 
-          <h1 className="mt-6 font-display text-4xl leading-[1.06] font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          <h1 className="mt-6 font-display text-[2rem] leading-[1.06] font-semibold tracking-tight text-slate-900 sm:text-5xl">
             Where every rupee <span className="font-playfair italic">actually goes</span>
           </h1>
 

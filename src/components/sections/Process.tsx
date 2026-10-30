@@ -19,13 +19,13 @@ import { ProcessLine } from './ProcessLine'
  */
 export function Process() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#FAFAF8] py-24 md:py-32 lg:py-40 border-t border-slate-200">
+    <section className="relative isolate overflow-hidden border-t border-slate-200 bg-[#FAFAF8] py-16 md:py-32 lg:py-40">
       <Container className="relative">
-        <div className="grid grid-cols-12 gap-6 lg:gap-8">
-          <div className="col-span-12 lg:col-span-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-6">
             <h2 className="max-w-[18ch] text-display-2 text-slate-900">How we build</h2>
           </div>
-          <div className="col-span-12 lg:col-span-5 lg:col-start-8">
+          <div className="lg:col-span-5 lg:col-start-8">
             <p className="max-w-[52ch] text-body-lg text-slate-600">
               Six stages, in this order, on every project. You will know which one your build is in
               whenever you ask.
@@ -58,7 +58,7 @@ export function Process() {
                 {/* Fixed 24px slot so the rule can be centred on a token value
                     rather than a measured one. Carries the section background
                     so the vertical rail breaks cleanly behind it. */}
-                <p className="tabular z-10 flex h-6 w-6 shrink-0 items-center justify-center bg-[#FAFAF8] text-meta text-[#CE1C73] font-bold lg:bg-transparent">
+                <p className="tabular z-10 flex h-6 w-6 shrink-0 items-center justify-center bg-[#FAFAF8] text-meta font-bold text-[#CE1C73] lg:bg-transparent">
                   {String(index + 1).padStart(2, '0')}
                 </p>
                 <div className="lg:mt-6">

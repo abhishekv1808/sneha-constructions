@@ -35,7 +35,7 @@ export default async function MaterialsOverviewPage() {
             <span aria-hidden className="inline-block h-2 w-2 rounded-[2px] bg-brand-500" />
             Materials &amp; quality
           </p>
-          <h1 className="mt-4 max-w-[18ch] font-display text-4xl leading-[1.06] font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          <h1 className="mt-4 max-w-[18ch] font-display text-[2rem] leading-[1.06] font-semibold tracking-tight text-slate-900 sm:text-5xl">
             Ask what goes into the walls. <span className="font-playfair italic">We&apos;ll tell you.</span>
           </h1>
           <p className="mt-5 max-w-xl font-secondary text-base leading-relaxed text-slate-600">

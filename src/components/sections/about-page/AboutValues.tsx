@@ -1,11 +1,4 @@
-import {
-  Clock,
-  Compass,
-  FileCheck2,
-  HardHat,
-  Layers,
-  ShieldCheck,
-} from 'lucide-react'
+import { Clock, Compass, FileCheck2, HardHat, Layers, ShieldCheck } from 'lucide-react'
 
 import { Container } from '@/components/ui'
 
@@ -56,54 +49,53 @@ const values = [
 
 export function AboutValues() {
   return (
-    <section className="relative bg-[#FAFAF8] py-24 sm:py-32 text-slate-900 border-t border-slate-200">
+    <section className="relative border-t border-slate-200 bg-[#FAFAF8] py-16 text-slate-900 sm:py-24 lg:py-32">
       <Container className="relative z-10">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 font-secondary text-xs sm:text-[0.8125rem] font-bold tracking-[0.18em] text-[#CE1C73] uppercase">
-            <span
-              aria-hidden="true"
-              className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]"
-            />
+          <div className="inline-flex items-center gap-2 font-secondary text-xs font-bold tracking-[0.18em] text-[#CE1C73] uppercase sm:text-[0.8125rem]">
+            <span aria-hidden="true" className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]" />
             OUR ENGINEERING PILLARS
           </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 font-display text-[1.625rem] leading-[1.18] font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Built on non-negotiable principles of quality and trust
           </h2>
 
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-4 text-[0.9375rem] text-slate-600 sm:text-lg">
             Every home we build in Tumkur is supported by six structural commitments that protect
             your investment for generations.
           </p>
         </div>
 
         {/* Values 6-Card Grid */}
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-3 sm:mt-16 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {values.map((v, i) => {
             const Icon = v.icon
             return (
               <div
                 key={i}
-                className="group relative rounded-[22px] border border-slate-200/90 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#CE1C73]/50 hover:shadow-xl"
+                className="group relative flex gap-4 rounded-[22px] border border-slate-200/90 bg-white p-4 shadow-sm transition-all duration-300 hover:border-[#CE1C73]/50 hover:shadow-xl sm:block sm:p-8 sm:hover:-translate-y-1.5"
               >
                 {/* Top Row: Icon + Number */}
-                <div className="flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#CE1C73]/15 text-[#CE1C73] transition-colors duration-300 group-hover:bg-[#CE1C73] group-hover:text-white">
+                <div className="shrink-0 sm:flex sm:items-center sm:justify-between">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#CE1C73]/15 text-[#CE1C73] transition-colors duration-300 group-hover:bg-[#CE1C73] group-hover:text-white sm:h-12 sm:w-12">
                     <Icon size={24} strokeWidth={2} />
                   </div>
-                  <span className="font-mono text-xs font-bold tracking-widest text-slate-400">
+                  <span className="hidden font-mono text-xs font-bold tracking-widest text-slate-400 sm:inline">
                     {v.number}
                   </span>
                 </div>
 
                 {/* Content */}
-                <h3 className="mt-6 font-display text-lg font-bold text-slate-900 transition-colors group-hover:text-[#CE1C73]">
-                  {v.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  {v.description}
-                </p>
+                <div>
+                  <h3 className="font-display text-base font-bold text-slate-900 transition-colors group-hover:text-[#CE1C73] sm:mt-6 sm:text-lg">
+                    {v.title}
+                  </h3>
+                  <p className="mt-1 text-[0.8125rem] leading-relaxed text-slate-600 sm:mt-3 sm:text-sm">
+                    {v.description}
+                  </p>
+                </div>
               </div>
             )
           })}

@@ -11,7 +11,7 @@ export function TurnkeyPayments() {
   let cumulative = 0
 
   return (
-    <section className="relative bg-plaster-50 py-20 sm:py-28">
+    <section className="relative bg-plaster-50 py-14 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading
           eyebrow="Payments"

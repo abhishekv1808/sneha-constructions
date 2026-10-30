@@ -86,7 +86,7 @@ export default function TurnkeyPage() {
       <TurnkeySingleContract />
 
       {/* 6. Proof — the NRI owner, quoted plainly */}
-      <section className="relative bg-plaster-50 py-20 sm:py-28">
+      <section className="relative bg-plaster-50 py-14 sm:py-20 lg:py-28">
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-4">
@@ -112,10 +112,10 @@ export default function TurnkeyPage() {
       </section>
 
       {/* 7. CTA — WhatsApp-first. This audience is often on a different clock. */}
-      <section className="relative bg-ink-950 py-20 sm:py-24">
+      <section className="relative bg-ink-950 py-14 sm:py-24">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-3xl leading-[1.12] font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="font-display text-[1.625rem] leading-[1.12] font-semibold tracking-tight text-white sm:text-4xl">
               Tell us the plot size.{' '}
               <span className="font-playfair italic">We&apos;ll send the BOQ.</span>
             </h2>

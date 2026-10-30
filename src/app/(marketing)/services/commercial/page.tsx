@@ -79,7 +79,7 @@ export default function CommercialPage() {
 
       {/* 6. Proof — one client, quoted plainly. No project gallery until the
              client supplies genuine commercial photography (§14 Phase 0). */}
-      <section className="relative bg-white py-20 sm:py-28">
+      <section className="relative bg-white py-14 sm:py-20 lg:py-28">
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-4">
@@ -105,11 +105,11 @@ export default function CommercialPage() {
       </section>
 
       {/* 7. CTA — form-first. Commercial enquiries arrive with documents. */}
-      <section className="relative bg-ink-950 py-20 sm:py-24">
+      <section className="relative bg-ink-950 py-14 sm:py-24">
         <Container>
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-7">
-              <h2 className="font-display text-3xl leading-[1.12] font-semibold tracking-tight text-white sm:text-4xl">
+              <h2 className="font-display text-[1.625rem] leading-[1.12] font-semibold tracking-tight text-white sm:text-4xl">
                 Send us your plot dimensions{' '}
                 <span className="font-playfair italic">and intended use.</span>
               </h2>

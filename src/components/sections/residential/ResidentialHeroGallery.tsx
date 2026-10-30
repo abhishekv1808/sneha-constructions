@@ -96,7 +96,7 @@ export function ResidentialHeroGallery() {
             Residential · Tumkur district
           </p>
 
-          <h1 className="mt-5 font-display text-4xl leading-[1.05] font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
+          <h1 className="mt-5 font-display text-[2rem] leading-[1.05] font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
             Homes we built{' '}
             <span className="font-playfair italic">for families like yours</span>
           </h1>

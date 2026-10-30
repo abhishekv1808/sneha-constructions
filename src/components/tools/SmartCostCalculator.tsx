@@ -300,7 +300,7 @@ Please send me the itemized BOQ (Bill of Quantities) PDF and schedule a free sit
                     <span className={`font-display text-sm font-bold ${isSelected ? 'text-[#CE1C73]' : 'text-slate-800'}`}>
                       {plot.name}
                     </span>
-                    <span className="text-[10px] text-slate-500">
+                    <span className="text-[0.6875rem] text-slate-500">
                       {plot.plotArea > 0 ? `${plot.plotArea.toLocaleString('en-IN')} sqft` : 'Enter custom'}
                     </span>
                   </button>
@@ -386,7 +386,7 @@ Please send me the itemized BOQ (Bill of Quantities) PDF and schedule a free sit
                     }`}
                   >
                     {tier.popular && (
-                      <span className="absolute -top-2.5 right-3 rounded-full bg-[#CE1C73] px-2 py-0.5 text-[9px] font-black tracking-wider text-white uppercase shadow-xs">
+                      <span className="absolute -top-2.5 right-3 rounded-full bg-[#CE1C73] px-2 py-0.5 text-[0.6875rem] font-black tracking-wider text-white uppercase shadow-xs">
                         Popular
                       </span>
                     )}
@@ -434,7 +434,7 @@ Please send me the itemized BOQ (Bill of Quantities) PDF and schedule a free sit
                     <CheckCircle2 size={16} className="text-emerald-600" />
                     Estimate &amp; BOQ Unlocked for {userName || 'You'}
                   </span>
-                  <span className="text-[10px] text-emerald-700 uppercase font-bold tracking-wider">Verified</span>
+                  <span className="text-[0.6875rem] text-emerald-700 uppercase font-bold tracking-wider">Verified</span>
                 </div>
 
                 {/* Main Cost Headline */}
@@ -665,7 +665,7 @@ Please send me the itemized BOQ (Bill of Quantities) PDF and schedule a free sit
                     )}
                   </button>
 
-                  <p className="text-[10px] text-slate-400 text-center">
+                  <p className="text-[0.6875rem] text-slate-400 text-center">
                     🔒 Zero spam guarantee. Direct review by Sneha Civil Engineers.
                   </p>
                 </form>

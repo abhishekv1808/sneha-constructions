@@ -131,7 +131,7 @@ export function Hero() {
               built to last
             </h1>
 
-            <p className="mt-6 max-w-[48ch] animate-hero-support text-base leading-relaxed text-white sm:text-lg">
+            <p className="mt-6 max-w-[48ch] animate-hero-support text-[0.9375rem] leading-relaxed text-white sm:text-lg">
               Turnkey construction from{' '}
               <strong className="font-semibold text-white tabular-nums">
                 ₹{site.baseRateSqft.toLocaleString('en-IN')}/sq ft

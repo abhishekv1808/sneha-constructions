@@ -9,7 +9,7 @@ import { auditCategories, auditTotal, tradesHandled } from './turnkey-data'
  */
 export function TurnkeySingleContract() {
   return (
-    <section className="relative bg-white py-20 sm:py-28">
+    <section className="relative bg-white py-14 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading
           eyebrow="Why turnkey"

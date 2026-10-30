@@ -115,7 +115,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             {/* The ch cap belongs on the h1, not a wrapper: ch resolves against
                 the element's own font-size, so on the wrapper it measured at
                 body size and squeezed the title into six narrow lines. */}
-            <h1 className="mt-7 max-w-[18ch] font-display text-4xl leading-[1.08] font-semibold tracking-tight text-slate-900 sm:text-5xl">
+            <h1 className="mt-7 max-w-[18ch] font-display text-[2rem] leading-[1.08] font-semibold tracking-tight text-slate-900 sm:text-5xl">
               {post.title}
             </h1>
 

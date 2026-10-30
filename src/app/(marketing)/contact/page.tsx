@@ -33,15 +33,15 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(localBusinessJsonLd()) }}
       />
 
-      <section className="bg-plaster-100 py-24 md:py-32 lg:py-40">
+      <section className="bg-plaster-100 py-16 md:py-32 lg:py-40">
         <Container>
           {/* §8.4's pattern: left-aligned heading with a short intro in the
               right column, deliberate departure from centred rhythm. */}
-          <div className="grid grid-cols-12 gap-6 lg:gap-8">
-            <div className="col-span-12 lg:col-span-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-6">
               <h1 className="max-w-[18ch] text-display-2 text-slate-900">Get in touch</h1>
             </div>
-            <div className="col-span-12 lg:col-span-5 lg:col-start-8">
+            <div className="lg:col-span-5 lg:col-start-8">
               <p className="max-w-[52ch] text-body-lg text-slate-600">
                 Whether you&rsquo;re planning a new home, a commercial building or just have a
                 question — we&rsquo;re here. Call, visit or fill in the form and we&rsquo;ll get
@@ -53,9 +53,9 @@ export default function ContactPage() {
           <Rule className="mt-12 lg:mt-16" />
 
           {/* Main content: contact details + map (left), form (right). */}
-          <div className="mt-12 grid grid-cols-12 gap-12 lg:mt-16 lg:gap-8">
+          <div className="mt-10 grid grid-cols-1 gap-10 lg:mt-16 lg:grid-cols-12 lg:gap-8">
             {/* Left column — contact details and map. */}
-            <div className="col-span-12 lg:col-span-5">
+            <div className="lg:col-span-5">
               <address className="flex flex-col gap-6 not-italic">
                 <div className="flex gap-4">
                   <MapPin
@@ -144,7 +144,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right column — the form. */}
-            <div className="col-span-12 lg:col-span-6 lg:col-start-7">
+            <div className="lg:col-span-6 lg:col-start-7">
               <h2 className="text-heading-3 text-slate-900">Send us a message</h2>
               <p className="mt-3 text-body text-slate-600">
                 Phone is fastest — but if you prefer writing, we&rsquo;ll call you back.

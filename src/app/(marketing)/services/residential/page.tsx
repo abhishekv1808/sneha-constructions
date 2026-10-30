@@ -130,7 +130,7 @@ export default function ResidentialPage() {
 
         <Container className="relative z-10 py-20 sm:py-24">
           <div className="max-w-lg">
-            <h2 className="font-display text-3xl leading-[1.12] font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="font-display text-[1.625rem] leading-[1.12] font-semibold tracking-tight text-white sm:text-4xl">
               Bring us your plot. <span className="font-playfair italic">We&apos;ll bring the plan.</span>
             </h2>
             <p className="mt-4 font-secondary text-base text-slate-300">

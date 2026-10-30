@@ -63,56 +63,53 @@ const servicePillTags = [
 
 export function Services() {
   return (
-    <section id="services" className="relative bg-[#FAFAF8] py-24 sm:py-32">
+    <section id="services" className="relative bg-[#FAFAF8] py-16 sm:py-24 lg:py-32">
       <Container className="max-w-[1420px] px-4 sm:px-6 lg:px-8">
         {/* Centered Heading Block */}
         <div className="mx-auto max-w-2xl text-center">
-          <div className="inline-flex items-center gap-2 font-secondary text-xs sm:text-[0.8125rem] font-bold tracking-[0.16em] text-[#CE1C73] uppercase">
-            <span
-              aria-hidden="true"
-              className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]"
-            />
+          <div className="inline-flex items-center gap-2 font-secondary text-xs font-bold tracking-[0.16em] text-[#CE1C73] uppercase sm:text-[0.8125rem]">
+            <span aria-hidden="true" className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]" />
             OUR SERVICES
           </div>
 
-          <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 font-display text-[1.625rem] leading-[1.18] font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Architecture &amp; construction solutions{' '}
             <span className="font-playfair italic">designed for excellence</span>
           </h2>
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-4 text-[0.9375rem] text-slate-600 sm:text-lg">
             High-performance engineering, turnkey craftsmanship, and complete peace of mind for
             families across Tumkur district.
           </p>
         </div>
 
         {/* 4 Cards Grid - Expanded Width */}
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {servicesData.map((item) => (
             <Link
               key={item.id}
               href={item.href}
-              className="group flex flex-col justify-between overflow-hidden rounded-[20px] border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-slate-300"
+              className="group flex flex-row-reverse justify-between overflow-hidden rounded-[20px] border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-slate-300 hover:shadow-xl sm:flex-col"
             >
               {/* Upper Content Area */}
-              <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
+              <div className="flex min-w-0 flex-1 flex-col justify-between p-4 sm:p-6">
                 <div>
                   <div className="flex items-baseline justify-between gap-2">
-                    <h3 className="font-display text-[1.0625rem] font-semibold text-slate-900 leading-snug transition-colors group-hover:text-[#CE1C73]">
+                    <h3 className="font-display text-[0.9375rem] leading-snug font-semibold text-slate-900 transition-colors group-hover:text-[#CE1C73] sm:text-[1.0625rem]">
                       {item.title}
                     </h3>
-                    <span className="font-display text-xl font-semibold text-slate-300 transition-colors group-hover:text-[#CE1C73]">
+                    <span className="hidden font-display text-xl font-semibold text-slate-300 transition-colors group-hover:text-[#CE1C73] sm:inline">
                       {item.number}
                     </span>
                   </div>
 
-                  <div className="mt-3 h-px w-full bg-slate-100 transition-colors group-hover:bg-[#CE1C73]/40" />
+                  <div className="mt-3 hidden h-px w-full bg-slate-100 transition-colors group-hover:bg-[#CE1C73]/40 sm:block" />
 
-                  <p className="mt-2.5 font-secondary text-[0.8125rem] leading-normal text-slate-500">
+                  <p className="mt-1.5 font-secondary text-[0.8125rem] leading-normal text-slate-600 sm:mt-2.5 sm:text-slate-500">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="mt-5 inline-flex items-center gap-2 text-xs font-bold text-slate-900">
+                <div className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-slate-900 sm:mt-5">
                   <span>Explore Service</span>
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#CE1C73] text-white transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1">
                     <ArrowUpRight size={13} strokeWidth={2.5} />
@@ -121,12 +118,12 @@ export function Services() {
               </div>
 
               {/* Lower Photographic Block */}
-              <div className="relative h-56 sm:h-60 lg:h-64 w-full overflow-hidden bg-slate-100">
+              <div className="relative w-28 shrink-0 overflow-hidden bg-slate-100 sm:h-60 sm:w-full lg:h-64">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 112px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -136,7 +133,7 @@ export function Services() {
         </div>
 
         {/* Pill Tags Row */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-2.5">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:mt-12 sm:gap-2.5">
           {servicePillTags.map((tag) => (
             <span
               key={tag}
@@ -148,10 +145,10 @@ export function Services() {
         </div>
 
         {/* Free Consultation Banner */}
-        <div className="mt-10 rounded-[18px] border border-slate-200 bg-white p-5 text-center shadow-sm sm:p-6">
+        <div className="mt-6 rounded-[18px] border border-slate-200 bg-white p-4 text-center shadow-sm sm:mt-10 sm:p-6">
           <p className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-slate-700 sm:text-base">
             Need custom architectural guidance? We provide a
-            <span className="inline-flex items-center rounded-full bg-[#CE1C73] px-3 py-0.5 text-xs font-extrabold text-white uppercase tracking-wide">
+            <span className="inline-flex items-center rounded-full bg-[#CE1C73] px-3 py-0.5 text-xs font-extrabold tracking-wide text-white uppercase">
               Free
             </span>
             initial site inspection and 3D layout estimate.

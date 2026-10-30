@@ -32,7 +32,7 @@ const PILLARS = [
 
 export function About() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="bg-white py-24 sm:py-32">
+    <section id="about" aria-labelledby="about-heading" className="bg-white py-16 sm:py-24 lg:py-32">
       <Container>
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-20">
           {/* ── Photo ──────────────────────────────────────────────────── */}
@@ -70,11 +70,11 @@ export function About() {
             </p>
             <h2
               id="about-heading"
-              className="mt-3 max-w-[20ch] font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.08] font-semibold tracking-[-0.02em] text-slate-900"
+              className="mt-3 max-w-[20ch] font-display text-[clamp(1.625rem,4vw,3.25rem)] leading-[1.08] font-semibold tracking-[-0.02em] text-slate-900"
             >
               A Tumkur builder you can sit across the table from
             </h2>
-            <p className="mt-6 max-w-[58ch] text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mt-6 max-w-[58ch] text-[0.9375rem] leading-relaxed text-slate-600 sm:text-lg">
               Every building begins with a dream. From duplexes and villas to schools and offices,
               our engineers, architects and craftsmen build it with premium materials, honest
               pricing and a handover date we keep.

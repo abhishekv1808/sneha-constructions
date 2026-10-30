@@ -125,7 +125,7 @@ export function PackageComparison() {
   }
 
   return (
-    <section className="relative bg-slate-50 py-20 sm:py-28">
+    <section className="relative bg-slate-50 py-14 sm:py-20 lg:py-28">
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
@@ -133,7 +133,7 @@ export function PackageComparison() {
             <BadgeCheck size={15} />
             <span>Transparent Fixed-Price Turnkey Contracts</span>
           </div>
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-4 font-display text-[1.625rem] leading-tight font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Compare Our Construction Packages
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
@@ -170,118 +170,126 @@ export function PackageComparison() {
 
         {/* OVERVIEW CARDS VIEW */}
         {activeTab === 'cards' && (
-          <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {PACKAGES.map((pkg) => (
-              <div
-                key={pkg.id}
-                className={`relative flex flex-col justify-between rounded-3xl border bg-white p-7 transition-all duration-300 hover:shadow-xl sm:p-8 ${
-                  pkg.popular
-                    ? 'border-2 border-[#CE1C73] shadow-lg shadow-[#CE1C73]/10 lg:-translate-y-2'
-                    : 'border-slate-200 shadow-sm'
-                }`}
-              >
-                {pkg.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#CE1C73] px-4 py-1 text-[11px] font-black tracking-wider text-white uppercase shadow-sm">
-                    Most Popular Choice
-                  </span>
-                )}
-
-                <div>
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-display text-xl font-bold text-slate-900">{pkg.name}</h3>
-                    <span className="flex items-center gap-1 text-[11px] font-semibold text-slate-500">
-                      <Clock size={13} />
-                      {pkg.completionTime}
+          <>
+            {/* Phones and tablets: a swipeable row, one package at a time,
+              bled to the screen edges. lg: the three side by side. */}
+            <div className="-mx-5 mt-8 flex snap-x snap-mandatory [scrollbar-width:none] gap-4 overflow-x-auto px-5 pt-4 pb-2 md:-mx-8 md:px-8 lg:mx-0 lg:mt-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:p-0 [&::-webkit-scrollbar]:hidden">
+              {PACKAGES.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  className={`relative flex w-[85vw] max-w-[360px] shrink-0 snap-center flex-col justify-between rounded-3xl border bg-white p-5 transition-all duration-300 hover:shadow-xl sm:p-8 lg:w-auto lg:max-w-none ${
+                    pkg.popular
+                      ? 'border-2 border-[#CE1C73] shadow-lg shadow-[#CE1C73]/10 lg:-translate-y-2'
+                      : 'border-slate-200 shadow-sm'
+                  }`}
+                >
+                  {pkg.popular && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#CE1C73] px-4 py-1 text-[0.6875rem] font-black tracking-wider whitespace-nowrap text-white uppercase shadow-sm">
+                      Most Popular Choice
                     </span>
-                  </div>
+                  )}
 
-                  <p className="mt-2 min-h-[36px] text-xs leading-relaxed text-slate-500">
-                    {pkg.tagline}
-                  </p>
-
-                  {/* Pricing */}
-                  <div className="mt-5 border-y border-slate-100 py-4">
-                    <div className="flex items-baseline gap-1">
-                      <span className="font-display text-4xl font-extrabold text-slate-900">
-                        ₹{pkg.rate.toLocaleString('en-IN')}
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-display text-xl font-bold text-slate-900">{pkg.name}</h3>
+                      <span className="flex items-center gap-1 text-xs font-semibold text-slate-500">
+                        <Clock size={13} />
+                        {pkg.completionTime}
                       </span>
-                      <span className="text-sm font-semibold text-slate-500">/ sq ft</span>
                     </div>
-                    <p className="mt-1 text-[11px] text-slate-400">
-                      Built-up area basis · Includes architectural plans, labor &amp; materials
+
+                    <p className="mt-2 text-xs leading-relaxed text-slate-500 lg:min-h-[36px]">
+                      {pkg.tagline}
                     </p>
+
+                    {/* Pricing */}
+                    <div className="mt-5 border-y border-slate-100 py-4">
+                      <div className="flex items-baseline gap-1">
+                        <span className="font-display text-[2rem] font-extrabold text-slate-900 sm:text-4xl">
+                          ₹{pkg.rate.toLocaleString('en-IN')}
+                        </span>
+                        <span className="text-sm font-semibold text-slate-500">/ sq ft</span>
+                      </div>
+                      <p className="mt-1 text-xs text-slate-400">
+                        Built-up area basis · Includes architectural plans, labor &amp; materials
+                      </p>
+                    </div>
+
+                    {/* Highlights */}
+                    <div className="mt-6 space-y-3">
+                      <p className="text-xs font-bold tracking-wider text-slate-800 uppercase">
+                        Key Inclusions:
+                      </p>
+                      <ul className="space-y-2.5 text-xs text-slate-600">
+                        <li className="flex items-start gap-2.5">
+                          <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                          <span>
+                            <strong>Steel &amp; Cement:</strong>{' '}
+                            {pkg.specs.steelCement.split('+')[0]}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                          <span>
+                            <strong>Main Door:</strong> {pkg.specs.doorsWindows.split(',')[0]}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                          <span>
+                            <strong>Flooring:</strong> {pkg.specs.flooring.split('+')[0]}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                          <span>
+                            <strong>Plumbing:</strong> {pkg.specs.plumbingSanitary.split(',')[0]}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
+                          <span>
+                            <strong>Electrical:</strong> {pkg.specs.electrical.split(',')[0]}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
 
-                  {/* Highlights */}
-                  <div className="mt-6 space-y-3">
-                    <p className="text-xs font-bold tracking-wider text-slate-800 uppercase">
-                      Key Inclusions:
-                    </p>
-                    <ul className="space-y-2.5 text-xs text-slate-600">
-                      <li className="flex items-start gap-2.5">
-                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
-                        <span>
-                          <strong>Steel &amp; Cement:</strong> {pkg.specs.steelCement.split('+')[0]}
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
-                        <span>
-                          <strong>Main Door:</strong> {pkg.specs.doorsWindows.split(',')[0]}
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
-                        <span>
-                          <strong>Flooring:</strong> {pkg.specs.flooring.split('+')[0]}
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
-                        <span>
-                          <strong>Plumbing:</strong> {pkg.specs.plumbingSanitary.split(',')[0]}
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <Check size={16} className="mt-0.5 shrink-0 text-[#CE1C73]" />
-                        <span>
-                          <strong>Electrical:</strong> {pkg.specs.electrical.split(',')[0]}
-                        </span>
-                      </li>
-                    </ul>
+                  {/* Card Actions */}
+                  <div className="mt-8 space-y-2.5 border-t border-slate-100 pt-4">
+                    <Link
+                      href={`/estimate?pkg=${pkg.id}`}
+                      className={`flex w-full items-center justify-center gap-2 rounded-full py-3 text-xs font-bold transition-all ${
+                        pkg.popular
+                          ? 'bg-[#CE1C73] text-white shadow-md hover:bg-[#B81564]'
+                          : 'border border-slate-300 bg-white text-slate-800 hover:bg-slate-50'
+                      }`}
+                    >
+                      <Calculator size={14} />
+                      <span>Calculate Cost for {pkg.name}</span>
+                    </Link>
+
+                    <button
+                      type="button"
+                      onClick={() => handleBookConsultation(pkg)}
+                      className="w-full py-1 text-center text-xs font-semibold text-slate-500 transition-colors hover:text-[#CE1C73]"
+                    >
+                      Request Detailed Material BOQ →
+                    </button>
                   </div>
                 </div>
-
-                {/* Card Actions */}
-                <div className="mt-8 space-y-2.5 border-t border-slate-100 pt-4">
-                  <Link
-                    href={`/estimate?pkg=${pkg.id}`}
-                    className={`flex w-full items-center justify-center gap-2 rounded-full py-3 text-xs font-bold transition-all ${
-                      pkg.popular
-                        ? 'bg-[#CE1C73] text-white shadow-md hover:bg-[#B81564]'
-                        : 'border border-slate-300 bg-white text-slate-800 hover:bg-slate-50'
-                    }`}
-                  >
-                    <Calculator size={14} />
-                    <span>Calculate Cost for {pkg.name}</span>
-                  </Link>
-
-                  <button
-                    type="button"
-                    onClick={() => handleBookConsultation(pkg)}
-                    className="w-full py-1 text-center text-xs font-semibold text-slate-500 transition-colors hover:text-[#CE1C73]"
-                  >
-                    Request Detailed Material BOQ →
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+            <p className="mt-3 text-center font-secondary text-xs text-slate-500 lg:hidden">
+              Swipe to compare all three packages →
+            </p>
+          </>
         )}
 
         {/* DETAILED MATRIX VIEW */}
         {activeTab === 'matrix' && (
-          <div className="mt-12 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-md">
+          <div className="mt-8 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-md lg:mt-12">
             <table className="w-full min-w-[700px] border-collapse text-left text-xs">
               <thead>
                 <tr className="border-b border-slate-200 bg-slate-50/80">
@@ -333,7 +341,7 @@ export function PackageComparison() {
         )}
 
         {/* Contractual Warranty Strip */}
-        <div className="mt-12 rounded-2xl border border-slate-200 bg-gradient-to-r from-slate-900 via-ink-950 to-slate-900 p-6 text-white shadow-lg sm:p-8">
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-gradient-to-r from-slate-900 via-ink-950 to-slate-900 p-5 text-white shadow-lg sm:mt-12 sm:p-8">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#CE1C73] text-white shadow-md">

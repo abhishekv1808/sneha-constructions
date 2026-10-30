@@ -5,7 +5,7 @@ import { frontElevations, type FrontElevation } from '@/content/front-elevations
 import { frontElevationGalleryJsonLd, serializeJsonLd } from '@/lib/seo'
 
 /** Card heights per breakpoint, in px — kept in sync with the classes below. */
-const HEIGHTS = { base: 220, sm: 280, md: 320 } as const
+const HEIGHTS = { base: 260, sm: 320, md: 380 } as const
 
 /**
  * Each card keeps its image's own aspect ratio (fixed height, natural width),
@@ -28,7 +28,7 @@ function ElevationRow({ duplicate = false }: { duplicate?: boolean }) {
       {frontElevations.map((elevation) => (
         <li
           key={elevation.id}
-          className="group relative h-[220px] shrink-0 overflow-hidden rounded-[20px] border border-slate-200/90 bg-slate-100 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-slate-300 hover:shadow-xl sm:h-[280px] md:h-[320px]"
+          className="group relative h-[260px] shrink-0 overflow-hidden rounded-[20px] border border-slate-200/90 bg-slate-100 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-slate-300 hover:shadow-xl sm:h-[320px] md:h-[380px]"
         >
           <Image
             src={elevation.image}
@@ -70,7 +70,7 @@ export function BuildingCarousel() {
             </p>
             <h2
               id="elevations-heading"
-              className="mt-3 max-w-[28ch] font-display text-[clamp(1.875rem,3.5vw,2.75rem)] leading-[1.1] font-semibold tracking-tight text-slate-900"
+              className="mt-3 max-w-[28ch] font-display text-[clamp(1.625rem,3.5vw,2.75rem)] leading-[1.1] font-semibold tracking-tight text-slate-900"
             >
               Homes we&rsquo;ve designed for our clients
             </h2>

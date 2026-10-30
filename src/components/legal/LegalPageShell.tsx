@@ -137,7 +137,7 @@ export function LegalPageShell({
           </h1>
 
           {/* Lead Standfirst */}
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-[0.9375rem] leading-relaxed text-slate-600 sm:text-lg">
             {lead}
           </p>
 
@@ -203,7 +203,7 @@ export function LegalPageShell({
                               }`}
                             >
                               <span
-                                className={`mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded text-[10px] font-bold ${
+                                className={`mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded text-[0.6875rem] font-bold ${
                                   isActive
                                     ? 'bg-[#CE1C73] text-white'
                                     : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'

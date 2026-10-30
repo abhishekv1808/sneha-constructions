@@ -40,7 +40,7 @@ export function ResidentialWork() {
   const spans = spansFor(shown.length)
 
   return (
-    <section id="work" className="relative bg-white py-20 sm:py-28">
+    <section id="work" className="relative bg-white py-14 sm:py-20 lg:py-28">
       <Container>
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -48,7 +48,7 @@ export function ResidentialWork() {
               <span aria-hidden className="inline-block h-2 w-2 rounded-[2px] bg-brand-500" />
               Recent handovers
             </p>
-            <h2 className="mt-4 max-w-[16ch] font-display text-3xl leading-[1.12] font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-4 max-w-[16ch] font-display text-[1.625rem] leading-[1.12] font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
               Look at the <span className="font-playfair italic">work</span>, not the words.
             </h2>
           </div>

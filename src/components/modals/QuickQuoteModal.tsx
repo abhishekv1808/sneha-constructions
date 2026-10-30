@@ -345,7 +345,7 @@ export function QuickQuoteModal() {
                               <Icon size={16} />
                             </span>
                             <span className="mt-2 text-xs font-bold text-slate-900">{pt.label}</span>
-                            <span className="text-[10px] text-slate-500">{pt.desc}</span>
+                            <span className="text-[0.6875rem] text-slate-500">{pt.desc}</span>
                           </button>
                         )
                       })}

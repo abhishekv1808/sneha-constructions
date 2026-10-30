@@ -27,7 +27,7 @@ export function ServiceFaqAccordion({ faqs }: { faqs: ServiceFaq[] }) {
               className="flex w-full items-center justify-between p-6 text-left transition-colors hover:text-[#CE1C73]"
               aria-expanded={isOpen}
             >
-              <span className="font-display text-base sm:text-lg font-bold text-slate-900 pr-4">
+              <span className="font-display text-[0.9375rem] sm:text-lg font-bold text-slate-900 pr-4">
                 {faq.question}
               </span>
               <span

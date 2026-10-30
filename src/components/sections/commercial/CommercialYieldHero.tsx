@@ -72,7 +72,7 @@ export function CommercialYieldHero() {
               Commercial · Tumkur district
             </p>
 
-            <h1 className="mt-5 font-display text-4xl leading-[1.06] font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="mt-5 font-display text-[2rem] leading-[1.06] font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem]">
               What can your plot <span className="font-playfair italic">actually yield?</span>
             </h1>
 
@@ -274,7 +274,7 @@ function Choice({
               <span className="block">{option.label}</span>
               {option.sub && (
                 <span
-                  className={`block text-[0.625rem] font-medium ${active ? 'text-white/75' : 'text-slate-400'}`}
+                  className={`block text-[0.6875rem] font-medium ${active ? 'text-white/75' : 'text-slate-400'}`}
                 >
                   {option.sub}
                 </span>

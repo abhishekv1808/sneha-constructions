@@ -97,32 +97,32 @@ export function ProjectsShowcase() {
       : projectsData.filter((p) => p.categoryKey === selectedFilter)
 
   return (
-    <section id="projects" className="relative bg-white py-24 sm:py-32">
+    <section id="projects" className="relative bg-white py-16 sm:py-24 lg:py-32">
       <Container>
         {/* Section Header */}
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <div className="inline-flex items-center gap-2 font-secondary text-xs sm:text-[0.8125rem] font-bold tracking-[0.16em] text-[#CE1C73] uppercase">
+            <div className="inline-flex items-center gap-2 font-secondary text-xs font-bold tracking-[0.16em] text-[#CE1C73] uppercase sm:text-[0.8125rem]">
               <span
                 aria-hidden="true"
                 className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]"
               />
               OUR PROJECTS
             </div>
-            <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-4 font-display text-[1.625rem] leading-[1.18] font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
               A showcase of architecture that{' '}
               <span className="font-playfair italic">inspires and endures</span>
             </h2>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="-mx-5 flex w-[calc(100%+2.5rem)] [scrollbar-width:none] items-center gap-2 overflow-x-auto px-5 md:mx-0 md:w-auto md:flex-wrap md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden">
             {categories.map((cat) => (
               <button
                 key={cat.key}
                 type="button"
                 onClick={() => setSelectedFilter(cat.key)}
-                className={`rounded-full px-4 py-2 text-xs font-bold transition-all ${
+                className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition-all ${
                   selectedFilter === cat.key
                     ? 'bg-[#CE1C73] text-white shadow-md'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -135,11 +135,11 @@ export function ProjectsShowcase() {
         </div>
 
         {/* Projects Grid */}
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-8 lg:grid-cols-3">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group relative flex flex-col overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl sm:rounded-[22px]"
             >
               {/* Image Container */}
               <div className="relative aspect-[16/11] w-full overflow-hidden bg-slate-100">
@@ -147,30 +147,30 @@ export function ProjectsShowcase() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, 50vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                 />
-                <div className="absolute top-4 left-4">
-                  <span className="rounded-full bg-ink-950/80 border border-[#CE1C73]/40 px-3 py-1 text-[11px] font-bold text-white backdrop-blur-md">
+                <div className="absolute top-2 left-2 sm:top-4 sm:left-4">
+                  <span className="rounded-full border border-[#CE1C73]/40 bg-ink-950/80 px-2 py-0.5 text-[0.6875rem] font-bold text-white backdrop-blur-md sm:px-3 sm:py-1 sm:text-[0.6875rem]">
                     {project.category}
                   </span>
                 </div>
               </div>
 
               {/* Card Meta */}
-              <div className="flex flex-1 items-center justify-between p-6">
+              <div className="flex flex-1 items-center justify-between gap-2 p-3 sm:p-6">
                 <div>
-                  <h3 className="font-display text-lg font-semibold text-slate-900 transition-colors group-hover:text-[#CE1C73]">
+                  <h3 className="font-display text-sm leading-snug font-semibold text-slate-900 transition-colors group-hover:text-[#CE1C73] sm:text-lg">
                     {project.title}
                   </h3>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="mt-1 text-[0.6875rem] text-slate-500 sm:text-xs">
                     {project.location} · {project.area}
                   </p>
                 </div>
 
                 <Link
                   href="/projects"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 transition-all duration-200 group-hover:bg-[#CE1C73] group-hover:text-white"
+                  className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 transition-all duration-200 group-hover:bg-[#CE1C73] group-hover:text-white sm:flex"
                   aria-label={`View ${project.title}`}
                 >
                   <ArrowUpRight size={18} strokeWidth={2.4} />

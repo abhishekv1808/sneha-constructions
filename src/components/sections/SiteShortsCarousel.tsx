@@ -185,7 +185,7 @@ export function SiteShortsCarousel() {
               <HardHat size={14} />
               <span>Transparent Fieldwork · Tumkur Sites</span>
             </div>
-            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 font-display text-[1.625rem] leading-tight font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               See How We Build,{' '}
               <span className="bg-gradient-to-r from-[#CE1C73] to-pink-400 bg-clip-text text-transparent">
                 In 60 Seconds
@@ -251,7 +251,7 @@ export function SiteShortsCarousel() {
 
               {/* Top Bar: Stage Badge & Duration */}
               <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4 z-10">
-                <span className="flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-extrabold tracking-wider text-[#CE1C73] uppercase backdrop-blur-md border border-white/10">
+                <span className="flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-[0.6875rem] font-extrabold tracking-wider text-[#CE1C73] uppercase backdrop-blur-md border border-white/10">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#CE1C73] animate-pulse" />
                   {reel.stageNumber} · {reel.stage}
                 </span>
@@ -321,7 +321,7 @@ export function SiteShortsCarousel() {
             {/* Modal Header Overlay */}
             <div className="absolute top-3 inset-x-0 z-30 flex items-center justify-between px-4 py-2 bg-gradient-to-b from-black/80 to-transparent">
               <div className="flex items-center gap-2">
-                <span className="rounded-full bg-[#CE1C73] px-2.5 py-0.5 text-[10px] font-black uppercase text-white">
+                <span className="rounded-full bg-[#CE1C73] px-2.5 py-0.5 text-[0.6875rem] font-black uppercase text-white">
                   {activeReel.stageNumber} · {activeReel.stage}
                 </span>
                 <span className="text-xs text-slate-300 font-medium">{activeReel.location}</span>
@@ -388,7 +388,7 @@ export function SiteShortsCarousel() {
                 {activeReel.highlights.map((h) => (
                   <span
                     key={h}
-                    className="inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-pink-200"
+                    className="inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-0.5 text-[0.6875rem] font-semibold text-pink-200"
                   >
                     <CheckCircle2 size={11} className="text-[#CE1C73]" />
                     {h}
@@ -399,7 +399,7 @@ export function SiteShortsCarousel() {
               {/* Engineer Quote */}
               <div className="mt-3 rounded-xl border border-white/10 bg-white/5 p-2.5 text-left">
                 <p className="text-[11px] italic text-slate-300">&ldquo;{activeReel.quote}&rdquo;</p>
-                <p className="mt-1 text-[10px] font-bold text-[#CE1C73]">{activeReel.engineer}</p>
+                <p className="mt-1 text-[0.6875rem] font-bold text-[#CE1C73]">{activeReel.engineer}</p>
               </div>
 
               {/* Action Buttons inside Reel */}

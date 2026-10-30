@@ -28,14 +28,14 @@ export function ResidentialPackages() {
   const fill = ((area - MIN_AREA) / (MAX_AREA - MIN_AREA)) * 100
 
   return (
-    <section id="packages" className="relative bg-white py-20 sm:py-28">
+    <section id="packages" className="relative bg-white py-14 sm:py-20 lg:py-28">
       <Container>
         <div className="max-w-2xl">
           <p className="inline-flex items-center gap-2 font-secondary text-xs font-bold tracking-[0.16em] text-brand-500 uppercase sm:text-[0.8125rem]">
             <span aria-hidden className="inline-block h-2 w-2 rounded-[2px] bg-brand-500" />
             Packages
           </p>
-          <h2 className="mt-4 font-display text-3xl leading-[1.12] font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 font-display text-[1.625rem] leading-[1.12] font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Three packages, <span className="font-playfair italic">one locked rate</span>
           </h2>
         </div>

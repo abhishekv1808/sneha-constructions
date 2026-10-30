@@ -17,14 +17,14 @@ export function ResidentialSiteReel() {
   const [open, setOpen] = useState(0)
 
   return (
-    <section className="relative bg-ink-950 py-20 sm:py-28">
+    <section className="relative bg-ink-950 py-14 sm:py-20 lg:py-28">
       <Container>
         <div className="max-w-2xl">
           <p className="inline-flex items-center gap-2 font-secondary text-xs font-bold tracking-[0.16em] text-brand-300 uppercase sm:text-[0.8125rem]">
             <span aria-hidden className="inline-block h-2 w-2 rounded-[2px] bg-brand-300" />
             On site
           </p>
-          <h2 className="mt-4 font-display text-3xl leading-[1.12] font-semibold tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 font-display text-[1.625rem] leading-[1.12] font-semibold tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
             What it looks like{' '}
             <span className="font-playfair italic">while we build</span>
           </h2>

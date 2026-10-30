@@ -172,7 +172,7 @@ Please confirm engineer site visit availability and send the itemized material s
           Estimate your build cost
         </h2>
         <div className="text-right">
-          <span className="text-[10px] text-slate-400 block uppercase tracking-wider">Starting at</span>
+          <span className="text-[0.6875rem] text-slate-400 block uppercase tracking-wider">Starting at</span>
           <span className="font-display text-base font-extrabold text-[#FFCC00]">
             ₹{site.baseRateSqft}
             <span className="text-xs text-slate-300 font-normal">/sq ft</span>
@@ -214,7 +214,7 @@ Please confirm engineer site visit availability and send the itemized material s
                   )}
                 </div>
                 <span
-                  className={`mt-1 text-[10px] font-medium hidden sm:block ${
+                  className={`mt-1 text-[0.6875rem] font-medium hidden sm:block ${
                     isCurrent ? 'text-white' : 'text-slate-400'
                   }`}
                 >
@@ -350,7 +350,7 @@ Please confirm engineer site visit availability and send the itemized material s
                           }`}
                         >
                           <div className="font-bold text-xs text-white">{f.name}</div>
-                          <div className="text-[10px] text-slate-300">{f.label}</div>
+                          <div className="text-[0.6875rem] text-slate-300">{f.label}</div>
                         </button>
                       )
                     })}
@@ -522,11 +522,11 @@ Please confirm engineer site visit availability and send the itemized material s
 
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div className="rounded-xl border border-white/10 bg-white/5 p-2.5">
-                <span className="text-slate-400 block text-[10px]">Package Rate</span>
+                <span className="text-slate-400 block text-[0.6875rem]">Package Rate</span>
                 <span className="font-bold text-white">₹{rate} / sq ft</span>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/5 p-2.5">
-                <span className="text-slate-400 block text-[10px]">Warranty &amp; Service</span>
+                <span className="text-slate-400 block text-[0.6875rem]">Warranty &amp; Service</span>
                 <span className="font-bold text-emerald-400">5-Year Structural</span>
               </div>
             </div>

@@ -42,7 +42,7 @@ export function CommercialTypologies() {
   const current = buildingTypes[active] as (typeof buildingTypes)[number]
 
   return (
-    <section className="relative bg-white py-20 sm:py-28">
+    <section className="relative bg-white py-14 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading eyebrow="What you're building">
           Six typologies, <em>six sets of rules</em>

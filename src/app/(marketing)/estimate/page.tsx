@@ -46,7 +46,7 @@ export default function EstimatePage() {
               Plan Your Dream Home with Precision &amp; Complete Transparency
             </h1>
 
-            <p className="mt-4 text-base text-slate-300 sm:text-lg">
+            <p className="mt-4 text-[0.9375rem] text-slate-300 sm:text-lg">
               Calculate instant turnkey budgets for Karnataka standard plots, verify cosmic Vastu
               alignments, and estimate your monthly bank construction loan EMIs.
             </p>

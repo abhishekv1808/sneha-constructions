@@ -223,13 +223,13 @@ export function Testimonials() {
       id="testimonials"
       aria-labelledby="testimonials-heading"
       data-track-location="testimonials"
-      className="overflow-hidden bg-plaster-100 py-24 sm:py-32"
+      className="overflow-hidden bg-plaster-100 py-16 sm:py-24 lg:py-32"
     >
       <Container>
         <div className="text-center">
           <h2
             id="testimonials-heading"
-            className="font-display text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.1] font-light tracking-[-0.02em] text-slate-900"
+            className="font-display text-[clamp(1.625rem,4.2vw,3.25rem)] leading-[1.1] font-light tracking-[-0.02em] text-slate-900"
           >
             What families say <span className="font-semibold">after moving in</span>
           </h2>

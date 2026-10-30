@@ -46,47 +46,44 @@ export function FaqSection() {
   }
 
   return (
-    <section id="faqs" className="relative bg-white py-24 sm:py-32">
+    <section id="faqs" className="relative bg-white py-16 sm:py-24 lg:py-32">
       <Container>
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <div className="inline-flex items-center gap-2 font-secondary text-xs sm:text-[0.8125rem] font-bold tracking-[0.16em] text-[#CE1C73] uppercase">
-            <span
-              aria-hidden="true"
-              className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]"
-            />
+          <div className="inline-flex items-center gap-2 font-secondary text-xs font-bold tracking-[0.16em] text-[#CE1C73] uppercase sm:text-[0.8125rem]">
+            <span aria-hidden="true" className="inline-block h-2 w-2 rounded-[2px] bg-[#CE1C73]" />
             FREQUENTLY ASKED QUESTIONS
           </div>
 
-          <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.18] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 font-display text-[1.625rem] leading-[1.18] font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             We&apos;re here to provide{' '}
             <span className="font-playfair italic">clear and helpful answers</span>
           </h2>
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-4 text-[0.9375rem] text-slate-600 sm:text-lg">
             Everything you need to know about building your home with Sneha Construction in Tumkur.
           </p>
         </div>
 
         {/* Accordion List */}
-        <div className="mx-auto mt-14 max-w-3xl space-y-4">
+        <div className="mx-auto mt-8 max-w-3xl space-y-3 sm:mt-14 sm:space-y-4">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx
             return (
               <div
                 key={idx}
-                className="overflow-hidden rounded-[18px] border border-slate-200 bg-white transition-all duration-200 hover:border-slate-300 shadow-sm"
+                className="overflow-hidden rounded-[18px] border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:border-slate-300"
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  className="flex w-full items-center justify-between p-6 text-left focus:outline-none"
+                  className="flex w-full items-center justify-between p-4 text-left focus:outline-none sm:p-6"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-display text-base font-semibold text-slate-900 sm:text-lg">
+                  <span className="font-display text-[0.9375rem] leading-snug font-semibold text-slate-900 sm:text-lg">
                     {faq.question}
                   </span>
                   <span
-                    className={`ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition-transform duration-300 ${
+                    className={`ml-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition-transform duration-300 sm:ml-4 ${
                       isOpen ? 'rotate-180 bg-[#CE1C73] text-white' : ''
                     }`}
                   >
@@ -95,7 +92,7 @@ export function FaqSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="border-t border-slate-100 px-6 pt-4 pb-6 text-sm leading-relaxed text-slate-600 sm:text-base">
+                  <div className="border-t border-slate-100 px-4 pt-3 pb-5 text-sm leading-relaxed text-slate-600 sm:px-6 sm:pt-4 sm:pb-6 sm:text-base">
                     {faq.answer}
                   </div>
                 )}

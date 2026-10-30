@@ -17,7 +17,7 @@ export function TurnkeyRemoteOwner() {
   const current = siteLog[week] as (typeof siteLog)[number]
 
   return (
-    <section className="relative bg-ink-950 py-20 sm:py-28">
+    <section className="relative bg-ink-950 py-14 sm:py-20 lg:py-28">
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">

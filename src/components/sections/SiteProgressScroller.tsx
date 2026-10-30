@@ -119,7 +119,7 @@ export function SiteProgressScroller({ photos }: { photos: SitePhoto[] }) {
               </p>
               <h2
                 id="on-site-heading"
-                className="mt-3 font-display text-[clamp(1.875rem,3.6vw,2.875rem)] leading-[1.08] font-semibold tracking-[-0.02em] text-slate-900"
+                className="mt-3 font-display text-[clamp(1.625rem,3.6vw,2.875rem)] leading-[1.08] font-semibold tracking-[-0.02em] text-slate-900"
               >
                 Real sites. Real progress.
               </h2>

@@ -278,7 +278,7 @@ Can you share a free 2D sample floor plan layout compliant with Vastu Shastra fo
                 <span className={`font-display text-sm font-bold ${isSelected ? 'text-[#CE1C73]' : 'text-slate-800'}`}>
                   {dirKey}
                 </span>
-                <span className="text-[10px] text-slate-500 truncate max-w-full">
+                <span className="text-[0.6875rem] text-slate-500 truncate max-w-full">
                   {dir.kannadaName.split(' ')[0]}
                 </span>
               </button>

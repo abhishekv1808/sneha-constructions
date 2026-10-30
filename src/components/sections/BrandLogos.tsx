@@ -85,7 +85,7 @@ export function BrandLogos() {
   return (
     <section
       aria-labelledby="brands-heading"
-      className="border-y border-plaster-200 bg-white py-20 md:py-24"
+      className="border-y border-plaster-200 bg-white py-14 md:py-24"
     >
       <Container>
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-12">
@@ -96,7 +96,7 @@ export function BrandLogos() {
             </p>
             <h2
               id="brands-heading"
-              className="mt-3 max-w-[24ch] font-display text-[clamp(1.875rem,3.5vw,2.75rem)] leading-[1.1] font-semibold tracking-tight text-slate-900"
+              className="mt-3 max-w-[24ch] font-display text-[clamp(1.625rem,3.5vw,2.75rem)] leading-[1.1] font-semibold tracking-tight text-slate-900"
             >
               Built with brands you already trust
             </h2>
