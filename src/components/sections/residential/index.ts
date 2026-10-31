@@ -1,7 +1,6 @@
-export { ResidentialHeroGallery } from './ResidentialHeroGallery'
+export { ResidentialHero } from './ResidentialHero'
 export { ResidentialJourney } from './ResidentialJourney'
 export { ResidentialPackages } from './ResidentialPackages'
-export { ResidentialSiteReel } from './ResidentialSiteReel'
 export { ResidentialWork } from './ResidentialWork'
 export {
   homes,

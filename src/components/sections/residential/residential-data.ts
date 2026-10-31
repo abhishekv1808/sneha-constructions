@@ -105,7 +105,8 @@ export const proofFigures = [
   { value: '250+', label: 'Homes handed over' },
   { value: '₹1,875', label: 'Starting rate / sq ft' },
   { value: '6–9', label: 'Months to handover' },
-  { value: '10 yr', label: 'Structural warranty' },
+  // Matches the home page's trust figures (content/site.ts) — CONFIRM with client.
+  { value: '5 yr', label: 'Structural warranty' },
 ] as const
 
 /** The expanding site reel — what a build actually looks like. */

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import { Button, Chip, Container, Input, Rule, Select, Textarea } from '@/components/ui'
 import { formatINR, formatSqft } from '@/lib/utils/format'
@@ -25,6 +26,9 @@ function SectionHeading({ children, tone }: { children: string; tone: 'light' | 
 }
 
 export default function KitchenSinkPage() {
+  // Developer component sheet — local only, never served on the live site.
+  if (process.env.NODE_ENV === 'production') notFound()
+
   return (
     <main>
       {/* ---------------------------------------------------------------- */}

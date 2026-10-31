@@ -46,6 +46,22 @@ const nextConfig: NextConfig = {
       : [],
   },
 
+  // Baseline hardening for every response. No CSP yet: the GA snippet is
+  // inline, and a wrong policy silently breaks the quote form.
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+    ]
+  },
+
   async redirects() {
     return [
       ...legacyRoutes.map(([source, destination]) => ({

@@ -73,7 +73,7 @@ export function ResidentialPackages() {
                 step={STEP}
                 value={area}
                 onChange={(event) => setArea(clamp(Number(event.target.value) || MIN_AREA))}
-                className="w-28 rounded-[2px] border border-plaster-300 bg-white px-3 py-2 font-secondary text-sm font-semibold text-slate-900 tabular"
+                className="tabular w-28 rounded-[2px] border border-plaster-300 bg-white px-3 py-2 font-secondary text-sm font-semibold text-slate-900"
               />
             </div>
           </div>
@@ -91,7 +91,7 @@ export function ResidentialPackages() {
             style={{ ['--fill' as string]: `${fill}%` }}
           />
 
-          <div className="mt-2 flex justify-between font-secondary text-xs text-slate-400 tabular">
+          <div className="tabular mt-2 flex justify-between font-secondary text-xs text-slate-400">
             <span>{formatSqft(MIN_AREA)}</span>
             <span>{formatSqft(MAX_AREA)}</span>
           </div>
@@ -126,22 +126,14 @@ export function ResidentialPackages() {
   )
 }
 
-function TierCard({
-  tier,
-  area,
-  onPick,
-}: {
-  tier: PackageTier
-  area: number
-  onPick: () => void
-}) {
+function TierCard({ tier, area, onPick }: { tier: PackageTier; area: number; onPick: () => void }) {
   const total = area * tier.rate
 
   return (
     <div
       className={`relative flex flex-col rounded-[16px] border p-6 transition-colors duration-150 ${
         tier.popular
-          ? 'border-brand-500 bg-ink-950'
+          ? 'border-2 border-brand-500 bg-white shadow-[0_16px_40px_-16px_rgb(206_28_115/0.35)]'
           : 'border-plaster-200 bg-white hover:border-plaster-300'
       }`}
     >
@@ -151,50 +143,24 @@ function TierCard({
         </span>
       )}
 
-      <p
-        className={`font-display text-xl font-semibold ${
-          tier.popular ? 'text-white' : 'text-slate-900'
-        }`}
-      >
-        {tier.name}
-      </p>
-      <p
-        className={`mt-0.5 font-secondary text-xs font-medium tabular ${
-          tier.popular ? 'text-brand-300' : 'text-brand-500'
-        }`}
-      >
+      <p className={`font-display text-xl font-semibold ${'text-slate-900'}`}>{tier.name}</p>
+      <p className={`tabular mt-0.5 font-secondary text-xs font-medium ${'text-brand-500'}`}>
         ₹{tier.rate.toLocaleString('en-IN')} / sq ft
       </p>
 
       <p
         data-numeral
-        className={`mt-5 font-display text-[2rem] leading-none font-semibold ${
-          tier.popular ? 'text-white' : 'text-slate-900'
-        }`}
+        className={`mt-5 font-display text-[2rem] leading-none font-semibold ${'text-slate-900'}`}
       >
         {formatINR(total)}
       </p>
-      <p
-        className={`mt-1 font-secondary text-xs ${
-          tier.popular ? 'text-slate-400' : 'text-slate-500'
-        }`}
-      >
-        for {formatSqft(area)}
-      </p>
+      <p className={`mt-1 font-secondary text-xs ${'text-slate-500'}`}>for {formatSqft(area)}</p>
 
       <ul className="mt-6 flex-1 space-y-2.5">
         {tier.includes.map((item) => (
           <li key={item} className="flex gap-2.5">
-            <Check
-              size={15}
-              strokeWidth={2.4}
-              className={`mt-0.5 shrink-0 ${tier.popular ? 'text-brand-300' : 'text-brand-500'}`}
-            />
-            <span
-              className={`font-secondary text-sm leading-snug ${
-                tier.popular ? 'text-slate-300' : 'text-slate-600'
-              }`}
-            >
+            <Check size={15} strokeWidth={2.4} className={`mt-0.5 shrink-0 ${'text-brand-500'}`} />
+            <span className={`font-secondary text-sm leading-snug ${'text-slate-600'}`}>
               {item}
             </span>
           </li>

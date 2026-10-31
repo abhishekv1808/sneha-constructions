@@ -46,4 +46,4 @@ export const legalLinks: readonly NavChild[] = [
 // the layout reserves its height.
 // The home hero opens on a deep-blue sky, so the header floats over it with
 // white type until the visitor scrolls.
-export const heroRoutes: ReadonlySet<string> = new Set(['/', '/services/residential'])
+export const heroRoutes: ReadonlySet<string> = new Set(['/'])
