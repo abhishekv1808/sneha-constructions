@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Camera, Phone } from 'lucide-react'
+import { ArrowRight, Camera, ChevronLeft, ChevronRight, Phone } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 
@@ -14,11 +14,12 @@ import type { SitePhoto } from '@/lib/site-photos'
 const TRACK_GUTTERS = 'px-5 md:px-8 lg:px-[max(3rem,calc((100vw-1240px)/2+3rem))]'
 
 /**
- * Panel size. Phones: every panel 4:5, so each photo is still big. From sm:
+ * Panel size. Phones: square, so the photo, its caption and the gallery controls
+ * all fit on one screen above the action bar. From sm:
  * one shared height, and each panel takes its own photo's shape (via --ratio),
  * so a portrait shot is not cropped into a landscape frame.
  */
-const PANEL = 'w-[84vw] aspect-[4/5] sm:w-auto sm:h-[min(60svh,620px)] sm:aspect-[var(--ratio)]'
+const PANEL = 'w-[84vw] aspect-square sm:w-auto sm:h-[min(60svh,620px)] sm:aspect-[var(--ratio)]'
 const PANEL_MAX_HEIGHT = 620
 
 /** The photo's own width:height, kept within sensible bounds for a panel. */
@@ -27,16 +28,25 @@ function panelRatio({ width, height }: SitePhoto): number {
 }
 
 /**
- * Real site photos in a row that moves sideways as the visitor scrolls down.
+ * Who gets the pinned, scroll-driven row: a desktop with a mouse. On a phone
+ * or tablet, turning a downward swipe into sideways movement reads as the page
+ * being stuck, so touch screens keep a plain swipeable gallery instead.
+ */
+const PIN_QUERY =
+  '(min-width: 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
+
+/**
+ * Real site photos in a row.
  *
- * How the pin works: the section is made as tall as the row is wide (plus one
- * screen), and its inner frame is `position: sticky`. While the frame is
- * stuck, scroll progress through the section maps to translateX on the row —
- * written straight to the DOM in a rAF, so scrolling never re-renders React.
+ * Desktop (PIN_QUERY): the row moves sideways as the visitor scrolls down.
+ * The section is made as tall as the row is wide (plus one screen), and its
+ * inner frame is `position: sticky`. While the frame is stuck, scroll progress
+ * through the section maps to translateX on the row — written straight to the
+ * DOM in a rAF, so scrolling never re-renders React.
  *
- * It renders unpinned first: a plain swipeable row. That is what no-JS and
- * reduced-motion visitors keep; everyone else is switched to the pinned
- * version after mount.
+ * Everyone else: a swipeable gallery that snaps photo by photo, with a
+ * counter, a progress bar, previous/next buttons and a swipe hint. It is also
+ * what renders first, so no-JS visitors get it too.
  */
 export function SiteProgressScroller({ photos }: { photos: SitePhoto[] }) {
   const { openQuoteModal } = useQuoteModal()
@@ -44,13 +54,81 @@ export function SiteProgressScroller({ photos }: { photos: SitePhoto[] }) {
   const frameRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const barRef = useRef<HTMLSpanElement>(null)
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const swipeBarRef = useRef<HTMLSpanElement>(null)
   const [pinned, setPinned] = useState(false)
   const [index, setIndex] = useState(0)
+  const [atEnd, setAtEnd] = useState(false)
+  const [swiped, setSwiped] = useState(false)
   const count = photos.length
 
+  // Follows the query live, so a resized window switches mode cleanly.
   useEffect(() => {
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) setPinned(true)
+    const query = window.matchMedia(PIN_QUERY)
+    const update = () => setPinned(query.matches)
+    update()
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
   }, [])
+
+  // Swipe mode: keep the counter, bar and buttons in step with the gallery.
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    const track = trackRef.current
+    if (pinned || !scroller || !track) return
+
+    let frameId = 0
+    const render = () => {
+      frameId = 0
+      const max = scroller.scrollWidth - scroller.clientWidth
+      const progress = max > 0 ? Math.min(1, scroller.scrollLeft / max) : 0
+      if (swipeBarRef.current) swipeBarRef.current.style.transform = `scaleX(${progress})`
+
+      // The panel whose left edge is nearest the gallery's left edge.
+      const panels = Array.from(track.children) as HTMLElement[]
+      const origin = panels[0]?.offsetLeft ?? 0
+      let nearest = 0
+      let best = Infinity
+      panels.forEach((panel, i) => {
+        const gap = Math.abs(panel.offsetLeft - origin - scroller.scrollLeft)
+        if (gap < best) {
+          best = gap
+          nearest = i
+        }
+      })
+      setIndex(Math.min(count - 1, nearest))
+      setAtEnd(progress > 0.98)
+      if (scroller.scrollLeft > 8) setSwiped(true)
+    }
+    const schedule = () => {
+      if (!frameId) frameId = requestAnimationFrame(render)
+    }
+
+    render()
+    scroller.addEventListener('scroll', schedule, { passive: true })
+    return () => {
+      scroller.removeEventListener('scroll', schedule)
+      cancelAnimationFrame(frameId)
+    }
+  }, [pinned, count])
+
+  /** Swipe mode's buttons: one panel back or forward. */
+  function step(direction: -1 | 1) {
+    const scroller = scrollerRef.current
+    const track = trackRef.current
+    if (!scroller || !track) return
+    const panels = Array.from(track.children) as HTMLElement[]
+    // At the end the counter rests on the last photo, but the view is on the
+    // closing card — so "back" from there means the last photo itself.
+    const from = atEnd ? panels.length - 1 : index
+    const target = panels[Math.min(panels.length - 1, Math.max(0, from + direction))]
+    if (!target) return
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    scroller.scrollTo({
+      left: target.offsetLeft - (panels[0]?.offsetLeft ?? 0),
+      behavior: reduce ? 'auto' : 'smooth',
+    })
+  }
 
   useEffect(() => {
     const section = sectionRef.current
@@ -159,9 +237,14 @@ export function SiteProgressScroller({ photos }: { photos: SitePhoto[] }) {
 
         {/* The row. Pinned: moved by the scroll handler. Unpinned: swipe it. */}
         <div
+          ref={scrollerRef}
+          role={pinned ? undefined : 'region'}
+          aria-label={pinned ? undefined : 'Site photos. Swipe, or use the buttons below.'}
+          tabIndex={pinned ? undefined : 0}
           className={cn(
             'mt-8 sm:mt-10',
-            !pinned && 'snap-x snap-mandatory [scrollbar-width:none] overflow-x-auto',
+            !pinned &&
+              'snap-x snap-mandatory scroll-px-5 overflow-x-auto overscroll-x-contain [scrollbar-width:none] md:scroll-px-8 [&::-webkit-scrollbar]:hidden',
           )}
         >
           <div
@@ -212,18 +295,18 @@ export function SiteProgressScroller({ photos }: { photos: SitePhoto[] }) {
             {/* End of the row: the next step for a convinced visitor */}
             <div
               className={cn(
-                'flex shrink-0 snap-start flex-col justify-end rounded-3xl bg-brand-50 p-7 ring-1 ring-brand-100 sm:p-10',
-                'aspect-[4/5] w-[84vw] sm:aspect-auto sm:h-[min(60svh,620px)] sm:w-[400px]',
+                'flex shrink-0 snap-start flex-col justify-end rounded-3xl bg-brand-50 p-6 ring-1 ring-brand-100 sm:p-10',
+                'min-h-[84vw] w-[84vw] sm:min-h-0 sm:h-[min(60svh,620px)] sm:w-[400px]',
               )}
             >
-              <p className="font-display text-2xl leading-snug font-semibold text-slate-900 sm:text-[1.75rem]">
+              <p className="font-display text-xl leading-snug font-semibold text-slate-900 sm:text-[1.75rem]">
                 Want to see a site in person?
               </p>
-              <p className="mt-3 text-base leading-relaxed text-slate-600">
+              <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:mt-3 sm:text-base">
                 We&rsquo;ll take you round one of our ongoing sites near you — walk the floors,
                 check the steel, ask the engineer.
               </p>
-              <div className="mt-6 flex flex-col items-start gap-3">
+              <div className="mt-5 flex flex-col items-start gap-2 sm:mt-6 sm:gap-3">
                 <button
                   type="button"
                   onClick={() => openQuoteModal({ source: 'On-site photos CTA' })}
@@ -243,6 +326,66 @@ export function SiteProgressScroller({ photos }: { photos: SitePhoto[] }) {
             </div>
           </div>
         </div>
+
+        {/* Swipe mode: where you are in the build, and a way to move without swiping */}
+        {!pinned && (
+          <Container className="mt-5 sm:mt-6">
+            <div className="flex items-center justify-between gap-4">
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-secondary text-sm text-slate-600 tabular-nums">
+                    <span className="font-semibold text-slate-900">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    {' / '}
+                    {String(count).padStart(2, '0')}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      'inline-flex items-center gap-1.5 font-secondary text-xs font-medium text-brand-500 transition-opacity duration-300',
+                      swiped && 'opacity-0',
+                    )}
+                  >
+                    Swipe to follow the build
+                    <ArrowRight size={13} strokeWidth={2.25} className="animate-swipe-nudge" />
+                  </span>
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="relative mt-2.5 block h-[3px] max-w-56 overflow-hidden rounded-full bg-plaster-200"
+                >
+                  <span
+                    ref={swipeBarRef}
+                    style={{ transform: 'scaleX(0)' }}
+                    className="absolute inset-0 origin-left rounded-full bg-brand-500"
+                  />
+                </span>
+              </div>
+
+              <div className="flex shrink-0 gap-2">
+                <button
+                  type="button"
+                  onClick={() => step(-1)}
+                  disabled={index === 0 && !atEnd}
+                  aria-label="Previous photo"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-slate-900 ring-1 ring-plaster-300 transition-colors duration-150 hover:bg-plaster-100 disabled:opacity-35"
+                >
+                  <ChevronLeft aria-hidden="true" size={20} strokeWidth={2} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => step(1)}
+                  disabled={atEnd}
+                  aria-label="Next photo"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 text-white transition-colors duration-150 hover:bg-brand-600 disabled:bg-plaster-300"
+                >
+                  <ChevronRight aria-hidden="true" size={20} strokeWidth={2} />
+                </button>
+              </div>
+            </div>
+          </Container>
+        )}
       </div>
     </section>
   )

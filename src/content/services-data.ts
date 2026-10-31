@@ -7,9 +7,12 @@ import service2Residential from '@/assets/services/service-2-residential.jpg'
 import service3Turnkey from '@/assets/services/service-3-turnkey.jpg'
 import service4Commercial from '@/assets/services/service-4-commercial.jpg'
 import videoBg from '@/assets/video/video-band-bg.jpg'
-import serviceResidential from '@/assets/placeholder/service-residential.jpg'
-import serviceCommercial from '@/assets/placeholder/service-commercial.jpg'
-import serviceTurnkey from '@/assets/placeholder/service-turnkey.jpg'
+import vinobanagarVilla from '@/assets/projects/vinobanagar-luxury-villa.jpg'
+import gubbiRoadDuplex from '@/assets/projects/gubbi-road-duplex.jpg'
+import siraRoadResidence from '@/assets/projects/sira-road-residence.jpg'
+import contemporaryBungalow from '@/assets/projects/contemporary-family-bungalow.jpg'
+import zenithCommercial from '@/assets/projects/zenith-commercial-complex.jpg'
+import urbanSerenityDuplex from '@/assets/projects/urban-serenity-duplex.jpg'
 
 // Bespoke Hero Buildings & Authentic Indian Engineering Team
 import residentialHeroVilla from '@/assets/services/bespoke/residential-hero-villa.jpg'
@@ -266,32 +269,32 @@ export const servicesData: Record<'residential' | 'commercial' | 'turnkey', Serv
     ],
     projects: [
       {
-        title: 'The Timber Wave Villa',
+        title: 'Vinobanagar Luxury Villa',
         type: '4BHK Luxury Villa',
         location: 'Vinobanagar, Tumkur',
         area: '4,800 sq ft',
-        image: heroBg,
+        image: vinobanagarVilla,
       },
       {
-        title: 'Sculptural Pavilion Duplex',
+        title: 'Gubbi Road Modern Duplex',
         type: '3BHK Modern Duplex',
         location: 'Gubbi Main Road, Tumkur',
         area: '3,200 sq ft',
-        image: showcasePavilion,
+        image: gubbiRoadDuplex,
       },
       {
         title: 'Contemporary Family Bungalow',
         type: '5BHK Independent Bungalow',
         location: 'Kunigal Town, Tumkur',
         area: '3,800 sq ft',
-        image: serviceResidential,
+        image: contemporaryBungalow,
       },
       {
         title: 'Urban Serenity Duplex',
         type: '3BHK Turnkey Residence',
         location: 'Tiptur Extension, Tumkur',
         area: '2,950 sq ft',
-        image: serviceTurnkey,
+        image: urbanSerenityDuplex,
       },
     ],
     faqs: [
@@ -495,7 +498,7 @@ export const servicesData: Record<'residential' | 'commercial' | 'turnkey', Serv
         type: 'Retail & Corporate Hub',
         location: 'BG Patya Circle, Tumkur',
         area: '12,500 sq ft',
-        image: serviceCommercial,
+        image: zenithCommercial,
       },
       {
         title: 'Apex Business Center',
@@ -714,25 +717,25 @@ export const servicesData: Record<'residential' | 'commercial' | 'turnkey', Serv
     ],
     projects: [
       {
-        title: 'Acoustic Curve Residence',
+        title: 'Sira Road Turnkey Residence',
         type: 'Turnkey Luxury Villa',
         location: 'Sira Road, Tumkur',
         area: '2,600 sq ft',
-        image: detailTimber,
+        image: siraRoadResidence,
       },
       {
         title: 'Urban Serenity Duplex',
         type: 'Turnkey Family Home',
         location: 'Tiptur Extension, Tumkur',
         area: '2,950 sq ft',
-        image: serviceTurnkey,
+        image: urbanSerenityDuplex,
       },
       {
-        title: 'The Timber Wave Residence',
+        title: 'Vinobanagar Luxury Villa',
         type: 'Turnkey Contemporary Home',
         location: 'Vinobanagar, Tumkur',
         area: '4,800 sq ft',
-        image: heroBg,
+        image: vinobanagarVilla,
       },
     ],
     faqs: [

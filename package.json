@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "service-sketches": "node scripts/service-sketches.mjs",
     "db:types": "supabase gen types typescript --linked --schema public > src/lib/supabase/types.ts",
     "db:push": "supabase db push"
   },
@@ -54,6 +55,7 @@
     "postcss": "^8.5.28",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "sharp": "0.35.5",
     "supabase": "^2.117.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"

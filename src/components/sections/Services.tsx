@@ -1,64 +1,73 @@
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import Image, { type StaticImageData } from 'next/image'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
-import service1Architecture from '@/assets/hero/detail-timber.jpg'
-import service2Residential from '@/assets/services/service-2-residential.jpg'
-import service3Turnkey from '@/assets/services/service-3-turnkey.jpg'
-import service4Commercial from '@/assets/services/service-4-commercial.jpg'
+import commercial from '@/assets/services/cutouts/commercial.png'
+import commercialSketch from '@/assets/services/cutouts/commercial-sketch.png'
+import design from '@/assets/services/cutouts/design.png'
+import designSketch from '@/assets/services/cutouts/design-sketch.png'
+import residential from '@/assets/services/cutouts/residential.png'
+import residentialSketch from '@/assets/services/cutouts/residential-sketch.png'
+import turnkey from '@/assets/services/cutouts/turnkey.png'
+import turnkeySketch from '@/assets/services/cutouts/turnkey-sketch.png'
 import { Container } from '@/components/ui'
+import { site } from '@/content'
 
-interface ServiceItem {
-  id: string
-  number: string
-  title: string
-  description: string
-  href: string
-  image: StaticImageData
-}
+import { ServiceBuildCard, type ServiceBuildCardProps } from './ServiceBuildCard'
 
-const servicesData: ServiceItem[] = [
+/*
+ * The building cut-outs are STAND-INS, keyed out of our elevation renders.
+ * To replace one, drop a transparent PNG over the same filename in
+ * src/assets/services/cutouts and run `pnpm service-sketches` — it trims the
+ * PNG and regenerates the matching line drawing. Update the alt text below.
+ */
+const services: Omit<ServiceBuildCardProps, 'index'>[] = [
   {
-    id: 'architectural-design',
-    number: '01.',
-    title: 'Architectural Planning & 3D Design',
-    description: 'Vastu-compliant 2D/3D plans, blueprints & elevation renders.',
+    tag: 'Design',
+    title: 'Architectural planning & 3D design',
+    description:
+      'Vastu-compliant plans, structural drawings and 3D elevations — see your home before a brick is laid.',
+    chips: ['Vastu plans', '2D layouts', '3D elevations', 'Approval drawings'],
     href: '/services/turnkey',
-    image: service1Architecture,
+    cta: 'Explore design',
+    image: design,
+    sketch: designSketch,
+    alt: '3D elevation of a contemporary two-storey house with a glass balcony and terrace planters',
   },
   {
-    id: 'residential-construction',
-    number: '02.',
-    title: 'Luxury Residential Construction',
-    description: 'Custom duplexes & villas built with seismic structural mastery.',
+    tag: 'Homes',
+    title: 'Residential construction',
+    description: `Duplexes, villas and farmhouses on strong foundations, from ₹${site.baseRateSqft.toLocaleString('en-IN')}/sq ft.`,
+    chips: ['Duplex houses', 'Villas', 'Farmhouses', 'Apartments'],
     href: '/services/residential',
-    image: service2Residential,
+    cta: 'Explore homes',
+    image: residential,
+    sketch: residentialSketch,
+    alt: '3D render of a modern duplex with white and grey cladding and wooden accents',
   },
   {
-    id: 'turnkey-execution',
-    number: '03.',
-    title: 'Turnkey Build & Project Execution',
-    description: 'End-to-end execution from excavation to turnkey handover.',
+    tag: 'Turnkey',
+    title: 'Turnkey construction',
+    description:
+      'One team from site plan to handover — structure, plumbing, finishing and the final inspection.',
+    chips: ['Site planning', 'Structure', 'Electrical & plumbing', 'Finishing'],
     href: '/services/turnkey',
-    image: service3Turnkey,
+    cta: 'Explore turnkey',
+    image: turnkey,
+    sketch: turnkeySketch,
+    alt: '3D elevation of a three-storey house with a floral jali panel and balconies',
   },
   {
-    id: 'commercial-development',
-    number: '04.',
-    title: 'Commercial & Civil Development',
-    description: 'Commercial hubs, plazas, and clinics on locked schedules.',
+    tag: 'Commercial',
+    title: 'Commercial construction',
+    description:
+      'Schools, clinics, offices and shopping complexes, planned for business and built on schedule.',
+    chips: ['Schools', 'Hospitals', 'Offices', 'Shopping complexes'],
     href: '/services/commercial',
-    image: service4Commercial,
+    cta: 'Explore commercial',
+    image: commercial,
+    sketch: commercialSketch,
+    alt: '3D render of a four-storey commercial building with a glass facade',
   },
-]
-
-const servicePillTags = [
-  'Modern Duplexes',
-  'Luxury Villas',
-  'Turnkey Homes',
-  'Farmhouses',
-  'Commercial Complexes',
-  'Structural Renovation',
 ]
 
 export function Services() {
@@ -77,75 +86,20 @@ export function Services() {
             <span className="font-playfair italic">designed for excellence</span>
           </h2>
           <p className="mt-4 text-[0.9375rem] text-slate-600 sm:text-lg">
-            High-performance engineering, turnkey craftsmanship, and complete peace of mind for
-            families across Tumkur district.
+            From the first drawing to the finished building — watch each one go up.
           </p>
         </div>
 
-        {/* 4 Cards Grid - Expanded Width */}
-        <div className="mt-10 grid grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-          {servicesData.map((item) => (
-            <Link
-              key={item.id}
-              href={item.href}
-              className="group flex flex-row-reverse justify-between overflow-hidden rounded-[20px] border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-slate-300 hover:shadow-xl sm:flex-col"
-            >
-              {/* Upper Content Area */}
-              <div className="flex min-w-0 flex-1 flex-col justify-between p-4 sm:p-6">
-                <div>
-                  <div className="flex items-baseline justify-between gap-2">
-                    <h3 className="font-display text-[0.9375rem] leading-snug font-semibold text-slate-900 transition-colors group-hover:text-[#CE1C73] sm:text-[1.0625rem]">
-                      {item.title}
-                    </h3>
-                    <span className="hidden font-display text-xl font-semibold text-slate-300 transition-colors group-hover:text-[#CE1C73] sm:inline">
-                      {item.number}
-                    </span>
-                  </div>
-
-                  <div className="mt-3 hidden h-px w-full bg-slate-100 transition-colors group-hover:bg-[#CE1C73]/40 sm:block" />
-
-                  <p className="mt-1.5 font-secondary text-[0.8125rem] leading-normal text-slate-600 sm:mt-2.5 sm:text-slate-500">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-slate-900 sm:mt-5">
-                  <span>Explore Service</span>
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#CE1C73] text-white transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1">
-                    <ArrowUpRight size={13} strokeWidth={2.5} />
-                  </span>
-                </div>
-              </div>
-
-              {/* Lower Photographic Block */}
-              <div className="relative w-28 shrink-0 overflow-hidden bg-slate-100 sm:h-60 sm:w-full lg:h-64">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 112px"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Pill Tags Row */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:mt-12 sm:gap-2.5">
-          {servicePillTags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-block rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold text-slate-700 shadow-sm"
-            >
-              {tag}
-            </span>
+        {/* Phones: a swipeable row with the next card peeking in.
+            sm and up: a 2-column, then 4-column grid. */}
+        <div className="-mx-4 mt-10 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+          {services.map((service, index) => (
+            <ServiceBuildCard key={service.title} index={index} {...service} />
           ))}
         </div>
 
         {/* Free Consultation Banner */}
-        <div className="mt-6 rounded-[18px] border border-slate-200 bg-white p-4 text-center shadow-sm sm:mt-10 sm:p-6">
+        <div className="mt-8 rounded-[18px] border border-slate-200 bg-white p-4 text-center shadow-sm sm:mt-12 sm:p-6">
           <p className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-slate-700 sm:text-base">
             Need custom architectural guidance? We provide a
             <span className="inline-flex items-center rounded-full bg-[#CE1C73] px-3 py-0.5 text-xs font-extrabold tracking-wide text-white uppercase">

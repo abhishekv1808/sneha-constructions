@@ -5,12 +5,12 @@ import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import showcasePavilion from '@/assets/hero/showcase-pavilion.jpg'
-import detailTimber from '@/assets/hero/detail-timber.jpg'
-import heroBg from '@/assets/hero/hero-bg.jpg'
-import serviceResidential from '@/assets/placeholder/service-residential.jpg'
-import serviceCommercial from '@/assets/placeholder/service-commercial.jpg'
-import serviceTurnkey from '@/assets/placeholder/service-turnkey.jpg'
+import vinobanagarVilla from '@/assets/projects/vinobanagar-luxury-villa.jpg'
+import gubbiRoadDuplex from '@/assets/projects/gubbi-road-duplex.jpg'
+import siraRoadResidence from '@/assets/projects/sira-road-residence.jpg'
+import contemporaryBungalow from '@/assets/projects/contemporary-family-bungalow.jpg'
+import zenithCommercial from '@/assets/projects/zenith-commercial-complex.jpg'
+import urbanSerenityDuplex from '@/assets/projects/urban-serenity-duplex.jpg'
 import { Container } from '@/components/ui'
 
 interface ProjectItem {
@@ -26,30 +26,30 @@ interface ProjectItem {
 const projectsData: ProjectItem[] = [
   {
     id: '1',
-    title: 'The Timber Wave Villa',
+    title: 'Vinobanagar Luxury Villa',
     category: 'Luxury Villa',
     categoryKey: 'villas',
     location: 'Vinobanagar, Tumkur',
     area: '4,800 sq ft',
-    image: heroBg,
+    image: vinobanagarVilla,
   },
   {
     id: '2',
-    title: 'Sculptural Pavilion Duplex',
+    title: 'Gubbi Road Modern Duplex',
     category: 'Modern Duplex',
     categoryKey: 'duplexes',
     location: 'Gubbi Main Road, Tumkur',
     area: '3,200 sq ft',
-    image: showcasePavilion,
+    image: gubbiRoadDuplex,
   },
   {
     id: '3',
-    title: 'Acoustic Curve Residence',
+    title: 'Sira Road Turnkey Residence',
     category: 'Turnkey Residence',
     categoryKey: 'turnkey',
     location: 'Sira Road, Tumkur',
     area: '2,600 sq ft',
-    image: detailTimber,
+    image: siraRoadResidence,
   },
   {
     id: '4',
@@ -58,7 +58,7 @@ const projectsData: ProjectItem[] = [
     categoryKey: 'villas',
     location: 'Kunigal Town, Tumkur',
     area: '3,800 sq ft',
-    image: serviceResidential,
+    image: contemporaryBungalow,
   },
   {
     id: '5',
@@ -67,7 +67,7 @@ const projectsData: ProjectItem[] = [
     categoryKey: 'commercial',
     location: 'BG Patya Circle, Tumkur',
     area: '12,500 sq ft',
-    image: serviceCommercial,
+    image: zenithCommercial,
   },
   {
     id: '6',
@@ -76,7 +76,7 @@ const projectsData: ProjectItem[] = [
     categoryKey: 'turnkey',
     location: 'Tiptur Extension, Tumkur',
     area: '2,950 sq ft',
-    image: serviceTurnkey,
+    image: urbanSerenityDuplex,
   },
 ]
 
