@@ -540,7 +540,7 @@ export const servicesData: Record<'residential' | 'commercial' | 'turnkey', Serv
     name: 'Turnkey Construction Solutions',
     shortName: 'Turnkey',
     tagline: 'You dream it — we plan, build, and deliver it flawlessly.',
-    metaTitle: 'Turnkey House Construction in Tumkur @ ₹1,875/sq ft | Sneha Construction',
+    metaTitle: 'Turnkey House Construction in Tumkur @ ₹1,875/sq ft',
     metaDescription:
       'Complete turnkey house construction in Tumkur at just ₹1,875/sq ft. 100% transparent pricing, zero cost escalation, 3D design, materials, and handover.',
     heroImage: service3Turnkey,

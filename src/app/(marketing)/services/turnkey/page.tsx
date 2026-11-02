@@ -14,7 +14,7 @@ import { contact, servicesData, site, whatsappUrl } from '@/content'
 const service = servicesData.turnkey
 
 export const metadata: Metadata = {
-  title: `${service.metaTitle} | ${site.name}`,
+  title: service.metaTitle,
   description: service.metaDescription,
   alternates: { canonical: '/services/turnkey' },
   openGraph: {

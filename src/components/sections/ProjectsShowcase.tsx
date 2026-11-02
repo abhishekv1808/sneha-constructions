@@ -169,7 +169,7 @@ export function ProjectsShowcase() {
                 </div>
 
                 <Link
-                  href="/projects"
+                  href="/#projects"
                   className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 transition-all duration-200 group-hover:bg-[#CE1C73] group-hover:text-white sm:flex"
                   aria-label={`View ${project.title}`}
                 >

@@ -83,7 +83,7 @@ export function ResidentialWork() {
 
         <div className="mt-10 flex justify-center">
           <Link
-            href="/projects"
+            href="/#projects"
             className="group inline-flex items-center gap-2.5 rounded-full border border-slate-300 px-6 py-3 font-secondary text-sm font-bold text-slate-900 transition-colors duration-150 hover:border-brand-500 hover:text-brand-500"
           >
             <span>See every project</span>
@@ -102,7 +102,7 @@ export function ResidentialWork() {
 function WorkCard({ home, span }: { home: ResidentialHome; span: string }) {
   return (
     <Link
-      href="/projects"
+      href="/#projects"
       className={`group relative col-span-1 overflow-hidden rounded-[18px] bg-slate-100 sm:col-span-1 ${span}`}
     >
       <Image

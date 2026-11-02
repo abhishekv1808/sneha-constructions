@@ -10,6 +10,7 @@ import {
 } from '@/components/sections/about-page'
 import { CtaBand, Marquee } from '@/components/sections'
 import { contact, site } from '@/content'
+import { env } from '@/lib/env'
 
 export const metadata: Metadata = {
   title: 'About Us | 25+ Years of Structural Mastery in Tumkur',
@@ -37,8 +38,8 @@ export default function AboutPage() {
             '@type': ['Organization', 'GeneralContractor'],
             name: site.name,
             alternateName: site.shortName,
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/about`,
-            logo: `${process.env.NEXT_PUBLIC_SITE_URL}/icon.png`,
+            url: `${env.NEXT_PUBLIC_SITE_URL}/about`,
+            logo: `${env.NEXT_PUBLIC_SITE_URL}/sneha-constructions-logo.png`,
             foundingDate: '1999',
             description:
               'Premier turnkey residential construction, 3D architectural design, and civil engineering firm based in Tumkur, Karnataka.',

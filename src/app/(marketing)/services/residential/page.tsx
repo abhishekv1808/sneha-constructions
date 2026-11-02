@@ -14,7 +14,7 @@ import { contact, servicesData, site } from '@/content'
 const service = servicesData.residential
 
 export const metadata: Metadata = {
-  title: `${service.metaTitle} | ${site.name}`,
+  title: service.metaTitle,
   description: service.metaDescription,
   alternates: { canonical: '/services/residential' },
   openGraph: {

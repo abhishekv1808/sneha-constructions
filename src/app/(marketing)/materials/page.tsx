@@ -8,7 +8,7 @@ import { getMaterialSpecs } from '@/content/materials-specs'
 import { getMaterials } from '@/lib/supabase/queries'
 
 export const metadata: Metadata = {
-  title: `Materials & Quality | ${site.name}, Tumkur`,
+  title: 'Materials & Quality',
   description:
     'The cement, steel, wiring, plumbing, tiles and waterproofing that go into a Sneha Construction build in Tumkur — named brands and grades, not adjectives.',
   alternates: { canonical: '/materials' },

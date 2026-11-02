@@ -17,9 +17,10 @@ import {
 
 import { LegalPageShell, type TocItem } from '@/components/legal/LegalPageShell'
 import { contact, site } from '@/content'
+import { env } from '@/lib/env'
 
 export const metadata: Metadata = {
-  title: `Privacy Policy | ${site.name}, Tumkur`,
+  title: 'Privacy Policy',
   description:
     'Official Privacy Policy for Sneha Construction & Developers, Tumkur. Understand how we collect, safeguard, and process your personal data, construction inquiries, and site details.',
   alternates: { canonical: '/privacy-policy' },
@@ -63,7 +64,7 @@ export default function PrivacyPolicyPage() {
             name: `Privacy Policy | ${site.name}`,
             description:
               'Official Privacy Policy and Data Protection declaration of Sneha Construction & Developers in Tumkur, Karnataka.',
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
+            url: `${env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
             publisher: {
               '@type': 'Organization',
               name: site.name,
@@ -85,13 +86,13 @@ export default function PrivacyPolicyPage() {
                   '@type': 'ListItem',
                   position: 1,
                   name: 'Home',
-                  item: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+                  item: `${env.NEXT_PUBLIC_SITE_URL}`,
                 },
                 {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'Privacy Policy',
-                  item: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
+                  item: `${env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
                 },
               ],
             },

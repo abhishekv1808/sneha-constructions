@@ -12,6 +12,5 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/api/', '/kitchen-sink'],
     },
     sitemap: `${env.NEXT_PUBLIC_SITE_URL}/sitemap.xml`,
-    host: env.NEXT_PUBLIC_SITE_URL,
   }
 }

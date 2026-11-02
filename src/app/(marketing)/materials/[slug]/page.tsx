@@ -21,10 +21,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const material = await getMaterialBySlug(slug)
 
-  if (!material) return { title: `Not found | ${site.shortName}` }
+  if (!material) return { title: 'Not found' }
 
   return {
-    title: `${material.name} | Materials & Quality | ${site.shortName}, Tumkur`,
+    title: `${material.name} | Materials & Quality`,
     description: material.promise,
     alternates: { canonical: `/materials/${material.slug}` },
     openGraph: {

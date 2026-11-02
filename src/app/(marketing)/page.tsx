@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 import {
   About,
   BrandLogos,
@@ -14,6 +16,10 @@ import {
   Testimonials,
 } from '@/components/sections'
 import { localBusinessJsonLd, serializeJsonLd } from '@/lib/seo'
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 /**
  * Section order follows the visitor's decision journey — a Tumkur family (or a

@@ -15,7 +15,7 @@ import {
 } from '@/content/blog-data'
 
 export const metadata: Metadata = {
-  title: `Building Guides for Tumkur | ${site.name}`,
+  title: 'Building Guides for Tumkur',
   description:
     'Practical guides on building a house in Tumkur — construction costs, plan sanction and approvals, checking materials on site, and reading a construction agreement.',
   alternates: { canonical: '/blog' },

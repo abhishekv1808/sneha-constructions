@@ -18,9 +18,10 @@ import {
 
 import { LegalPageShell, type TocItem } from '@/components/legal/LegalPageShell'
 import { contact, site } from '@/content'
+import { env } from '@/lib/env'
 
 export const metadata: Metadata = {
-  title: `Terms & Conditions | ${site.name}, Tumkur`,
+  title: 'Terms & Conditions',
   description:
     'Official Terms and Conditions for Sneha Construction & Developers, Tumkur. Outlining our online estimator usage, site visit protocols, turnkey contracting standards, and material specifications.',
   alternates: { canonical: '/terms' },
@@ -64,7 +65,7 @@ export default function TermsAndConditionsPage() {
             name: `Terms & Conditions | ${site.name}`,
             description:
               'Official Terms and Conditions governing construction inquiries, estimates, and contracting engagements with Sneha Construction & Developers in Tumkur, Karnataka.',
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/terms`,
+            url: `${env.NEXT_PUBLIC_SITE_URL}/terms`,
             publisher: {
               '@type': 'Organization',
               name: site.name,
@@ -86,13 +87,13 @@ export default function TermsAndConditionsPage() {
                   '@type': 'ListItem',
                   position: 1,
                   name: 'Home',
-                  item: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+                  item: `${env.NEXT_PUBLIC_SITE_URL}`,
                 },
                 {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'Terms & Conditions',
-                  item: `${process.env.NEXT_PUBLIC_SITE_URL}/terms`,
+                  item: `${env.NEXT_PUBLIC_SITE_URL}/terms`,
                 },
               ],
             },

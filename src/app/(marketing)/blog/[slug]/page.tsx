@@ -27,10 +27,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const post = getPostBySlug(slug)
 
-  if (!post) return { title: `Article not found | ${site.shortName}` }
+  if (!post) return { title: 'Article not found' }
 
   return {
-    title: `${post.metaTitle} | ${site.shortName}`,
+    title: post.metaTitle,
     description: post.metaDescription,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {

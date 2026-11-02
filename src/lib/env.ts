@@ -7,7 +7,15 @@ const envSchema = z.object({
   RESEND_API_KEY: z.string().min(1),
   LEAD_NOTIFY_EMAIL: z.email(),
   REVALIDATE_SECRET: z.string().min(16),
-  NEXT_PUBLIC_SITE_URL: z.url(),
+  // Every sitemap, robots and canonical URL is built from this, so a live deploy
+  // on the wrong address fails the build. Local builds may use localhost.
+  NEXT_PUBLIC_SITE_URL: z
+    .url()
+    .refine(
+      (url) => process.env.VERCEL_ENV !== 'production' || url.startsWith('https://'),
+      'must be the live https:// address on a production deploy',
+    )
+    .transform((url) => url.replace(/\/+$/, '')),
   // Optional: GA4 is off (no script, no events) until this is set. The format
   // check also makes it safe to interpolate into the inline gtag snippet.
   NEXT_PUBLIC_GA_MEASUREMENT_ID: z

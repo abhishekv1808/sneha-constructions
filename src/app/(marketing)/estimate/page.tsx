@@ -7,7 +7,8 @@ import { contact, site } from '@/content'
 import { Calculator, Compass, Landmark, ShieldCheck, Clock, Award, Phone } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'House Construction Cost Calculator & Vastu Tools | Sneha Construction Tumkur',
+  title: 'House Construction Cost Calculator & Vastu Tools',
+  alternates: { canonical: '/estimate' },
   description:
     'Calculate exact house construction costs in Tumkur for 30x40, 30x50, and 40x60 plots. Explore 100% Vastu direction guidelines and calculate bank construction loan EMIs. Get free itemized BOQ.',
   keywords: [

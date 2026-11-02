@@ -70,6 +70,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
 
+      // /projects has no page yet, but the live site has it indexed. Temporary on
+      // purpose: when the real route ships, delete this and repoint the `/#projects`
+      // links (in-app navigation loses the hash through a redirect, so they can't
+      // simply use /projects today).
+      { source: '/projects', destination: '/#projects', permanent: false },
+
       // Legal alias redirects
       { source: '/privacy', destination: '/privacy-policy', permanent: true },
       { source: '/terms-and-conditions', destination: '/terms', permanent: true },
@@ -81,11 +87,13 @@ const nextConfig: NextConfig = {
       { source: '/wp-admin/:path*', destination: '/', permanent: true },
       { source: '/wp-includes/:path*', destination: '/', permanent: true },
 
-      // Legacy ?p=<id> permalinks. The destination carries its own query so Next
-      // does not forward `p` through, which would re-match this rule and loop.
+      // Legacy ?p=<id> permalinks. Next forwards `p` to the destination, so `from`
+      // marks a request as already redirected; without it this rule re-matches
+      // forever.
       {
         source: '/',
         has: [{ type: 'query' as const, key: 'p' }],
+        missing: [{ type: 'query' as const, key: 'from' }],
         destination: '/?from=legacy',
         permanent: true,
       },
